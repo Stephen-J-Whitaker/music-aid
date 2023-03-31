@@ -17,7 +17,7 @@ if os.path.isfile('env.py'):
     import env
     DEBUG = True
 else:
-    DEBUG = False
+    DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['https://music-aid.herokuapp.com/', 'localhost']
 
 
 # Application definition
