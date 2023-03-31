@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    Test
-</div>
+    {% if user.is_authenticated %}
+        Test
+    {% else %}
+        <div class="home-login">
+            <a href="{% url 'account_login' %}" class="home-login-link">Login</button>
+            <a href="{% url 'account_signup' %}">Register</a>
+        </div>
+    {% endif %}
 {% endblock %}
