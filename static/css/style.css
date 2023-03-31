@@ -1,36 +1,99 @@
 /* Style sheet for songbook Django app */
 
 :root {
-    --header-footer-colour: rgb(101, 171, 224);
-    --button-colour: rgb(101, 171, 224);
-    --dark-link-colour: rgb(1, 63, 110);
-    --light-link-colour: rgb(224, 242, 255);
+    --logo-background: rgb(117, 163, 199); 
+    --interface-dark-blue: rgb(1, 63, 110);
+    --interface-medium-blue: rgb(121, 180, 224);
+    --interface-light-blue: rgb(196, 220, 238);
+    --dark-link-text-colour: rgb(1, 63, 110);
+    --light-link-text-colour: rgb(255, 255, 255);
 }
 
-/* Common anchor styles */
+/* Common anchor and link styles */
 a {
     text-decoration: none;
+    color: var(--dark-link-text-colour);
+}
+
+.standard-link:hover {
+    text-shadow: 0px 0px 20px rgb(1, 63, 110);
+}
+
+.box-link:hover {
+    box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
+}
+/* End of common anchor and link styles */
+
+/* Button styles */
+button {
+    background-color: var(--interface-medium-blue);
+    border: none;
+}
+
+.logo-main {
+    padding: 7px;
+    border: solid;
+    border-color: var(--interface-dark-blue);
+    border-radius: 25px;
+    background-color: var(--logo-background);
+}
+
+.logo-main,
+.logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    margin: 5px;
+}
+
+.logo-brand {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.logo-brand-header {
+    font-size: xxx-large;
+}
+
+.logo-app-header,
+.logo-brand-footer {
+    font-size: x-large;
+}
+
+.logo-app-footer {
+    font-size: large;
 }
 
 html,
 body {
     height: 100%;
+    color: var(--dark-link-text-colour);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header styling */
 header {
-    background-color: var(--header-footer-colour);
+    flex: 0;
+    background-color: var(--interface-medium-blue);
 }
 
 /* Navbar styling */
 .navbar-container {
-    background-color: var(--header-footer-colour);
+    background-color: var(--interface-medium-blue);
 }
 
 /* Main styling */
 main {
-    position: relative;
-    height: calc(100% - 75px);
+    flex: 1 0 auto;
+    background-color: var(--interface-light-blue);
 }
 
 /* Home page styling */
@@ -47,21 +110,27 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--button-colour);
-    color: var(--light-link-colour);
+    background-color: var(--interface-medium-blue);
+    color: var(--dark-link-text-colour);
     width: 50%;
     height: 200px;
+    font-size: xxx-large;
+    border-radius: 25px;
+    
+}
+
+.home-register-link {
+    font-size: larger;
 }
 
 /* Footer styling */
 footer {
-    position: absolute;
+    flex: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 75px;
     bottom: 0;
     right: 0;
-    background-color: var(--header-footer-colour);
+    background-color: var(--interface-medium-blue);
 }
