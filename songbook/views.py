@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views import view
+from django.views import View
 
 
 class SongbookList(View):
@@ -8,3 +8,19 @@ class SongbookList(View):
     songbook list
     """
     template_name = "index.html"
+    
+
+    def get(self, request):
+        """
+        Show the home page
+        """
+
+        title = "Music Aid Songbook"
+
+        return render(
+            request,
+            "index.html",
+            {
+                "title": title,
+            }
+        )
