@@ -8,7 +8,6 @@ class SongbookList(View):
     songbook list
     """
     template_name = "index.html"
-    
 
     def get(self, request):
         """
