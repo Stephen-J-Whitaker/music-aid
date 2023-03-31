@@ -1,1 +1,16 @@
 /* Style sheet for songbook Django app */
+
+/* Main styling */
+main {
+    position: relative;
+}
+
+/* Footer styling */
+footer {
+    position: absolute;
+    width: 100%;
+    height: 75px;
+    bottom: 0;
+    right: 0;
+    background-color: blue;
+}
