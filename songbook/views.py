@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views import View, generic
 from .models import Song
 
@@ -16,6 +15,9 @@ class SongbookList(generic.ListView):
         context['title'] = "Music Aid Songbook"
 
         return context
+
+    def get_queryset(self):
+        return Song.objects.filter(user=self.request.user)
 
     # def get(self, request):
     #     """
