@@ -1,5 +1,6 @@
 from django.views import View, generic
 from .models import Song
+from django.shortcuts import render, get_object_or_404
 
 
 class SongbookList(generic.ListView):
@@ -19,17 +20,11 @@ class SongbookList(generic.ListView):
     def get_queryset(self):
         return Song.objects.filter(user=self.request.user)
 
-    # def get(self, request):
-    #     """
-    #     Show the home page
-    #     """
 
-    #     title = "Testify"
+class AddSong(View):
+    """
+    Class based form view for adding song data
+    """
 
-    #     return render(
-    #         request,
-    #         "index.html",
-    #         {
-    #             "title": title,
-    #         }
-    #     )
+    def get():
+        add_song_form = AddSong()
