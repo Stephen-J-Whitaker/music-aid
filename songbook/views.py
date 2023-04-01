@@ -40,9 +40,9 @@ class AddSong(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         print("this is my comment", form.instance.title)
         form.instance.user = self.request.user
-        slug = str(form.instance.user.id) + ' ' + form.instance.title
-        print("slug ", slug)
-        form.instance.song_slug = slugify(slug)
+        # slug = str(form.instance.user.id) + ' ' + form.instance.title
+        # print("slug ", slug)
+        # form.instance.song_slug = slugify(slug)
+        form.instance.song_slug = slugify(form.instance.title)
         print("slugified", form.instance.song_slug)
         return super().form_valid(form)
-
