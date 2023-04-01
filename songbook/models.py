@@ -7,7 +7,7 @@ class Song(models.Model):
     Model to hold song and lyric details
     """
     title = models.CharField(max_length=150, unique=True)
-    artist = models.CharField(max_length=150, unique=True)
+    artist = models.CharField(max_length=150, unique=True, blank=True)
     lyrics = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name="user_songs")

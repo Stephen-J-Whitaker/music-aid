@@ -3,7 +3,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-    <form action="post">
+    <form method="post">
         {% csrf_token %}
         {{ form }}
         <button type="submit" class="btn">Add Song</button>
