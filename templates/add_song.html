@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <form action="post">
+        {% csrf_token %}
+        {{ add_song_form }}
+        <button type="submit" class="btn">Add Song</button>
+    </form>
+    {% else %}
+        Test
+    {% endif %}
+{% endblock %}

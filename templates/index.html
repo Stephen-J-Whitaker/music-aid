@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        Test
+        <a href="{% url 'add_song' %}">Add Song</a>
     {% else %}
         <div class="home-login">
             <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</button>

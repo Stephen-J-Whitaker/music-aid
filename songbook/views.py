@@ -1,6 +1,7 @@
 from django.views import View, generic
 from .models import Song
 from django.shortcuts import render, get_object_or_404
+from songbook.forms import AddSong
 
 
 class SongbookList(generic.ListView):
@@ -18,7 +19,8 @@ class SongbookList(generic.ListView):
         return context
 
     def get_queryset(self):
-        return Song.objects.filter(user=self.request.user)
+        if self.request.user.id is not None:
+            return Song.objects.filter(user=self.request.user)
 
 
 class AddSong(View):
@@ -26,5 +28,28 @@ class AddSong(View):
     Class based form view for adding song data
     """
 
-    def get():
+    def get(self, request, *args, **kwargs):
         add_song_form = AddSong()
+        print(add_song_form)
+        title = "Add a songs lyrics to songbook"
+
+        return render(
+            request,
+            "add_song.html",
+            {
+                'title': title,
+                'add_song_form': AddSong()
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+
+        add_song_form = AddSong()
+
+        return render(
+            request,
+            "add_song.html",
+            {
+                "add_song_form": AddSong(),
+            }
+        )
