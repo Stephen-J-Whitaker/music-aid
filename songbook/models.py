@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Song(models.Model):
@@ -11,13 +12,9 @@ class Song(models.Model):
     lyrics = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name="user_songs")
-    slug = models.SlugField(max_length=200)
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'title'],
-                                    name='unique_user_song_title')
-        ]
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('edit_song', kwargs={'pk': self.pk})

@@ -39,7 +39,7 @@ class AddNewSong(LoginRequiredMixin, generic.CreateView):
     # Code supplied by Code Institute Tutor Support
     model = Song
     template_name = 'add_edit_delete_song.html'
-    success_url = '/'
+    # success_url = '/'
     # End of code supplied by Code Institute Tutor Support
 
     def get_context_data(self, **kwargs):
@@ -50,21 +50,21 @@ class AddNewSong(LoginRequiredMixin, generic.CreateView):
         context['title'] = 'Add a song to songbook'
         return context
 
-    def form_valid(self, form):
-        """
-        Complete the form by adding slug
-        """
-        print("this is my comment", form.instance.title)
-        form.instance.user = self.request.user
-        # slug = str(form.instance.user.id) + ' ' + form.instance.title
-        # print("slug ", slug)
-        # form.instance.song_slug = slugify(slug)
-        form.instance.song_slug = slugify(form.instance.title)
-        print("slugified", form.instance.song_slug)
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     """
+    #     Complete the form by adding slug
+    #     """
+    #     print("this is my comment", form.instance.title)
+    #     form.instance.user = self.request.user
+    #     # slug = str(form.instance.user.id) + ' ' + form.instance.title
+    #     # print("slug ", slug)
+    #     # form.instance.song_slug = slugify(slug)
+    #     form.instance.song_slug = slugify(form.instance.title)
+    #     print("slugified", form.instance.song_slug)
+    #     return super().form_valid(form)
 
 
-class SongView(generic.DetailView):
+class SongView(LoginRequiredMixin, generic.DetailView):
     """
     A class based view to view a song
     """
@@ -77,7 +77,7 @@ class SongView(generic.DetailView):
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'View a song'
-        context['slug'] = self.kwargs['slug']
+        context['pk'] = self.kwargs['pk']
         # print("view slug", self.kwargs['slug'])
         return context
 
@@ -86,10 +86,10 @@ class SongView(generic.DetailView):
         Define the queryset to be used
         """
         return Song.objects.filter(user=self.request.
-                                   user).filter(slug=self.kwargs['slug'])
+                                   user).filter(pk=self.kwargs['pk'])
 
 
-class EditSong(generic.UpdateView):
+class EditSong(LoginRequiredMixin, generic.UpdateView):
     """
     A class based view to edit a song
     """
@@ -110,4 +110,4 @@ class EditSong(generic.UpdateView):
         Define the queryset to be used
         """
         return Song.objects.filter(user=self.request.
-                                   user).filter(slug=self.kwargs['slug'])
+                                   user).filter(pk=self.kwargs['pk'])
