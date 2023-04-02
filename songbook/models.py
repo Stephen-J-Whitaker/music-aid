@@ -12,7 +12,12 @@ class Song(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name="user_songs")
     song_slug = models.SlugField(max_length=200)
-    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'title'],
+                                    name='unique_user_song_title')
+        ]
 
     def __str__(self):
         return self.title
