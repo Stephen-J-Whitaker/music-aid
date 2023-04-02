@@ -130,46 +130,78 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
                                    user).filter(pk=self.kwargs['pk'])
 
 
-class SetlistAdd(LoginRequiredMixin, View):
+# class SetlistAdd(LoginRequiredMixin, View):
+#     """
+#     A class based view to add setlists
+#     """
+
+#     def get(self, request, *args, **kwargs):
+#         """
+#         Get handling to render SetlistAddForm
+#         """
+#         setlist_add_form = SetlistAddForm(data=request.POST, user=request.user)
+
+#         return render(
+#             request,
+#             "setlist_add_edit.html",
+#             {
+#                 "title": "Create a setlist",
+#                 "setlist_add_form": SetlistAddForm(data=request.POST,
+#                                                    user=request.user),
+#             },
+#         )
+
+#     def post(self, request, *args, **kwargs):
+#         """
+#         Post handling for SetlistAddForm
+#         """
+#         setlist_add_form = SetlistAdd(data=request.POST, user=request.user)
+
+#         if setlist_add_form.is_valid():
+#             setlist = setlist_add_form.save(commit=False)
+#             setlist.user = request.user
+#             setlist_add_form.save_m2m()
+
+#         return render(
+#             request,
+#             "setlist_add_edit.html",
+#             {
+#                 "title": "Create a setlist",
+#                 "setlist_add_form": SetlistAddForm(data=request.POST,
+#                                                    user=request.user),
+#             },
+#         )
+
+class SetlistAdd(LoginRequiredMixin, generic.CreateView):
     """
     A class based view to add setlists
     """
+    model = Setlist
+    form_class = SetlistAddForm
+    template_name = 'setlist_add_edit.html'
 
-    def get(self, request, *args, **kwargs):
+    def get_initial(self):
         """
-        Get handling to render SetlistAddForm
+        Pass the user to SetlistAddForm
         """
-        setlist_add_form = SetlistAddForm(data=request.POST, user=request.user)
+        self.initial.update({'user': self.request.user})
+        return self.initial
 
-        return render(
-            request,
-            "setlist_add_edit.html",
-            {
-                "setlist_add_form": SetlistAddForm(data=request.POST,
-                                                   user=request.user)
-            },
-        )
-
-    def post(self, request, *args, **kwargs):
+    def form_valid(self, form):
         """
-        Post handling for SetlistAddForm
+        Add the user primary key to the form
         """
-        setlist_add_form = SetlistAdd(data=request.POST, user=request.user)
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
-        if setlist_add_form.is_valid():
-            setlist_add_form.save()
-
-        return render(
-            request,
-            "setlist_add_edit.html",
-            {
-                "setlist_add_form": SetlistAddForm(data=request.POST,
-                                                   user=request.user)
-            },
-        )
+    def get_success_url(self, **kwargs):
+        """
+        If success send back to correct setlist list
+        """
+        return reverse('setlist_list')
 
 
-class SetlistList(generic.ListView):
+class SetlistList(LoginRequiredMixin, generic.ListView):
     """
     Class based view to show the users
     list of setlists

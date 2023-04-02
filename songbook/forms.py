@@ -18,9 +18,9 @@ class SongAddForm(forms.ModelForm):
 class SetlistAddForm(forms.ModelForm):
     """
     Form class for creating and editing setlists
-    """ 
+    """
     class Meta:
-        Model = Setlist
+        model = Setlist
         fields = ('setlist_name', 'songs_in_setlist',)
 
     def __init__(self, *args, **kwargs):
@@ -28,11 +28,13 @@ class SetlistAddForm(forms.ModelForm):
         Override SetistAddForm class init so user can be
         passed in as a parameter and used
         """
-        user = kwargs.pop('user', None)
+        user = kwargs['initial']['user']
         super().__init__(*args, **kwargs)
-        queryset = Song.objects.filter(artist=user).order_by('title')
-        choice_list = [(song.pk, songs.title) for song in queryset]
-
+        print("user ", user)
+        queryset = Song.objects.filter(user=user).order_by('title')
+        print(" queryset ", queryset)
+        choice_list = [(song.pk, song.title) for song in queryset]
+        print("choice list", choice_list)
         self.fields['songs_in_setlist'] = forms.MultipleChoiceField(
             widget=forms.CheckboxSelectMultiple(),
             choices=choice_list,
