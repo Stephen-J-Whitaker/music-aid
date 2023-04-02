@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class Song(models.Model):
     """
-    Model to hold song and lyric details
+    Model class to hold song and lyric details
     """
     title = models.CharField(max_length=150)
     artist = models.CharField(max_length=150, blank=True)
@@ -18,3 +18,17 @@ class Song(models.Model):
 
     def get_absolute_url(self):
         return reverse('edit_song', kwargs={'pk': self.pk})
+
+
+class Setlist(models.Model):
+    """
+    Model class to hold setlists
+    """
+    setlist_name = models.CharField(max_length=150)
+    songs_in_setlist = models.ManyToManyField(Song,
+                                              related_name="songs_in_setlist")
+    user = models.ForeignKey(User, on_delete=models.CASCADE,
+                             related_name="setlist_user")
+
+    def __str__(self):
+        return self.setlist_name
