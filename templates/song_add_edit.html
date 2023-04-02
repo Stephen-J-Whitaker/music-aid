@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    {% if user.is_authenticated %}
     <form method="post">
         {% csrf_token %}
         {{ form | crispy }}
@@ -14,7 +13,4 @@
             <a href="{% url 'song_delete' pk %}">Delete</a>
         {% endif %}
     </form>
-    {% else %}
-        Test
-    {% endif %}
 {% endblock content %}

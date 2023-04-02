@@ -2,14 +2,10 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    {% if user.is_authenticated %}
     <form method="post">
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
         {{ form }}
         <button type="submit" class="btn">Delete Song</button>
     </form>
-    {% else %}
-        Test
-    {% endif %}
 {% endblock content %}

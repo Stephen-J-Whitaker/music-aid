@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    {% if user.is_authenticated %}
     <h2>Setlists</h2>
     <ul>
         {% for setlist in object_list %}
@@ -12,7 +11,4 @@
         {% endfor %}
     </ul>
     <a class="nav-link standard-link" href="{% url 'setlist_add' %}">Add Setlist</a>
-    {% else %}
-        Test
-    {% endif %}
 {% endblock content %}
