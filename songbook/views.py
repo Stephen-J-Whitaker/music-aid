@@ -3,6 +3,8 @@ from django.views import View, generic
 from .models import Song
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
+from django import forms
+from .forms import AddSong
 
 
 class SongbookList(generic.ListView):
@@ -24,10 +26,10 @@ class SongbookList(generic.ListView):
             return Song.objects.filter(user=self.request.user)
 
 
-# Code supplied by Code Institute Tutor Support
 class AddSong(LoginRequiredMixin, generic.CreateView):
+    form_class = AddSong
+    # Code supplied by Code Institute Tutor Support
     model = Song
-    fields = ('title', 'artist', 'lyrics')
     template_name = 'add_song.html'
     success_url = '/'
     # End of code supplied by Code Institute Tutor Support
