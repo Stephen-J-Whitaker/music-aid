@@ -4,7 +4,7 @@ from .models import Song
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
 from django import forms
-from .forms import SongAddForm
+from .forms import SongAddForm, SetlistAddForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
 
@@ -128,3 +128,42 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
         """
         return Song.objects.filter(user=self.request.
                                    user).filter(pk=self.kwargs['pk'])
+
+
+class SetlistAdd(LoginRequiredMixin, View):
+    """
+    A class based view to add setlists
+    """
+
+    def get(self, request, *args, **kwargs):
+        """
+        Get handling to render SetlistAddForm
+        """
+        setlist_add_form = SetlistAddForm(data=request.POST, user=request.user)
+
+        return render(
+            request,
+            "setlist_add_edit.html",
+            {
+                "setlist_add_form": SetlistAddForm(data=request.POST,
+                                                   user=request.user)
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+        """
+        Post handling for SetlistAddForm
+        """
+        setlist_add_form = SetlistAdd(data=request.POST, user=request.user)
+
+        if setlist_add_form.is_valid():
+            setlist_add_form.save()
+
+        return render(
+            request,
+            "setlist_add_edit.html",
+            {
+                "setlist_add_form": SetlistAddForm(data=request.POST,
+                                                   user=request.user)
+            },
+        )
