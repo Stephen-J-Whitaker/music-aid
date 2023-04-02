@@ -11,7 +11,7 @@ class Song(models.Model):
     lyrics = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name="user_songs")
-    song_slug = models.SlugField(max_length=200)
+    slug = models.SlugField(max_length=200)
 
     class Meta:
         constraints = [

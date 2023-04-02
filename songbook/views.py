@@ -18,12 +18,12 @@ class SongbookList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Music Aid Songbook'
-
         return context
 
     def get_queryset(self):
         if self.request.user.id is not None:
-            return Song.objects.filter(user=self.request.user)
+            user = self.request.user
+            return Song.objects.filter(user=user).order_by('title')
 
 
 class AddSong(LoginRequiredMixin, generic.CreateView):
@@ -48,3 +48,15 @@ class AddSong(LoginRequiredMixin, generic.CreateView):
         form.instance.song_slug = slugify(form.instance.title)
         print("slugified", form.instance.song_slug)
         return super().form_valid(form)
+
+
+class SongView(generic.DetailView):
+    """
+    A class based view to view a song
+    """
+    context_object_name = 'song_detail'
+    template_name = 'song_view.html'
+
+    def get_queryset(self):
+        return Song.objects.filter(user=self.request.
+                                   user).filter(slug=self.kwargs['slug'])

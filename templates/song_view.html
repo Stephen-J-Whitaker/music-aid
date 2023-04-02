@@ -2,15 +2,12 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h2>Songs</h2>
-        <ul>
-            {% for song in object_list %}
-                <li>
-                    <a href="{% url 'song_view' song.slug %}">{{ song.title }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'add_song' %}">Add Song</a>
+        <h2>{{ song_detail.title }}</h2>
+        <h3>{{ song_detail.artist }}</h3>
+        <div>
+            {{ song_detail.lyrics}}
+        </div>
+        <a href="{% url 'home' %}">Songbook</a>
     {% else %}
         <div class="home-login">
             <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</button>
