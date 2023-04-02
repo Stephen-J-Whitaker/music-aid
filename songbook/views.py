@@ -4,7 +4,7 @@ from .models import Song
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
 from django import forms
-from .forms import AddSong
+from .forms import AddSongForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
 
@@ -34,8 +34,8 @@ class SongbookList(generic.ListView):
             return Song.objects.filter(user=user).order_by('title')
 
 
-class AddNewSong(LoginRequiredMixin, generic.CreateView):
-    form_class = AddSong
+class AddSong(LoginRequiredMixin, generic.CreateView):
+    form_class = AddSongForm
     # Code supplied by Code Institute Tutor Support
     model = Song
     template_name = 'add_edit_song.html'
@@ -88,7 +88,7 @@ class EditSong(LoginRequiredMixin, generic.UpdateView):
     """
     A class based view to edit a song
     """
-    form_class = AddSong
+    form_class = AddSongForm
     template_name = 'add_edit_song.html'
 
     def get_context_data(self, **kwargs):

@@ -3,7 +3,7 @@ from django import forms
 from django_summernote.widgets import SummernoteWidget
 
 
-class AddSong(forms.ModelForm):
+class AddSongForm(forms.ModelForm):
     """
     Form for adding song data
     """
