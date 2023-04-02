@@ -4,7 +4,7 @@ from .models import Song
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
 from django import forms
-from .forms import AddSongForm
+from .forms import SongAddForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
 
@@ -34,11 +34,11 @@ class SongbookList(generic.ListView):
             return Song.objects.filter(user=user).order_by('title')
 
 
-class AddSong(LoginRequiredMixin, generic.CreateView):
-    form_class = AddSongForm
+class SongAdd(LoginRequiredMixin, generic.CreateView):
+    form_class = SongAddForm
     # Code supplied by Code Institute Tutor Support
     model = Song
-    template_name = 'add_edit_song.html'
+    template_name = 'song_add_edit.html'
     # End of code supplied by Code Institute Tutor Support
     success_url = reverse_lazy('home')
 
@@ -55,7 +55,6 @@ class AddSong(LoginRequiredMixin, generic.CreateView):
         """
         Add the user primary key to the form
         """
-        print("this is my comment", form.instance.title)
         form.instance.user = self.request.user
         return super().form_valid(form)
 
@@ -84,12 +83,12 @@ class SongView(LoginRequiredMixin, generic.DetailView):
                                    user).filter(pk=self.kwargs['pk'])
 
 
-class EditSong(LoginRequiredMixin, generic.UpdateView):
+class SongEdit(LoginRequiredMixin, generic.UpdateView):
     """
     A class based view to edit a song
     """
-    form_class = AddSongForm
-    template_name = 'add_edit_song.html'
+    form_class = SongAddForm
+    template_name = 'song_add_edit.html'
 
     def get_context_data(self, **kwargs):
         """
@@ -115,13 +114,13 @@ class EditSong(LoginRequiredMixin, generic.UpdateView):
         return reverse('song_view', kwargs={'pk': self.object.pk})
 
 
-class DeleteSong(LoginRequiredMixin, generic.DeleteView):
+class SongDelete(LoginRequiredMixin, generic.DeleteView):
     """
     A class based view to confirm a deletion of a song
     """
     model = Song
     success_url = reverse_lazy('home')
-    template_name = 'confirm_delete_song.html'
+    template_name = 'song_confirm_delete.html'
 
     def get_queryset(self):
         """

@@ -17,7 +17,7 @@ class Song(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('edit_song', kwargs={'pk': self.pk})
+        return reverse('song_edit', kwargs={'pk': self.pk})
 
 
 class Setlist(models.Model):
