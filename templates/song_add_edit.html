@@ -11,7 +11,7 @@
         {% else %}            
             <a href="{% url 'home' %}">Songbook</a>
             <button type="submit" class="btn">Save Song</button>
-            <a href="{% url 'delete_song' pk %}">Delete</a>
+            <a href="{% url 'song_delete' pk %}">Delete</a>
         {% endif %}
     </form>
     {% else %}

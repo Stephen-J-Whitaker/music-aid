@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View, generic
-from .models import Song
+from .models import Song, Setlist
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
 from django import forms
@@ -19,7 +19,7 @@ class SongbookList(generic.ListView):
 
     def get_context_data(self, **kwargs):
         """
-        A page title context
+        Add a page title context
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Music Aid Songbook'
@@ -44,7 +44,7 @@ class SongAdd(LoginRequiredMixin, generic.CreateView):
 
     def get_context_data(self, **kwargs):
         """
-        A page title context
+        Add contexts
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Add a song to songbook'
@@ -68,7 +68,7 @@ class SongView(LoginRequiredMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         """
-        A page title context
+        Add contexts
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'View a song'
@@ -92,7 +92,7 @@ class SongEdit(LoginRequiredMixin, generic.UpdateView):
 
     def get_context_data(self, **kwargs):
         """
-        A page title context
+        Add contexts
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Edit a song'
@@ -167,3 +167,28 @@ class SetlistAdd(LoginRequiredMixin, View):
                                                    user=request.user)
             },
         )
+
+
+class SetlistList(generic.ListView):
+    """
+    Class based view to show the users
+    list of setlists
+    """
+    model = Setlist
+    template_name = 'setlist_list.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add a page title context
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'View your setlists'
+        return context
+
+    def get_queryset(self):
+        """
+        Define the queryset to be used
+        """
+        if self.request.user.id is not None:
+            user = self.request.user
+            return Setlist.objects.filter(user=user).order_by('setlist_name')

@@ -13,4 +13,6 @@ urlpatterns = [
           name='song_delete'),
      path('setlist_add', views.SetlistAdd.as_view(),
           name='setlist_add'),
+     path('setlist_list', views.SetlistList.as_view(),
+          name='setlist_list'),
 ]

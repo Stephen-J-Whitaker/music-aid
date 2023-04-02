@@ -3,7 +3,11 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-
+    <form method="post">
+        {{ setlist_add_form | crispy }}
+        {% csrf_token %}
+        <button type="submit">Save</button>
+    </form>
     {% else %}
         Test
     {% endif %}
