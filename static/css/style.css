@@ -134,3 +134,8 @@ footer {
     right: 0;
     background-color: var(--interface-medium-blue);
 }
+
+/* Styling to override unwanted formatting pasted to summernote */
+.song-lyrics p {
+    font-size: large;
+}

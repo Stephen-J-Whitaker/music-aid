@@ -8,9 +8,10 @@
         {{ form | crispy }}
         {% if mode == 'add' %}
             <button type="submit" class="btn">Add Song</button>
-        {% else %}
+        {% else %}            
+            <a href="{% url 'home' %}">Songbook</a>
             <button type="submit" class="btn">Save Song</button>
-            <a href="#">Delete</a>
+            <a href="{% url 'delete_song' pk %}">Delete</a>
         {% endif %}
     </form>
     {% else %}

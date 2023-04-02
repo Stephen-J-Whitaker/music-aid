@@ -4,8 +4,8 @@
     {% if user.is_authenticated %}
         <h2>{{ song_detail.title }}</h2>
         <h3>{{ song_detail.artist }}</h3>
-        <div>
-            {{ song_detail.lyrics}}
+        <div class="song-lyrics">
+            {{ song_detail.lyrics | safe }}
         </div>
         <a href="{% url 'home' %}">Songbook</a>
         <a href="{% url 'edit_song' pk %}">Edit</a>

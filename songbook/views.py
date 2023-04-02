@@ -6,6 +6,7 @@ from django.template.defaultfilters import slugify
 from django import forms
 from .forms import AddSong
 from django_summernote.widgets import SummernoteWidget
+from django.urls import reverse_lazy, reverse
 
 
 class SongbookList(generic.ListView):
@@ -22,7 +23,6 @@ class SongbookList(generic.ListView):
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Music Aid Songbook'
-        context['mode'] = 'add'
         return context
 
     def get_queryset(self):
@@ -38,9 +38,9 @@ class AddNewSong(LoginRequiredMixin, generic.CreateView):
     form_class = AddSong
     # Code supplied by Code Institute Tutor Support
     model = Song
-    template_name = 'add_edit_delete_song.html'
-    # success_url = '/'
+    template_name = 'add_edit_song.html'
     # End of code supplied by Code Institute Tutor Support
+    success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
         """
@@ -48,20 +48,16 @@ class AddNewSong(LoginRequiredMixin, generic.CreateView):
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'Add a song to songbook'
+        context['mode'] = 'add'
         return context
 
-    # def form_valid(self, form):
-    #     """
-    #     Complete the form by adding slug
-    #     """
-    #     print("this is my comment", form.instance.title)
-    #     form.instance.user = self.request.user
-    #     # slug = str(form.instance.user.id) + ' ' + form.instance.title
-    #     # print("slug ", slug)
-    #     # form.instance.song_slug = slugify(slug)
-    #     form.instance.song_slug = slugify(form.instance.title)
-    #     print("slugified", form.instance.song_slug)
-    #     return super().form_valid(form)
+    def form_valid(self, form):
+        """
+        Add the user primary key to the form
+        """
+        print("this is my comment", form.instance.title)
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class SongView(LoginRequiredMixin, generic.DetailView):
@@ -78,7 +74,6 @@ class SongView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'View a song'
         context['pk'] = self.kwargs['pk']
-        # print("view slug", self.kwargs['slug'])
         return context
 
     def get_queryset(self):
@@ -94,7 +89,7 @@ class EditSong(LoginRequiredMixin, generic.UpdateView):
     A class based view to edit a song
     """
     form_class = AddSong
-    template_name = 'add_edit_delete_song.html'
+    template_name = 'add_edit_song.html'
 
     def get_context_data(self, **kwargs):
         """
@@ -103,7 +98,30 @@ class EditSong(LoginRequiredMixin, generic.UpdateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Edit a song'
         context['mode'] = 'edit'
+        context['pk'] = self.kwargs['pk']
         return context
+
+    def get_queryset(self):
+        """
+        Define the queryset to be used
+        """
+        return Song.objects.filter(user=self.request.
+                                   user).filter(pk=self.kwargs['pk'])
+
+    def get_success_url(self, **kwargs):
+        """
+        If success send back to correct song view
+        """
+        return reverse('song_view', kwargs={'pk': self.object.pk})
+
+
+class DeleteSong(LoginRequiredMixin, generic.DeleteView):
+    """
+    A class based view to confirm a deletion of a song
+    """
+    model = Song
+    success_url = reverse_lazy('home')
+    template_name = 'confirm_delete_song.html'
 
     def get_queryset(self):
         """
