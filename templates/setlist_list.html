@@ -6,7 +6,7 @@
     <ul>
         {% for setlist in object_list %}
             <li>
-                <a href="#">{{ setlist.setlist_name }}</a>
+                <a href="{% url 'setlist_view' setlist.pk %}">{{ setlist.setlist_name }}</a>
             </li>
         {% endfor %}
     </ul>

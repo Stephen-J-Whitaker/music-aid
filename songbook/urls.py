@@ -11,8 +11,10 @@ urlpatterns = [
           name='song_edit'),
      path('song_delete/<int:pk>', views.SongDelete.as_view(),
           name='song_delete'),
-     path('setlist_add', views.SetlistAdd.as_view(),
+     path('setlist_add/', views.SetlistAdd.as_view(),
           name='setlist_add'),
      path('setlist_list', views.SetlistList.as_view(),
           name='setlist_list'),
+     path('setlist_view/>', views.SetlistView.as_view(),
+          name='setlist_view'),
 ]

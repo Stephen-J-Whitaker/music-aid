@@ -63,6 +63,7 @@ class SongView(LoginRequiredMixin, generic.DetailView):
     """
     A class based view to view a song
     """
+    model = Song
     context_object_name = 'song_detail'
     template_name = 'song_view.html'
 
@@ -74,13 +75,6 @@ class SongView(LoginRequiredMixin, generic.DetailView):
         context['title'] = 'View a song'
         context['pk'] = self.kwargs['pk']
         return context
-
-    def get_queryset(self):
-        """
-        Define the queryset to be used
-        """
-        return Song.objects.filter(user=self.request.
-                                   user).filter(pk=self.kwargs['pk'])
 
 
 class SongEdit(LoginRequiredMixin, generic.UpdateView):
@@ -121,13 +115,6 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
     model = Song
     success_url = reverse_lazy('home')
     template_name = 'song_confirm_delete.html'
-
-    def get_queryset(self):
-        """
-        Define the queryset to be used
-        """
-        return Song.objects.filter(user=self.request.
-                                   user).filter(pk=self.kwargs['pk'])
 
 
 # class SetlistAdd(LoginRequiredMixin, View):
@@ -224,3 +211,29 @@ class SetlistList(LoginRequiredMixin, generic.ListView):
         if self.request.user.id is not None:
             user = self.request.user
             return Setlist.objects.filter(user=user).order_by('setlist_name')
+
+
+class SetlistView(LoginRequiredMixin, generic.ListView):
+    """
+    A class based view for view a set of songs
+    """
+    model = Setlist
+    template_name = 'setlist_view.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add a page title context
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'View the songs in your setlist'
+        return context
+
+    def get_queryset(self):
+        """
+        Define the queryset to be used
+        """
+        set = Setlist.objects.get(pk=self.
+                                   kwargs['pk']).songs_in_setlist.all()
+        print("set ", set)
+        return Setlist.objects.get(pk=self.
+                                   kwargs['pk']).songs_in_setlist.all()
