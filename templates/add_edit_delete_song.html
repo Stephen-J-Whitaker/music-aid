@@ -6,7 +6,12 @@
     <form method="post">
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn">Add Song</button>
+        {% if mode == 'add' %}
+            <button type="submit" class="btn">Add Song</button>
+        {% else %}
+            <button type="submit" class="btn">Save Song</button>
+            <a href="#">Delete</a>
+        {% endif %}
     </form>
     {% else %}
         Test

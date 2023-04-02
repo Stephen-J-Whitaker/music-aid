@@ -87,3 +87,27 @@ class SongView(generic.DetailView):
         """
         return Song.objects.filter(user=self.request.
                                    user).filter(slug=self.kwargs['slug'])
+
+
+class EditSong(generic.UpdateView):
+    """
+    A class based view to edit a song
+    """
+    form_class = AddSong
+    template_name = 'add_edit_delete_song.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        A page title context
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Edit a song'
+        context['mode'] = 'edit'
+        return context
+
+    def get_queryset(self):
+        """
+        Define the queryset to be used
+        """
+        return Song.objects.filter(user=self.request.
+                                   user).filter(slug=self.kwargs['slug'])

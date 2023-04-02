@@ -8,6 +8,7 @@
             {{ song_detail.lyrics}}
         </div>
         <a href="{% url 'home' %}">Songbook</a>
+        <a href="{% url 'edit_song' slug %}">Edit</a>
     {% else %}
         <div class="home-login">
             <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</button>
