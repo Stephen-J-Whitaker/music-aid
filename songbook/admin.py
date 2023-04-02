@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import Song
+from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Song)
-class SongAdmin(admin.ModelAdmin):
-    list_display = ('title', 'artist', 'song_slug')
+class SongAdmin(SummernoteModelAdmin):
+    list_display = ('user', 'title', 'artist')
     search_fields = ['title', 'lyrics']
-    prepopulated_fields = {'song_slug': ('user', 'title',)}
+    summernote_fields = ('lyrics')
