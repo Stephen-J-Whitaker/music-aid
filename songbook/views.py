@@ -4,7 +4,7 @@ from .models import Song, Setlist
 from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
 from django import forms
-from .forms import SongAddForm, SetlistAddForm
+from .forms import SongAddForm, SetlistAddForm, SetlistEditForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
 
@@ -243,39 +243,81 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
                                    kwargs['pk']).songs_in_setlist.all()
 
 
-class SetlistEdit(LoginRequiredMixin, generic.UpdateView):
+# class SetlistEdit(LoginRequiredMixin, generic.UpdateView):
+#     """
+#     A class based view to edit a setlist
+#     """
+#     form_class = SetlistAddForm
+#     template_name = 'setlist_add_edit.html'
+
+#     def get_context_data(self, **kwargs):
+#         """
+#         Add contexts
+#         """
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'Edit a setlist'
+#         context['mode'] = 'edit'
+#         context['pk'] = self.kwargs['pk']
+#         return context
+
+#     def get_initial(self):
+#         """
+#         Pass the user to SetlistAddForm
+#         """
+#         self.initial.update({'user': self.request.user})
+#         self.initial.update({'setlist_pk': self.kwargs['pk']})
+#         return self.initial
+
+#     def get_queryset(self):
+#         """
+#         Define the queryset to be used
+#         """
+#         return Setlist.objects.filter(user=self.request.
+#                                       user).filter(pk=self.kwargs['pk'])
+
+#     def get_success_url(self, **kwargs):
+#         """
+#         If success send back to correct song view
+#         """
+#         return reverse('setlist_view', kwargs={'pk': self.object.pk})
+
+class SetlistEdit(View):
     """
-    A class based view to edit a setlist
+    A class based view to add setlists
     """
-    form_class = SetlistAddForm
-    template_name = 'setlist_add_edit.html'
 
-    def get_context_data(self, **kwargs):
+    def get(self, request, *args, **kwargs):
         """
-        Add contexts
+        Get handling to render SetlistAddForm
         """
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Edit a setlist'
-        context['mode'] = 'edit'
-        context['pk'] = self.kwargs['pk']
-        return context
+        form = SetlistEditForm(user=request.user, setlist_pk=self.kwargs['pk'])
 
-    def get_initial(self):
-        """
-        Pass the user to SetlistAddForm
-        """
-        self.initial.update({'user': self.request.user})
-        return self.initial
+        return render(
+            request,
+            "setlist_add_edit.html",
+            {
+                "title": "Create a setlist",
+                "form": SetlistEditForm(user=request.user, setlist_pk=self.kwargs['pk']),
+            },
+        )
 
-    def get_queryset(self):
+    def post(self, request, *args, **kwargs):
         """
-        Define the queryset to be used
+        Post handling for SetlistAddForm
         """
-        return Setlist.objects.filter(user=self.request.
-                                   user).filter(pk=self.kwargs['pk'])
+        form = SetlistEditForm(data=request.POST, user=request.user, setlist_pk=self.kwargs['pk'])
 
-    def get_success_url(self, **kwargs):
-        """
-        If success send back to correct song view
-        """
-        return reverse('setlist_view', kwargs={'pk': self.object.pk})
+        if setlist_add_form.is_valid():
+            setlist = setlist_add_form.save(commit=False)
+            setlist.user = request.user
+            setlist_add_form.save_m2m()
+
+        return render(
+            request,
+            "setlist_add_edit.html",
+            {
+                "title": "Create a setlist",
+                "form": SetlistEditForm(data=request.POST,
+                                                   user=request.user, setlist_pk=self.kwargs['pk']),
+            },
+        )

@@ -29,13 +29,50 @@ class SetlistAddForm(forms.ModelForm):
         passed in as a parameter and used
         """
         user = kwargs['initial']['user']
+        # setlist_pk = kwargs['initial']['setlist_pk']
         super().__init__(*args, **kwargs)
-        print("user ", user)
         queryset = Song.objects.filter(user=user).order_by('title')
-        print(" queryset ", queryset)
         choice_list = [(song.pk, song.title) for song in queryset]
-        print("choice list", choice_list)
+
+
+        # setlist_songs = (Setlist.objects.get(pk=setlist_pk)
+        #                  .songs_in_setlist.all())
+        # setlist_songs_pks = [song.pk for song in setlist_songs]
+        # print(" song pks ", setlist_songs_pks)
         self.fields['songs_in_setlist'] = forms.MultipleChoiceField(
-            widget=forms.CheckboxSelectMultiple(),
+            # initial=setlist_songs_pks,
             choices=choice_list,
+            widget=forms.CheckboxSelectMultiple,
+        )
+
+
+class SetlistEditForm(forms.ModelForm):
+    """
+    Form class for creating and editing setlists
+    """
+    class Meta:
+        model = Setlist
+        fields = ('setlist_name', 'songs_in_setlist',)
+
+    def __init__(self, *args, **kwargs):
+        """
+        Override SetistAddForm class init so user can be
+        passed in as a parameter and used
+        """
+        user = kwargs.pop('user', None)
+        setlist_pk = kwargs.pop('setlist_pk', None)
+        super().__init__(*args, **kwargs)
+        queryset = Song.objects.filter(user=user).order_by('title')
+        choice_list = [(song.pk, song.title) for song in queryset]
+
+        setlist_object = Setlist.objects.get(pk=setlist_pk)
+        setlist_songs = setlist_object.songs_in_setlist.all()
+        setlist_songs_pks = [song.pk for song in setlist_songs]
+        print(" song pks ", setlist_songs_pks)
+        print(" setlist name ", setlist_object.setlist_name)
+        self.fields['setlist_name'].initial = setlist_object.setlist_name
+        self.fields['songs_in_setlist'] = forms.MultipleChoiceField(
+            initial=[29],
+            choices=choice_list,
+            widget=forms.CheckboxSelectMultiple,
         )
