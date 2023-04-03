@@ -8,6 +8,7 @@
     </div>
     {% if setlist_pk != None %}
         <a href="{% url 'setlist_view' setlist_pk %}">Setlist</a>
+        <a href="{% url 'setlist_song_edit' pk setlist_pk %}">Edit</a>
     {% else %}
         <a href="{% url 'home' %}">Songbook</a>
         <a href="{% url 'song_edit' pk %}">Edit</a>

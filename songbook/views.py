@@ -75,6 +75,7 @@ class SongView(LoginRequiredMixin, generic.DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'View a song'
         context['pk'] = self.kwargs['pk']
+        context['setlist_pk'] = self.kwargs.get('setlist_pk', None)
         return context
 
 
@@ -93,6 +94,7 @@ class SongEdit(LoginRequiredMixin, generic.UpdateView):
         context['title'] = 'Edit a song'
         context['mode'] = 'edit'
         context['pk'] = self.kwargs['pk']
+        context['setlist_pk'] = self.kwargs.get('setlist_pk', None)
         return context
 
     def get_queryset(self):
@@ -106,7 +108,14 @@ class SongEdit(LoginRequiredMixin, generic.UpdateView):
         """
         If success send back to correct song view
         """
-        return reverse('song_view', kwargs={'pk': self.object.pk})
+        setlist_pk = self.kwargs.get('setlist_pk', None)
+        if setlist_pk is None:
+            return reverse('song_view', kwargs={'pk': self.object.pk})
+        else:
+            return reverse('setlist_song_view', kwargs={
+                'pk': self.object.pk,
+                'setlist_pk': setlist_pk},
+                )
 
 
 class SongDelete(LoginRequiredMixin, generic.DeleteView):
@@ -114,7 +123,7 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
     A class based view to confirm a deletion of a song
     """
     model = Song
-    success_url = reverse_lazy('home')
+    # success_url = reverse_lazy('home')
     template_name = 'song_confirm_delete.html'
 
     def get_context_data(self, **kwargs):
@@ -124,50 +133,19 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Confirm a song deletion'
         context['pk'] = self.kwargs['pk']
+        context['setlist_pk'] = self.kwargs.get('setlist_pk', None)
         return context
 
+    def get_success_url(self, **kwargs):
+        """
+        If success send back to correct view
+        """
+        setlist_pk = self.kwargs.get('setlist_pk', None)
+        if setlist_pk is None:
+            return reverse_lazy('home')
+        else:
+            return reverse('setlist_view', kwargs={'pk': setlist_pk})
 
-# class SetlistAdd(LoginRequiredMixin, View):
-#     """
-#     A class based view to add setlists
-#     """
-
-#     def get(self, request, *args, **kwargs):
-#         """
-#         Get handling to render SetlistAddForm
-#         """
-#         setlist_add_form = SetlistAddForm(data=request.POST, user=request.user)
-
-#         return render(
-#             request,
-#             "setlist_add_edit.html",
-#             {
-#                 "title": "Create a setlist",
-#                 "setlist_add_form": SetlistAddForm(data=request.POST,
-#                                                    user=request.user),
-#             },
-#         )
-
-#     def post(self, request, *args, **kwargs):
-#         """
-#         Post handling for SetlistAddForm
-#         """
-#         setlist_add_form = SetlistAdd(data=request.POST, user=request.user)
-
-#         if setlist_add_form.is_valid():
-#             setlist = setlist_add_form.save(commit=False)
-#             setlist.user = request.user
-#             setlist_add_form.save_m2m()
-
-#         return render(
-#             request,
-#             "setlist_add_edit.html",
-#             {
-#                 "title": "Create a setlist",
-#                 "setlist_add_form": SetlistAddForm(data=request.POST,
-#                                                    user=request.user),
-#             },
-#         )
 
 class SetlistAdd(LoginRequiredMixin, generic.CreateView):
     """
@@ -262,44 +240,6 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
                                    kwargs['pk']).songs_in_setlist.all()
 
 
-# class SetlistEdit(LoginRequiredMixin, generic.UpdateView):
-#     """
-#     A class based view to edit a setlist
-#     """
-#     form_class = SetlistAddForm
-#     template_name = 'setlist_add_edit.html'
-
-#     def get_context_data(self, **kwargs):
-#         """
-#         Add contexts
-#         """
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Edit a setlist'
-#         context['mode'] = 'edit'
-#         context['pk'] = self.kwargs['pk']
-#         return context
-
-#     def get_initial(self):
-#         """
-#         Pass the user to SetlistAddForm
-#         """
-#         self.initial.update({'user': self.request.user})
-#         self.initial.update({'setlist_pk': self.kwargs['pk']})
-#         return self.initial
-
-#     def get_queryset(self):
-#         """
-#         Define the queryset to be used
-#         """
-#         return Setlist.objects.filter(user=self.request.
-#                                       user).filter(pk=self.kwargs['pk'])
-
-#     def get_success_url(self, **kwargs):
-#         """
-#         If success send back to correct song view
-#         """
-#         return reverse('setlist_view', kwargs={'pk': self.object.pk})
-
 class SetlistEdit(LoginRequiredMixin, View):
     """
     A class based view to edit setlists
@@ -331,36 +271,32 @@ class SetlistEdit(LoginRequiredMixin, View):
                                setlist_pk=self.kwargs['pk'])
 
         if form.is_valid():
-            print("set name field in form ", form.instance.setlist_name)
-            print("form instance ", form.instance)
             setlist = form.save(commit=False)
-            print("set name from commited ", setlist.setlist_name)
             setlist.user = request.user
             setlist.pk = self.kwargs['pk']
             setlist.save()
             form.save_m2m()
 
-        # return HttpResponseRedirect(reverse('setlist_view', pk=[self.kwargs['pk']]))
         return redirect('setlist_view', self.kwargs['pk'])
 
 
-class SetlistSongView(LoginRequiredMixin, generic.DetailView):
-    """
-    A class based view to view a song from a setlist
-    """
-    model = Song
-    context_object_name = 'song_detail'
-    template_name = 'song_view.html'
+# class SetlistSongView(LoginRequiredMixin, generic.DetailView):
+#     """
+#     A class based view to view a song from a setlist
+#     """
+#     model = Song
+#     context_object_name = 'song_detail'
+#     template_name = 'song_view.html'
 
-    def get_context_data(self, **kwargs):
-        """
-        Add contexts
-        """
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'View a song'
-        context['pk'] = self.kwargs['pk']
-        context['setlist_pk'] = self.kwargs['setlist_pk']
-        return context
+#     def get_context_data(self, **kwargs):
+#         """
+#         Add contexts
+#         """
+#         context = super().get_context_data(**kwargs)
+#         context['title'] = 'View a song'
+#         context['pk'] = self.kwargs['pk']
+#         context['setlist_pk'] = self.kwargs['setlist_pk']
+#         return context
 
 
 class SetlistDelete(LoginRequiredMixin, generic.DeleteView):
@@ -379,12 +315,6 @@ class SetlistDelete(LoginRequiredMixin, generic.DeleteView):
         context['title'] = 'Confirm a setlist deletion'
         context['pk'] = self.kwargs['pk']
         return context
-
-    # def get_success_url(self, **kwargs):
-    #     """
-    #     If success send back to correct setlist list
-    #     """
-    #     return reverse('setlist_list')
 
 
 def handler404(request, exception):

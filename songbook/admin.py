@@ -12,6 +12,7 @@ class SongAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'lyrics']
     summernote_fields = ('lyrics')
 
+
 @admin.register(Setlist)
 class SetlistAdmin(admin.ModelAdmin):
     """

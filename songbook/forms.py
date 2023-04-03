@@ -61,8 +61,6 @@ class SetlistEditForm(forms.ModelForm):
         setlist_object = Setlist.objects.get(pk=setlist_pk)
         setlist_songs = setlist_object.songs_in_setlist.all()
         setlist_songs_pks = [song.pk for song in setlist_songs]
-        print(" song pks ", setlist_songs_pks)
-        print(" setlist name ", setlist_object.setlist_name)
         self.fields['setlist_name'] = forms.CharField(
             initial=setlist_object.setlist_name,
         )
