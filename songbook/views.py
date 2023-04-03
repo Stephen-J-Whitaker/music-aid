@@ -218,14 +218,17 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
     A class based view for view a set of songs
     """
     model = Setlist
+    context_object_name = 'setlist_detail'
     template_name = 'setlist_view.html'
 
     def get_context_data(self, **kwargs):
         """
-        Add a page title context
+        Add contexts
         """
         context = super().get_context_data(**kwargs)
         context['title'] = 'View the songs in your setlist'
+        setlist_object = Setlist.objects.get(pk=self.kwargs['pk'])
+        context['setlist_name'] = setlist_object.setlist_name
         return context
 
     def get_queryset(self):
@@ -233,7 +236,7 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
         Define the queryset to be used
         """
         set = Setlist.objects.get(pk=self.
-                                   kwargs['pk']).songs_in_setlist.all()
-        print("set ", set)
+                                  kwargs['pk']).songs_in_setlist.all()
+
         return Setlist.objects.get(pk=self.
                                    kwargs['pk']).songs_in_setlist.all()
