@@ -1,6 +1,7 @@
 from . import views
 from django.urls import path
 
+handler404 = 'songbook.views.handler404'
 
 urlpatterns = [
      path('', views.SongbookList.as_view(), name='home'),

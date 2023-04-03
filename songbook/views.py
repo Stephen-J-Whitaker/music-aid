@@ -385,3 +385,10 @@ class SetlistDelete(LoginRequiredMixin, generic.DeleteView):
     #     If success send back to correct setlist list
     #     """
     #     return reverse('setlist_list')
+
+
+def handler404(request, exception):
+    """
+    Load 404 page if item not found
+    """
+    return render(request, '404.html')
