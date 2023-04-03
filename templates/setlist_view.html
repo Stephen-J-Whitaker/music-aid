@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ song_detail.title }}</h2>
-    <h3>{{ song_detail.artist }}</h3>
-    <div class="song-lyrics">
-        {{ song_detail.lyrics | safe }}
-    </div>
-    <a href="{% url 'home' %}">Songbook</a>
-    <a href="{% url 'song_edit' pk %}">Edit</a>
+    <h2>{{ setlist_name }}</h2>
+    <ul>
+        {% for setlist_song in object_list %}
+            <li>
+                <a href="{% url 'song_view' setlist_song.pk %}">{{ setlist_song.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'setlist_list' %}">Setlists</a>
 {% endblock content %}
