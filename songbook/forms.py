@@ -17,7 +17,7 @@ class SongAddForm(forms.ModelForm):
 
 class SetlistAddForm(forms.ModelForm):
     """
-    Form class for creating and editing setlists
+    Form class for creating setlists
     """
     class Meta:
         model = Setlist
@@ -29,18 +29,11 @@ class SetlistAddForm(forms.ModelForm):
         passed in as a parameter and used
         """
         user = kwargs['initial']['user']
-        # setlist_pk = kwargs['initial']['setlist_pk']
         super().__init__(*args, **kwargs)
         queryset = Song.objects.filter(user=user).order_by('title')
         choice_list = [(song.pk, song.title) for song in queryset]
 
-
-        # setlist_songs = (Setlist.objects.get(pk=setlist_pk)
-        #                  .songs_in_setlist.all())
-        # setlist_songs_pks = [song.pk for song in setlist_songs]
-        # print(" song pks ", setlist_songs_pks)
         self.fields['songs_in_setlist'] = forms.MultipleChoiceField(
-            # initial=setlist_songs_pks,
             choices=choice_list,
             widget=forms.CheckboxSelectMultiple,
         )
@@ -48,7 +41,7 @@ class SetlistAddForm(forms.ModelForm):
 
 class SetlistEditForm(forms.ModelForm):
     """
-    Form class for creating and editing setlists
+    Form class for editing setlists
     """
     class Meta:
         model = Setlist
@@ -70,9 +63,11 @@ class SetlistEditForm(forms.ModelForm):
         setlist_songs_pks = [song.pk for song in setlist_songs]
         print(" song pks ", setlist_songs_pks)
         print(" setlist name ", setlist_object.setlist_name)
-        self.fields['setlist_name'].initial = setlist_object.setlist_name
+        self.fields['setlist_name'] = forms.CharField(
+            initial=setlist_object.setlist_name,
+        )
         self.fields['songs_in_setlist'] = forms.MultipleChoiceField(
-            initial=[29],
+            initial=setlist_songs_pks,
             choices=choice_list,
             widget=forms.CheckboxSelectMultiple,
         )
