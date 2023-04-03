@@ -5,6 +5,12 @@
     <form method="post">
         {{ form | crispy }}
         {% csrf_token %}
-        <button type="submit">Save</button>
+        {% if mode == 'add' %}
+            <button type="submit" class="btn">Add Setlist</button>
+        {% else %} 
+            <a href="{% url 'setlist_view' setlist_pk %}">Setlist</a>
+            <button type="submit">Save</button>
+            <a href="{% url 'setlist_delete' setlist_pk %}">Delete</a>
+        {% endif %}
     </form>
 {% endblock content %}

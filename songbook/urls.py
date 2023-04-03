@@ -21,4 +21,6 @@ urlpatterns = [
           name='setlist_edit'),
      path('setlist_song_view/<int:pk>/<int:setlist_pk>',
           views.SetlistSongView.as_view(), name='setlist_song_view'),
+     path('setlist_delete/<int:pk>',
+          views.SetlistDelete.as_view(), name='setlist_delete'),
 ]

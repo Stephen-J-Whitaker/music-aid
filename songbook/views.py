@@ -177,6 +177,15 @@ class SetlistAdd(LoginRequiredMixin, generic.CreateView):
     form_class = SetlistAddForm
     template_name = 'setlist_add_edit.html'
 
+    def get_context_data(self, **kwargs):
+        """
+        Add contexts
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Add a setlist to songbook'
+        context['mode'] = 'add'
+        return context
+
     def get_initial(self):
         """
         Pass the user to SetlistAddForm
@@ -307,6 +316,8 @@ class SetlistEdit(LoginRequiredMixin, View):
             "setlist_add_edit.html",
             {
                 "title": "Create a setlist",
+                "setlist_pk": self.kwargs['pk'],
+                "mode": "edit",
                 "form": SetlistEditForm(user=request.user,
                                         setlist_pk=self.kwargs['pk']),
             },
@@ -350,3 +361,27 @@ class SetlistSongView(LoginRequiredMixin, generic.DetailView):
         context['pk'] = self.kwargs['pk']
         context['setlist_pk'] = self.kwargs['setlist_pk']
         return context
+
+
+class SetlistDelete(LoginRequiredMixin, generic.DeleteView):
+    """
+    A class based view to confirm a deletion of a song
+    """
+    model = Setlist
+    success_url = reverse_lazy('setlist_list')
+    template_name = 'setlist_confirm_delete.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add contexts
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Confirm a setlist deletion'
+        context['pk'] = self.kwargs['pk']
+        return context
+
+    # def get_success_url(self, **kwargs):
+    #     """
+    #     If success send back to correct setlist list
+    #     """
+    #     return reverse('setlist_list')

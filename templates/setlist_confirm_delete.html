@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        {{ form }}
+        <button type="submit" class="btn">Delete Song</button>
+        <a href="{% url 'setlist_edit' pk %}">No Thanks</a>
+    </form>
+{% endblock content %}
