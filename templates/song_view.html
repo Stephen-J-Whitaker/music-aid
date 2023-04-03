@@ -6,6 +6,10 @@
     <div class="song-lyrics">
         {{ song_detail.lyrics | safe }}
     </div>
-    <a href="{% url 'home' %}">Songbook</a>
-    <a href="{% url 'song_edit' pk %}">Edit</a>
+    {% if setlist_pk != None %}
+        <a href="{% url 'setlist_view' setlist_pk %}">Setlist</a>
+    {% else %}
+        <a href="{% url 'home' %}">Songbook</a>
+        <a href="{% url 'song_edit' pk %}">Edit</a>
+    {% endif %}
 {% endblock content %}

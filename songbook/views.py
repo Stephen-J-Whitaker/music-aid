@@ -117,6 +117,15 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('home')
     template_name = 'song_confirm_delete.html'
 
+    # def get_context_data(self, **kwargs):
+    #     """
+    #     Add contexts
+    #     """
+    #     context = super().get_context_data(**kwargs)
+    #     context['title'] = 'Confirm a song deletion'
+    #     context['pk'] = self.kwargs['pk']
+    #     return context
+
 
 # class SetlistAdd(LoginRequiredMixin, View):
 #     """
@@ -322,3 +331,22 @@ class SetlistEdit(LoginRequiredMixin, View):
 
         # return HttpResponseRedirect(reverse('setlist_view', pk=[self.kwargs['pk']]))
         return redirect('setlist_view', self.kwargs['pk'])
+
+
+class SetlistSongView(LoginRequiredMixin, generic.DetailView):
+    """
+    A class based view to view a song from a setlist
+    """
+    model = Song
+    context_object_name = 'song_detail'
+    template_name = 'song_view.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add contexts
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'View a song'
+        context['pk'] = self.kwargs['pk']
+        context['setlist_pk'] = self.kwargs['setlist_pk']
+        return context

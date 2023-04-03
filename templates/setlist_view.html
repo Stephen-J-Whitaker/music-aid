@@ -5,7 +5,7 @@
     <ul>
         {% for setlist_song in object_list %}
             <li>
-                <a href="{% url 'song_view' setlist_song.pk %}">{{ setlist_song.title }}</a>
+                <a href="{% url 'setlist_song_view' setlist_song.pk pk %}">{{ setlist_song.title }}</a>
             </li>
         {% endfor %}
     </ul>
