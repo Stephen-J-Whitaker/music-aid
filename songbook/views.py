@@ -307,10 +307,11 @@ class SetlistEdit(View):
         """
         form = SetlistEditForm(data=request.POST, user=request.user, setlist_pk=self.kwargs['pk'])
 
-        if setlist_add_form.is_valid():
-            setlist = setlist_add_form.save(commit=False)
+        if form.is_valid():
+            setlist = form.save(commit=False)
             setlist.user = request.user
-            setlist_add_form.save_m2m()
+            setlist.pk = self.kwargs['pk']
+            form.save_m2m()
 
         return render(
             request,
