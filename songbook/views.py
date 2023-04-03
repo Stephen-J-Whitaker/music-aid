@@ -317,6 +317,7 @@ class SetlistEdit(LoginRequiredMixin, View):
             print("set name from commited ", setlist.setlist_name)
             setlist.user = request.user
             setlist.pk = self.kwargs['pk']
+            setlist.save()
             form.save_m2m()
 
         # return HttpResponseRedirect(reverse('setlist_view', pk=[self.kwargs['pk']]))
