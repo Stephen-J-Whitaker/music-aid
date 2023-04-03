@@ -8,6 +8,8 @@ from .forms import SongAddForm, SetlistAddForm, SetlistEditForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 class SongbookList(generic.ListView):
@@ -35,12 +37,14 @@ class SongbookList(generic.ListView):
             return Song.objects.filter(user=user).order_by('title')
 
 
-class SongAdd(LoginRequiredMixin, generic.CreateView):
+class SongAdd(SuccessMessageMixin, LoginRequiredMixin,
+              generic.CreateView):
     form_class = SongAddForm
     # Code supplied by Code Institute Tutor Support
     model = Song
     template_name = 'song_add_edit.html'
     # End of code supplied by Code Institute Tutor Support
+    success_message = "Your song has been added"
     success_url = reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
@@ -79,12 +83,13 @@ class SongView(LoginRequiredMixin, generic.DetailView):
         return context
 
 
-class SongEdit(LoginRequiredMixin, generic.UpdateView):
+class SongEdit(SuccessMessageMixin, LoginRequiredMixin, generic.UpdateView):
     """
     A class based view to edit a song
     """
     form_class = SongAddForm
     template_name = 'song_add_edit.html'
+    success_message = "Your song has been edited"
 
     def get_context_data(self, **kwargs):
         """
@@ -118,13 +123,13 @@ class SongEdit(LoginRequiredMixin, generic.UpdateView):
                 )
 
 
-class SongDelete(LoginRequiredMixin, generic.DeleteView):
+class SongDelete(SuccessMessageMixin, LoginRequiredMixin, generic.DeleteView):
     """
     A class based view to confirm a deletion of a song
     """
     model = Song
-    # success_url = reverse_lazy('home')
     template_name = 'song_confirm_delete.html'
+    success_message = "Your song has been deleted"
 
     def get_context_data(self, **kwargs):
         """
@@ -135,6 +140,13 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
         context['pk'] = self.kwargs['pk']
         context['setlist_pk'] = self.kwargs.get('setlist_pk', None)
         return context
+
+    # Code sourced from stackoverflow.com : 
+    # questions/24822509/success-message-in-deleteview-not-shown
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(SongDelete, self).delete(request, *args, **kwargs)
+    # End of code sourced from stackoverflow
 
     def get_success_url(self, **kwargs):
         """
@@ -147,13 +159,15 @@ class SongDelete(LoginRequiredMixin, generic.DeleteView):
             return reverse('setlist_view', kwargs={'pk': setlist_pk})
 
 
-class SetlistAdd(LoginRequiredMixin, generic.CreateView):
+class SetlistAdd(SuccessMessageMixin, LoginRequiredMixin,
+                 generic.CreateView):
     """
     A class based view to add setlists
     """
     model = Setlist
     form_class = SetlistAddForm
     template_name = 'setlist_add_edit.html'
+    success_message = "Your setlist has been added"
 
     def get_context_data(self, **kwargs):
         """
@@ -276,6 +290,8 @@ class SetlistEdit(LoginRequiredMixin, View):
             setlist.pk = self.kwargs['pk']
             setlist.save()
             form.save_m2m()
+            messages.add_message(request, messages.SUCCESS, 'Your setlist has'
+                                                            ' been edited')
 
         return redirect('setlist_view', self.kwargs['pk'])
 
@@ -299,13 +315,15 @@ class SetlistEdit(LoginRequiredMixin, View):
 #         return context
 
 
-class SetlistDelete(LoginRequiredMixin, generic.DeleteView):
+class SetlistDelete(SuccessMessageMixin, LoginRequiredMixin,
+                    generic.DeleteView):
     """
     A class based view to confirm a deletion of a song
     """
     model = Setlist
     success_url = reverse_lazy('setlist_list')
     template_name = 'setlist_confirm_delete.html'
+    success_message = "Your setlist has been deleted"
 
     def get_context_data(self, **kwargs):
         """
@@ -315,6 +333,13 @@ class SetlistDelete(LoginRequiredMixin, generic.DeleteView):
         context['title'] = 'Confirm a setlist deletion'
         context['pk'] = self.kwargs['pk']
         return context
+
+    # Code sourced from stackoverflow.com : 
+    # questions/24822509/success-message-in-deleteview-not-shown
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(SetlistDelete, self).delete(request, *args, **kwargs)
+    # End of code sourced from stackoverflow
 
 
 def handler404(request, exception):

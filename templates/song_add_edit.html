@@ -7,7 +7,7 @@
         {{ form | crispy }}
         {% if mode == 'add' %}
             <button type="submit" class="btn">Add Song</button>
-            <a href="{% url 'home' %}">Songbook</a>
+            <a href="{% url 'home' %}">Back to Songbook</a>
         {% else %}
             <button type="submit" class="btn">Save Song</button>    
             {% if setlist_pk != None %}
