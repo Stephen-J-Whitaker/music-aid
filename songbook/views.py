@@ -1,12 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View, generic
 from .models import Song, Setlist
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template.defaultfilters import slugify
 from django import forms
 from .forms import SongAddForm, SetlistAddForm, SetlistEditForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
 
 
 class SongbookList(generic.ListView):
@@ -281,9 +282,9 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
 #         """
 #         return reverse('setlist_view', kwargs={'pk': self.object.pk})
 
-class SetlistEdit(View):
+class SetlistEdit(LoginRequiredMixin, View):
     """
-    A class based view to add setlists
+    A class based view to edit setlists
     """
 
     def get(self, request, *args, **kwargs):
@@ -297,7 +298,8 @@ class SetlistEdit(View):
             "setlist_add_edit.html",
             {
                 "title": "Create a setlist",
-                "form": SetlistEditForm(user=request.user, setlist_pk=self.kwargs['pk']),
+                "form": SetlistEditForm(user=request.user,
+                                        setlist_pk=self.kwargs['pk']),
             },
         )
 
@@ -305,20 +307,17 @@ class SetlistEdit(View):
         """
         Post handling for SetlistAddForm
         """
-        form = SetlistEditForm(data=request.POST, user=request.user, setlist_pk=self.kwargs['pk'])
+        form = SetlistEditForm(data=request.POST, user=request.user,
+                               setlist_pk=self.kwargs['pk'])
 
         if form.is_valid():
+            print("set name field in form ", form.instance.setlist_name)
+            print("form instance ", form.instance)
             setlist = form.save(commit=False)
+            print("set name from commited ", setlist.setlist_name)
             setlist.user = request.user
             setlist.pk = self.kwargs['pk']
             form.save_m2m()
 
-        return render(
-            request,
-            "setlist_add_edit.html",
-            {
-                "title": "Create a setlist",
-                "form": SetlistEditForm(data=request.POST,
-                                                   user=request.user, setlist_pk=self.kwargs['pk']),
-            },
-        )
+        # return HttpResponseRedirect(reverse('setlist_view', pk=[self.kwargs['pk']]))
+        return redirect('setlist_view', self.kwargs['pk'])
