@@ -17,4 +17,6 @@ urlpatterns = [
           name='setlist_list'),
      path('setlist_view/<int:pk>', views.SetlistView.as_view(),
           name='setlist_view'),
+     path('setlist_edit/<int:pk>', views.SetlistEdit.as_view(),
+          name='setlist_edit'),
 ]

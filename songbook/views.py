@@ -229,6 +229,7 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
         context['title'] = 'View the songs in your setlist'
         setlist_object = Setlist.objects.get(pk=self.kwargs['pk'])
         context['setlist_name'] = setlist_object.setlist_name
+        context['pk'] = self.kwargs['pk']
         return context
 
     def get_queryset(self):
@@ -240,3 +241,41 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
 
         return Setlist.objects.get(pk=self.
                                    kwargs['pk']).songs_in_setlist.all()
+
+
+class SetlistEdit(LoginRequiredMixin, generic.UpdateView):
+    """
+    A class based view to edit a setlist
+    """
+    form_class = SetlistAddForm
+    template_name = 'setlist_add_edit.html'
+
+    def get_context_data(self, **kwargs):
+        """
+        Add contexts
+        """
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Edit a setlist'
+        context['mode'] = 'edit'
+        context['pk'] = self.kwargs['pk']
+        return context
+
+    def get_initial(self):
+        """
+        Pass the user to SetlistAddForm
+        """
+        self.initial.update({'user': self.request.user})
+        return self.initial
+
+    def get_queryset(self):
+        """
+        Define the queryset to be used
+        """
+        return Setlist.objects.filter(user=self.request.
+                                   user).filter(pk=self.kwargs['pk'])
+
+    def get_success_url(self, **kwargs):
+        """
+        If success send back to correct song view
+        """
+        return reverse('setlist_view', kwargs={'pk': self.object.pk})
