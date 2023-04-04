@@ -10,6 +10,7 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from bs4 import BeautifulSoup
 
 
 class SongbookList(generic.ListView):
@@ -61,6 +62,36 @@ class SongAdd(SuccessMessageMixin, LoginRequiredMixin,
         Add the user primary key to the form
         """
         form.instance.user = self.request.user
+        print(" lyric content ", form.instance.lyrics)
+        raw_lyrics = form.instance.lyrics
+        # Code to strip attributes from html source at
+        # stackexchange.com/questions/9044088
+        remove_attributes = [
+            'lang', 'language', 'onmouseover', 'onmouseout', 'script',
+            'style', 'font', 'dir', 'face', 'size', 'color', 'style',
+            'class', 'width', 'height', 'hspace', 'border', 'valign',
+            'align', 'background', 'bgcolor', 'text', 'link', 'vlink',
+            'alink', 'cellpadding', 'cellspacing'
+        ]
+        parsed_data = BeautifulSoup(raw_lyrics, features='html.parser')
+        print("parsed html", parsed_data)
+        for attribute_id in remove_attributes:
+            for attribute in parsed_data.find_all(attrs={attribute_id: True}):
+                del attribute[attribute_id]
+        print("cleaned html", parsed_data)
+        # End of code to strip attributes from html source at
+        # stackexchange.com/questions/9044088
+        remove_tags = [
+            'svg', 'img', 'a'
+        ]
+        for tag_id in remove_tags:
+            for tag in parsed_data.find_all(tag_id):
+                tag.decompose()
+        for tag in parsed_data.find_all():
+            tag.name = 'div'
+        print("cleaned html", parsed_data)   
+        cleaned_lyrics = str(parsed_data)
+        form.instance.lyrics = cleaned_lyrics
         return super().form_valid(form)
 
 
@@ -141,12 +172,13 @@ class SongDelete(SuccessMessageMixin, LoginRequiredMixin, generic.DeleteView):
         context['setlist_pk'] = self.kwargs.get('setlist_pk', None)
         return context
 
-    # Code sourced from stackoverflow.com : 
+    # Code sourced from stackoverflow.com:
     # questions/24822509/success-message-in-deleteview-not-shown
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(SongDelete, self).delete(request, *args, **kwargs)
     # End of code sourced from stackoverflow
+    # questions/24822509/success-message-in-deleteview-not-shown
 
     def get_success_url(self, **kwargs):
         """
@@ -334,7 +366,7 @@ class SetlistDelete(SuccessMessageMixin, LoginRequiredMixin,
         context['pk'] = self.kwargs['pk']
         return context
 
-    # Code sourced from stackoverflow.com : 
+    # Code sourced from stackoverflow.com:
     # questions/24822509/success-message-in-deleteview-not-shown
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
