@@ -2,23 +2,25 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form | crispy }}
-        <div class="button-container">
-            {% if mode == 'add' %}
-                <button type="submit" class="btn">Add Song</button>
-                <a href="{% url 'home' %}">Back to Songbook</a>
-            {% else %}
-                <button type="submit" class="btn">Save Song</button>    
-                {% if setlist_pk != None %}
-                    <a href="{% url 'setlist_song_view' pk setlist_pk %}">Back to Song</a>
-                    <a href="{% url 'setlist_song_delete' pk setlist_pk %}">Delete</a>
+    <div class="with_buttons">
+        <form method="post">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div class="button-container">
+                {% if mode == 'add' %}
+                    <button type="submit" class="btn">Add Song</button>
+                    <a href="{% url 'home' %}">Back to Songbook</a>
                 {% else %}
-                    <a href="{% url 'song_view' pk %}">Back to Song</a>
-                    <a href="{% url 'song_delete' pk %}">Delete</a>
-                {% endif %}        
-            {% endif %}
-        </div>
-    </form>
+                    <button type="submit" class="btn">Save Song</button>    
+                    {% if setlist_pk != None %}
+                        <a href="{% url 'setlist_song_view' pk setlist_pk %}">Back to Song</a>
+                        <a href="{% url 'setlist_song_delete' pk setlist_pk %}">Delete</a>
+                    {% else %}
+                        <a href="{% url 'song_view' pk %}">Back to Song</a>
+                        <a href="{% url 'song_delete' pk %}">Delete</a>
+                    {% endif %}        
+                {% endif %}
+            </div>
+        </form>
+    </div>
 {% endblock content %}

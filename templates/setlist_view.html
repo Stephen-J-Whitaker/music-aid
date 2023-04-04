@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ setlist_name }}</h2>
-    <ul>
-        {% for setlist_song in object_list %}
-            <li>
-                <a href="{% url 'setlist_song_view' setlist_song.pk pk %}">{{ setlist_song.title }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <div class="button-container">
-        <a href="{% url 'setlist_list' %}">Setlists</a>
-        <a href="{% url 'setlist_edit' pk %}">Edit</a>
+    <div class="with_buttons">
+        <h2>{{ setlist_name }}</h2>
+        <ul>
+            {% for setlist_song in object_list %}
+                <li>
+                    <a href="{% url 'setlist_song_view' setlist_song.pk pk %}">{{ setlist_song.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="button-container">
+            <a href="{% url 'setlist_list' %}">Setlists</a>
+            <a href="{% url 'setlist_edit' pk %}">Edit</a>
+        </div>
     </div>
 {% endblock content %}
