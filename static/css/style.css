@@ -36,7 +36,20 @@ header {
 
 /* Navbar styling */
 .navbar-container {
+    padding: 0;
     background-color: var(--interface-medium-blue);
+}
+
+.navbar-nav {
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    background-color: var(--interface-medium-blue);
+    width: 100vw;
+}
+
+.navbar-toggler {
+    margin-right: 10px;
 }
 
 /* Main styling */
@@ -46,23 +59,27 @@ main {
     display: flex;
     flex-direction: column;
     top: var(--header-height);
-    height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));
+    height: calc(100% - var(--header-height) - var(--footer-height));
     background-color: var(--interface-light-blue);
     width: 100%;
+}
+
+/* Make room for button bar when buttons present */
+.with_buttons {
+    height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));
 }
 
 /* Content container styles */
 .content-container {
-    position: absolute;
+    /* display: block; */
+    /* position: absolute; */
+    flex: 1 0 auto;
     width: 100%;
-    max-height: 100%;
+    /* min-height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));; */
+    max-height: calc(100% - var(--footer-height));
     background-color: var(--interface-light-blue);
     overflow-y: scroll;
     overflow-x: hidden;
-}
-
-.content-inner-container {
-    height: 100%;
 }
 
 /* Home page styling */
@@ -128,6 +145,7 @@ button {
 }
 
 .logo-main {
+    margin-left: 7px;
     padding: 7px;
     border: solid;
     border-color: var(--interface-dark-blue);
