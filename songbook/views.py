@@ -87,9 +87,11 @@ class SongAdd(SuccessMessageMixin, LoginRequiredMixin,
         for tag_id in remove_tags:
             for tag in parsed_data.find_all(tag_id):
                 tag.decompose()
+        desired_tags = ['b', 'u', 'i', 'p']
         for tag in parsed_data.find_all():
-            tag.name = 'div'
-        print("cleaned html", parsed_data)   
+            if tag.name not in desired_tags:
+                tag.name = 'div'
+        print("cleaned html", parsed_data)
         cleaned_lyrics = str(parsed_data)
         form.instance.lyrics = cleaned_lyrics
         return super().form_valid(form)
@@ -326,26 +328,7 @@ class SetlistEdit(LoginRequiredMixin, View):
                                                             ' been edited')
 
         return redirect('setlist_view', self.kwargs['pk'])
-
-
-# class SetlistSongView(LoginRequiredMixin, generic.DetailView):
-#     """
-#     A class based view to view a song from a setlist
-#     """
-#     model = Song
-#     context_object_name = 'song_detail'
-#     template_name = 'song_view.html'
-
-#     def get_context_data(self, **kwargs):
-#         """
-#         Add contexts
-#         """
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'View a song'
-#         context['pk'] = self.kwargs['pk']
-#         context['setlist_pk'] = self.kwargs['setlist_pk']
-#         return context
-
+        
 
 class SetlistDelete(SuccessMessageMixin, LoginRequiredMixin,
                     generic.DeleteView):
