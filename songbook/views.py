@@ -10,7 +10,6 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from bs4 import BeautifulSoup
 
 
 class SongbookList(generic.ListView):
