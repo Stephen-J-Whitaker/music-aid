@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ song_detail.title }}</h2>
-    <h3>{{ song_detail.artist }}</h3>
-    <div class="song-lyrics">
-        {{ song_detail.lyrics | safe }}
+    <div id="content-container" class="content-container song-scroll">
+        <h2>{{ song_detail.title }}</h2>
+        <h3>{{ song_detail.artist }}</h3>
+        <div class="song-lyrics">
+            {{ song_detail.lyrics | safe }}
+        </div>
     </div>
-    {% if setlist_pk != None %}
-        <a href="{% url 'setlist_view' setlist_pk %}">Setlist</a>
-        <a href="{% url 'setlist_song_edit' pk setlist_pk %}">Edit</a>
-    {% else %}
-        <a href="{% url 'home' %}">Songbook</a>
-        <a href="{% url 'song_edit' pk %}">Edit</a>
-    {% endif %}
+    <div class="button-container scroll-controls">
+        {% if setlist_pk != None %}
+            <a href="{% url 'setlist_view' setlist_pk %}">Setlist</a>
+            <a href="{% url 'setlist_song_edit' pk setlist_pk %}">Edit</a>
+        {% else %}
+            <a href="{% url 'home' %}">Songbook</a>
+            <a href="{% url 'song_edit' pk %}">Edit</a>
+        {% endif %}
+        <button id="scroll-start">Play</button>
+        <button id="scroll-stop">Stop</button>
+    </div>
 {% endblock content %}
