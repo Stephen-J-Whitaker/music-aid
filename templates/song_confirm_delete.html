@@ -6,11 +6,13 @@
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
         {{ form }}
-        <button type="submit" class="btn">Delete Song</button>
-        {% if setlist_pk != None %}
-            <a href="{% url 'setlist_song_edit' pk setlist_pk %}">No Thanks</a>
-        {% else %}
-            <a href="{% url 'song_edit' pk %}">No Thanks</a>
-        {% endif %}
+        <div class="button-container">
+            <button type="submit" class="btn">Delete Song</button>
+            {% if setlist_pk != None %}
+                <a href="{% url 'setlist_song_edit' pk setlist_pk %}">No Thanks</a>
+            {% else %}
+                <a href="{% url 'song_edit' pk %}">No Thanks</a>
+            {% endif %}
+        </div>
     </form>
 {% endblock content %}

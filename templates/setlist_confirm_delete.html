@@ -6,7 +6,9 @@
         {% csrf_token %}
         <p>Are you sure you want to delete "{{ object }}"?</p>
         {{ form }}
-        <button type="submit" class="btn">Delete Setlist</button>
-        <a href="{% url 'setlist_edit' pk %}">No Thanks</a>
+        <div class="button-container">
+            <button type="submit" class="btn">Delete Setlist</button>
+            <a href="{% url 'setlist_edit' pk %}">No Thanks</a>
+        </div>
     </form>
 {% endblock content %}

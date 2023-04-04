@@ -9,6 +9,8 @@
             </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'setlist_list' %}">Setlists</a>
-    <a href="{% url 'setlist_edit' pk %}">Edit</a>
+    <div class="button-container">
+        <a href="{% url 'setlist_list' %}">Setlists</a>
+        <a href="{% url 'setlist_edit' pk %}">Edit</a>
+    </div>
 {% endblock content %}

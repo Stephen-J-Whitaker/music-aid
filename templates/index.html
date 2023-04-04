@@ -10,11 +10,15 @@
                 </li>
             {% endfor %}
         </ul>
-        <a href="{% url 'song_add' %}">Add Song</a>
+        <div class="button-container scroll-controls">
+            <a href="{% url 'song_add' %}">Add Song</a>
+        </div>
     {% else %}
-        <div class="home-login">
-            <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</button>
-            <a href="{% url 'account_signup' %}" class="home-register-link standard-link">Register</a>
+        <div class="button-container">
+            <div class="home-login">
+                <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</button>
+                <a href="{% url 'account_signup' %}" class="home-register-link standard-link">Register</a>
+            </div>
         </div>
     {% endif %}
 {% endblock content %}
