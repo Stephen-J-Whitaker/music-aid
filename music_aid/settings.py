@@ -169,7 +169,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SUMMERNOTE_CONFIG = {
     'summernote': {
         'width': '100%',
-        'height': '450',
+        'height': '300',
         'toolbar': [
             ['font', ['bold', 'underline', 'italic']]
         ]

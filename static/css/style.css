@@ -7,6 +7,103 @@
     --interface-light-blue: rgb(196, 220, 238);
     --dark-link-text-colour: rgb(1, 63, 110);
     --light-link-text-colour: rgb(255, 255, 255);
+    --header-height: 120px;
+    --footer-height: 50px;
+    --button-container-height: 50px;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    color: var(--dark-link-text-colour);
+}
+
+body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styling */
+header {
+    position: absolute;
+    height: var(--header-height);
+    flex: 0;
+    width: 100%;
+    background-color: var(--interface-medium-blue);
+}
+
+/* Navbar styling */
+.navbar-container {
+    background-color: var(--interface-medium-blue);
+}
+
+/* Main styling */
+main {
+    flex: 1 0 auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: var(--header-height);
+    height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));
+    background-color: var(--interface-light-blue);
+    width: 100%;
+}
+
+/* Content container styles */
+.content-container {
+    position: absolute;
+    width: 100%;
+    max-height: 100%;
+    background-color: var(--interface-light-blue);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.content-inner-container {
+    height: 100%;
+}
+
+/* Home page styling */
+.home-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.home-login-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--interface-medium-blue);
+    color: var(--dark-link-text-colour);
+    width: 50%;
+    height: 200px;
+    font-size: xxx-large;
+    border-radius: 25px;
+    
+}
+
+.home-register-link {
+    font-size: larger;
+}
+
+/* Footer styling */
+footer {
+    height: var(--footer-height);
+    position: absolute;
+    flex: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    background-color: var(--interface-medium-blue);
 }
 
 /* Common anchor and link styles */
@@ -56,86 +153,40 @@ button {
 }
 
 .logo-brand-header {
-    font-size: xxx-large;
+    font-size: xx-large;
 }
 
-.logo-app-header,
-.logo-brand-footer {
+.logo-app-header {
     font-size: x-large;
 }
 
+.logo-brand-footer {
+    font-size: small;
+}
+
 .logo-app-footer {
-    font-size: large;
+    font-size: small;
 }
 
-html,
-body {
-    height: 100%;
-    color: var(--dark-link-text-colour);
+.song-lyrics {
+    max-height: 100%;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Header styling */
-header {
-    flex: 0;
-    background-color: var(--interface-medium-blue);
-}
-
-/* Navbar styling */
-.navbar-container {
-    background-color: var(--interface-medium-blue);
-}
-
-/* Main styling */
-main {
-    flex: 1 0 auto;
-    background-color: var(--interface-light-blue);
-}
-
-/* Home page styling */
-.home-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-
-.home-login-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--interface-medium-blue);
-    color: var(--dark-link-text-colour);
-    width: 50%;
-    height: 200px;
-    font-size: xxx-large;
-    border-radius: 25px;
-    
-}
-
-.home-register-link {
-    font-size: larger;
-}
-
-/* Footer styling */
-footer {
-    flex: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    bottom: 0;
-    right: 0;
-    background-color: var(--interface-medium-blue);
-}
-
-/* Styling to override unwanted formatting pasted to summernote */
 .song-lyrics p {
     font-size: large;
 }
+
+/* BUtton container styles */
+.button-container {
+    position: fixed;
+    /* position: fixed; */
+    width: 100%;
+    height: var(--button-container-height);
+    bottom: var(--footer-height);
+    background-color: var(--interface-light-blue);
+}
+
+/* Auto scroll song view styling */
+/* .song-scroll {
+    height: 100vh;
+} */
