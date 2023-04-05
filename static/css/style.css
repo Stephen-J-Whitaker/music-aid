@@ -35,6 +35,10 @@ header {
 }
 
 /* Navbar styling */
+nav {
+    font-size: large;
+}
+
 .navbar-container {
     padding: 0;
     background-color: var(--interface-medium-blue);
@@ -57,16 +61,24 @@ main {
     flex: 1 0 auto;
     position: absolute;
     display: flex;
-    flex-direction: column;
     top: var(--header-height);
     height: calc(100% - var(--header-height) - var(--footer-height));
     background-color: var(--interface-light-blue);
     width: 100%;
+    justify-content: center;
 }
 
 /* Make room for button bar when buttons present */
 .with_buttons {
     height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));
+}
+
+.main-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 50px;
+    text-align: center;
 }
 
 /* Content container styles */
@@ -80,6 +92,8 @@ main {
     background-color: var(--interface-light-blue);
     overflow-y: scroll;
     overflow-x: hidden;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 /* Home page styling */
@@ -139,6 +153,7 @@ a {
 /* End of common anchor and link styles */
 
 /* Button styles */
+.anchor-btn,
 button {
     background-color: var(--interface-medium-blue);
     border: none;
@@ -196,7 +211,6 @@ button {
 
 /* BUtton container styles */
 .button-container {
-    position: fixed;
     /* position: fixed; */
     width: 100%;
     height: var(--button-container-height);
