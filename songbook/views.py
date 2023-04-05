@@ -37,7 +37,7 @@ class SongbookList(generic.ListView):
             return Song.objects.filter(user=user).order_by('title')
 
 
-class SongAdd(SuccessMessageMixin, LoginRequiredMixin,
+class SongAdd(LoginRequiredMixin, SuccessMessageMixin,
               generic.CreateView):
     form_class = SongAddForm
     # Code supplied by Code Institute Tutor Support
@@ -82,8 +82,14 @@ class SongView(LoginRequiredMixin, generic.DetailView):
         context['setlist_pk'] = self.kwargs.get('setlist_pk', None)
         return context
 
+    def get_queryset(self):
+        """
+        Check the request user is and owner of the object
+        """
+        return super().get_queryset().filter(user=self.request.user)
 
-class SongEdit(SuccessMessageMixin, LoginRequiredMixin, generic.UpdateView):
+
+class SongEdit(LoginRequiredMixin, SuccessMessageMixin, generic.UpdateView):
     """
     A class based view to edit a song
     """
@@ -123,7 +129,7 @@ class SongEdit(SuccessMessageMixin, LoginRequiredMixin, generic.UpdateView):
                 )
 
 
-class SongDelete(SuccessMessageMixin, LoginRequiredMixin, generic.DeleteView):
+class SongDelete(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
     """
     A class based view to confirm a deletion of a song
     """
@@ -159,8 +165,14 @@ class SongDelete(SuccessMessageMixin, LoginRequiredMixin, generic.DeleteView):
         else:
             return reverse('setlist_view', kwargs={'pk': setlist_pk})
 
+    def get_queryset(self):
+        """
+        Check the request user is and owner of the object
+        """
+        return super().get_queryset().filter(user=self.request.user)
 
-class SetlistAdd(SuccessMessageMixin, LoginRequiredMixin,
+
+class SetlistAdd(LoginRequiredMixin, SuccessMessageMixin,
                  generic.CreateView):
     """
     A class based view to add setlists
@@ -248,12 +260,11 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
         """
         Define the queryset to be used
         """
-        set = Setlist.objects.get(pk=self.
-                                  kwargs['pk']).songs_in_setlist.all()
+        user_setlists = Setlist.objects.filter(user=self.request.user)
+        get_object_or_404(user_setlists, pk=self.kwargs['pk'])
 
-        return Setlist.objects.get(pk=self.
-                                   kwargs['pk']).songs_in_setlist.all()
-
+        return Setlist.objects.get(pk=self.kwargs['pk']).songs_in_setlist.all()
+        
 
 class SetlistEdit(LoginRequiredMixin, View):
     """
@@ -264,6 +275,8 @@ class SetlistEdit(LoginRequiredMixin, View):
         """
         Get handling to render SetlistAddForm
         """
+        user_setlists = Setlist.objects.filter(user=self.request.user)
+        get_object_or_404(user_setlists, pk=self.kwargs['pk'])
         form = SetlistEditForm(user=request.user, setlist_pk=self.kwargs['pk'])
 
         return render(
@@ -297,7 +310,7 @@ class SetlistEdit(LoginRequiredMixin, View):
         return redirect('setlist_view', self.kwargs['pk'])
 
 
-class SetlistDelete(SuccessMessageMixin, LoginRequiredMixin,
+class SetlistDelete(LoginRequiredMixin, SuccessMessageMixin,
                     generic.DeleteView):
     """
     A class based view to confirm a deletion of a song
@@ -322,6 +335,12 @@ class SetlistDelete(SuccessMessageMixin, LoginRequiredMixin,
         messages.success(self.request, self.success_message)
         return super(SetlistDelete, self).delete(request, *args, **kwargs)
     # End of code sourced from stackoverflow
+
+    def get_queryset(self):
+        """
+        Check the request user is and owner of the object
+        """
+        return super().get_queryset().filter(user=self.request.user)
 
 
 def handler404(request, exception):
