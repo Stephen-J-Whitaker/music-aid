@@ -264,7 +264,7 @@ class SetlistView(LoginRequiredMixin, generic.ListView):
         get_object_or_404(user_setlists, pk=self.kwargs['pk'])
 
         return Setlist.objects.get(pk=self.kwargs['pk']).songs_in_setlist.all()
-        
+
 
 class SetlistEdit(LoginRequiredMixin, View):
     """
@@ -306,8 +306,11 @@ class SetlistEdit(LoginRequiredMixin, View):
             form.save_m2m()
             messages.add_message(request, messages.SUCCESS, 'Your setlist has'
                                                             ' been edited')
-
-        return redirect('setlist_view', self.kwargs['pk'])
+            return redirect('setlist_view', self.kwargs['pk'])
+        else:
+            messages.add_message(request, messages.ERROR, 'Your setlist edit'
+                                 ' wasn\'t valid. Please try again')
+            return redirect('setlist_edit', self.kwargs['pk'])
 
 
 class SetlistDelete(LoginRequiredMixin, SuccessMessageMixin,
