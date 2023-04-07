@@ -28,4 +28,6 @@ urlpatterns = [
           views.SongEdit.as_view(), name='setlist_song_edit'),
      path('setlist_song_delete/<int:pk>/<int:setlist_pk>',
           views.SongDelete.as_view(), name='setlist_song_delete'),
+     path('song_title_validate/', views.song_title_validate,
+          name='song_title_validate'),
 ]

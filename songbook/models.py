@@ -13,6 +13,12 @@ class Song(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name="user_songs")
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'title'],
+                                    name='unique_user_song_title')
+        ]
+
     def __str__(self):
         return self.title
 

@@ -7,7 +7,7 @@ from django import forms
 from .forms import SongAddForm, SetlistAddForm, SetlistEditForm
 from django_summernote.widgets import SummernoteWidget
 from django.urls import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
@@ -344,6 +344,20 @@ class SetlistDelete(LoginRequiredMixin, SuccessMessageMixin,
         Check the request user is and owner of the object
         """
         return super().get_queryset().filter(user=self.request.user)
+
+
+def song_title_validate(request):
+    """
+    Verify the song title is unique for the user
+    """
+    if request.method == 'GET':
+        user = request.user
+        song_title = request.GET['song_title']
+        user = request.user
+        if Song.objects.filter(user=user).filter(title=song_title).exists():
+            return HttpResponse("in_use")
+        else:
+            return HttpResponse("available")
 
 
 def handler404(request, exception):
