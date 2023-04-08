@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
     <div class="with_buttons">
@@ -8,10 +9,10 @@
             {{ form | crispy }}
             <div class="button-container">
                 {% if mode == 'add' %}
-                    <button type="submit" id="song-add-btn" class="btn">Add Song</button>
+                    <button type="submit" id="song-submit-btn" class="btn">Add Song</button>
                     <a href="{% url 'home' %}" class="anchor-btn">Back to Songbook</a>
                 {% else %}
-                    <button type="submit" class="btn">Save Song</button>    
+                    <button type="submit" class="btn" id="song-submit-btn">Save Song</button>    
                     {% if setlist_pk != None %}
                         <a href="{% url 'setlist_song_view' pk setlist_pk %}" class="anchor-btn">Back to Song</a>
                         <a href="{% url 'setlist_song_delete' pk setlist_pk %}" class="anchor-btn">Delete</a>
@@ -24,3 +25,7 @@
         </form>
     </div>
 {% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/songbook_js/songbook_song_add_edit.js' %}"></script>
+{% endblock javascript%}
