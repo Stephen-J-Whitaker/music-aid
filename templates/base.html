@@ -12,12 +12,12 @@
         <link rel="icon" sizes="any" href="{% static 'favicon.ico' %}"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/songbook_css/songbook_style.css' %}">
     </head>
     <body>
         <header>
             <!-- Navigation bar skeleton provided by bootstrap -->
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-md">
                 <div class="container-fluid navbar-container">
                 <a class="navbar-brand logo-main box-link" href="{% url 'home' %}">
                     <h1 class="logo-brand-header">Music Aid</h1>
@@ -30,28 +30,28 @@
                     <ul class="navbar-nav">
                     <!-- Authentication nav links dependent on authentication provided by Code Institute -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link active standard-link" aria-current="page" href="{% url 'home' %}">Songbook</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link standard-link" href="{% url 'setlist_list' %}">Setlists</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link standard-link" href="{% url 'account_logout' %}">Logout</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link active standard-link" aria-current="page" href="{% url 'home' %}">Songbook</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link standard-link" href="{% url 'setlist_list' %}">Setlists</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link standard-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
                     {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link standard-link" href="{% url 'account_signup' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link standard-link" href="{% url 'account_login' %}">Login</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link standard-link" href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link standard-link" href="{% url 'account_login' %}">Login</a>
+                        </li>
                     {% endif %}
                     <!-- End of Authentication nav links dependent on authentication provided by Code Institute -->
                     {% if user.is_superuser %}
-                    <li class="nav-item">
-                        <a class="nav-link standard-link" href="{% url 'admin:index' %}">Admin</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link standard-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
                     {% endif %}
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
         </header>
         <main class="main">
             <!-- Message HTML provided by Code Institute -->
-            <div class="col-md-8 offset-md-2">
+            <div>
                 {% for message in messages %}
                 <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
@@ -80,7 +80,11 @@
             </a>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-        <script src="{% static 'js/songbook.js' %}"></script>
+            integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+            {% block javascript %}
+            <!-- Main page content inserted here -->
+            {% endblock javascript%}
+        <script src="{% static 'js/songbook_js/songbook_messages.js' %}"></script>
+        <script src="{% static 'js/jquery_3_6_4.js' %}"></script>
     </body>
 </html>
