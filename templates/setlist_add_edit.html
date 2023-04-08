@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block content %}
     <div class="with_buttons">
@@ -8,13 +9,18 @@
             {% csrf_token %}
             <div class="button-container">
                 {% if mode == 'add' %}
-                    <button type="submit" class="btn">Add Setlist</button>
+                    <button type="submit" class="btn" id="setlist-submit-btn">Add Setlist</button>
+                    <a href="{% url 'setlist_list' %}" class="anchor-btn">Back to Setlists</a>
                 {% else %} 
-                    <a href="{% url 'setlist_view' setlist_pk %}">Back to Setlists</a>
-                    <button type="submit">Save</button>
-                    <a href="{% url 'setlist_delete' setlist_pk %}">Delete</a>
+                    <a href="{% url 'setlist_view' setlist_pk %}" class="anchor-btn">Back to Setlists</a>
+                    <button type="submit" class="btn" id="setlist-submit-btn">Save Setlist</button>
+                    <a href="{% url 'setlist_delete' setlist_pk %}" class="anchor-btn">Delete</a>
                 {% endif %}
             </div>
         </form>
     </div>
 {% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/songbook_js/songbook_setlist_add_edit.js' %}"></script>
+{% endblock javascript%}

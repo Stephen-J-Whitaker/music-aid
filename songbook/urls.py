@@ -30,4 +30,6 @@ urlpatterns = [
           views.SongDelete.as_view(), name='setlist_song_delete'),
      path('song_title_validate/', views.song_title_validate,
           name='song_title_validate'),
+     path('setlist_name_validate/', views.setlist_name_validate,
+          name='setlist_name_validate'),
 ]

@@ -360,6 +360,21 @@ def song_title_validate(request):
             return HttpResponse("available")
 
 
+def setlist_name_validate(request):
+    """
+    Verify the setlist name is unique for the user
+    """
+    if request.method == 'GET':
+        user = request.user
+        setlist_name = request.GET['setlist_name']
+        user = request.user
+        if Setlist.objects.filter(user=user
+                                  ).filter(setlist_name=setlist_name).exists():
+            return HttpResponse("in_use")
+        else:
+            return HttpResponse("available")
+
+
 def handler404(request, exception):
     """
     Load 404 page if item not found
