@@ -7,7 +7,7 @@
     --interface-light-blue: rgb(196, 220, 238);
     --dark-link-text-colour: rgb(1, 63, 110);
     --light-link-text-colour: rgb(255, 255, 255);
-    --header-height: 120px;
+    --header-height: 100px;
     --footer-height: 50px;
     --button-container-height: 50px;
 }
@@ -17,6 +17,7 @@ body {
     height: 100%;
     width: 100%;
     color: var(--dark-link-text-colour);
+    font-family: var(--primary-font-family);
 }
 
 body {
@@ -27,6 +28,7 @@ body {
 
 /* Header styling */
 header {
+    display: flex;
     position: absolute;
     height: var(--header-height);
     flex: 0;
@@ -35,6 +37,11 @@ header {
 }
 
 /* Navbar styling */
+.navbar {
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
 nav {
     font-size: large;
 }
@@ -42,14 +49,17 @@ nav {
 .navbar-container {
     padding: 0;
     background-color: var(--interface-medium-blue);
+
 }
 
 .navbar-nav {
     padding: 10px;
-    position: relative;
+    position: absolute;
     z-index: 1;
     background-color: var(--interface-medium-blue);
     width: 100vw;
+    top: var(--header-height);
+    left: 0;
 }
 
 .navbar-toggler {
@@ -170,6 +180,7 @@ button {
 
 .logo-main,
 .logo {
+    padding: 11px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -186,14 +197,18 @@ button {
 }
 
 .logo-brand-header {
-    font-size: xx-large;
-}
-
-.logo-app-header {
+    font-family: var(--brand-font-family);
+    margin-bottom: 0;
     font-size: x-large;
 }
 
+.logo-app-header {
+    margin-bottom: 0;
+    font-size: large;
+}
+
 .logo-brand-footer {
+    font-family: var(--brand-font-family);
     font-size: small;
 }
 
@@ -222,3 +237,19 @@ button {
 /* .song-scroll {
     height: 100vh;
 } */
+
+/* .title-status {
+    font-size: large;
+    color: red;
+    text-align: center;
+    display: none;
+} */
+
+.setlist-name-status,
+.title-status::after {
+    content: 'Sorry, this title is taken';
+    font-size: large;
+    color: red;
+    text-align: center;
+    /* font-weight: bold; */
+}
