@@ -5,15 +5,17 @@
 
 :root {
     --logo-background: rgb(117, 163, 199);
-    --button-background: rgb(117, 163, 199);
     --interface-dark-blue: rgb(1, 63, 110);
     --interface-medium-blue: rgb(121, 180, 224);
     --interface-light-blue: rgb(196, 220, 238);
     --dark-link-text-colour: rgb(0, 55, 97);
     --light-link-text-colour: rgb(255, 255, 255);
-    --header-height: 90px;
-    --footer-height: 50px;
     --button-container-height: 50px;
+    --button-container-colour: rgb(170, 205, 231);
+    --button-colour: rgb(117, 163, 199);
+    --headers-background-colour: rgb(170, 205, 231);
+    --header-height: 90px;
+    --footer-height: 45px;
     --standard-border-color: rgba(0, 0 ,0 , 0.15);
     --standard-border-style: solid;
     --standard-border-width: 1px;
@@ -73,7 +75,7 @@ nav {
 }
 
 .navbar-toggler {
-    background-color: var(--button-background);
+    background-color: var(--button-colour);
     margin-right: 10px;
 }
 
@@ -97,18 +99,14 @@ main {
 .main-inner-container {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    margin-top: 50px;
+    width: 100%;
     text-align: center;
 }
 
 /* Content container styles */
 .content-container {
-    /* display: block; */
-    /* position: absolute; */
     flex: 1 0 auto;
     width: 100%;
-    /* min-height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));; */
     max-height: calc(100% - var(--footer-height));
     background-color: var(--interface-light-blue);
     overflow-y: scroll;
@@ -158,6 +156,18 @@ footer {
     background-color: var(--interface-medium-blue);
 }
 
+h2,
+h3 {
+    background-color: var(--headers-background-colour);
+    padding: 5px;
+    margin: 0;
+}
+
+h3 {
+    font-size: medium;
+    font-style: italic;
+}
+
 /* Common anchor and link styles */
 a {
     text-decoration: none;
@@ -174,10 +184,16 @@ a {
 /* End of common anchor and link styles */
 
 /* Button styles */
+.btn,
 .anchor-btn,
 button {
-    background-color: var(--interface-medium-blue);
-    border: none;
+    margin: 1.5px;
+    height: fit-content;
+    color: var(--dark-link-text-colour);
+    padding: 3px 7px;
+    border-radius: 25px;
+    background-color: var(--button-colour);
+    border: var(--standard-border-width) var(--standard-border-style) var(--standard-border-color);
 }
 
 .logo-main {
@@ -221,11 +237,11 @@ button {
 
 .logo-brand-footer {
 
-    font-size: large;
+    font-size: small;
 }
 
 .logo-app-footer {
-    font-size: small;
+    font-size: x-small;
 }
 
 .song-lyrics {
@@ -238,11 +254,14 @@ button {
 
 /* Button container styles */
 .button-container {
-    /* position: fixed; */
+    position: absolute;
+    bottom: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: var(--button-container-height);
-    bottom: var(--footer-height);
-    background-color: var(--interface-light-blue);
+    background-color: var(--button-container-colour);
 }
 
 /* Auto scroll song view styling */
@@ -263,5 +282,4 @@ button {
     font-size: large;
     color: red;
     text-align: center;
-    /* font-weight: bold; */
 }

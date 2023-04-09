@@ -23,7 +23,7 @@
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand logo-main box-link" href="{% url 'home' %}">
                     <h1 class="logo-brand logo-brand-header">Music Aid</h1>
-                    <h2 class="logo-app-header">Songbook</h2>
+                    <div class="logo-app-header">Songbook</div>
                 </a>
                 <div class="navbar-container">
                     <div class="container-fluid">
@@ -68,7 +68,7 @@
             <div class="main-inner-container">
                 <!-- Message HTML provided by Code Institute -->
                     {% for message in messages %}
-                    <div>
+                    <div class="messages">
                         <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                             {{ message | safe }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
