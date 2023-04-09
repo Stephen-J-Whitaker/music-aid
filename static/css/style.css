@@ -1,3 +1,6 @@
+/* Fonts imported from Google Fonts : https://fonts.google.com/ */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,700&family=Shrikhand&display=swap');
+
 /* Style sheet for songbook Django app */
 
 :root {
@@ -10,6 +13,9 @@
     --header-height: 100px;
     --footer-height: 50px;
     --button-container-height: 50px;
+     /* Shrikhand and Lato fonts imported from Google Fonts : https://fonts.google.com/ */
+    --brand-font-family: Shrikhand, Lato, Helvetica, sans-serif;
+    --primary-font-family: Lato, Helvetica, sans-serif;
 }
 
 html,
@@ -188,7 +194,8 @@ button {
 }
 
 .logo {
-    margin: 5px;
+    line-height: 1;
+    padding: 0;
 }
 
 .logo-brand {
@@ -209,7 +216,7 @@ button {
 
 .logo-brand-footer {
     font-family: var(--brand-font-family);
-    font-size: small;
+    font-size: large;
 }
 
 .logo-app-footer {
