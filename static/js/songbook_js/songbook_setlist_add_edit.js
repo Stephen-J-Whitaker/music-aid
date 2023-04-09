@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if ($('#id_setlist_name').val() != '') {
                 console.log(" inNER function ")
                 let setlistName = $('#id_setlist_name').val()
-                setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
+                let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
                 $.ajax(
                 {
                     type:'GET',
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-            $('#id_setlist_name').on('input', validateUnique);
-            $('#id_setlist_name').change(validateUnique);
+        $('#id_setlist_name').keyup('input', validateUnique);
+        $('#id_setlist_name').change(validateUnique);
     }
 
 });
