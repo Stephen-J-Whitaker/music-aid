@@ -65,19 +65,21 @@
             <!-- End of bootstrap navigation -->
         </header>
         <main class="main">
-            <!-- Message HTML provided by Code Institute -->
-                {% for message in messages %}
-                <div>
-                    <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                        {{ message | safe }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="main-inner-container">
+                <!-- Message HTML provided by Code Institute -->
+                    {% for message in messages %}
+                    <div>
+                        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                            {{ message | safe }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                     </div>
-                </div>
-                {% endfor %}
-            <!-- End of Message HTML provided by Code Institute -->
-            {% block content %}
-                <!-- Main page content inserted here -->
-            {% endblock content %}
+                    {% endfor %}
+                <!-- End of Message HTML provided by Code Institute -->
+                {% block content %}
+                    <!-- Main page content inserted here -->
+                {% endblock content %}
+            </div>
         </main>
         <footer class="footer">
             <a class="navbar-brand logo standard-link" href="{% url 'home' %}">

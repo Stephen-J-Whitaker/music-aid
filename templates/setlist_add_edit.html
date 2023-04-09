@@ -7,23 +7,21 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="main-inner-container">
-        <div class="with_buttons">
-            <form method="post">
-                {{ form | crispy }}
-                {% csrf_token %}
-                <div class="button-container">
-                    {% if mode == 'add' %}
-                        <button type="submit" class="btn" id="setlist-submit-btn">Add Setlist</button>
-                        <a href="{% url 'setlist_list' %}" class="anchor-btn">Back to Setlists</a>
-                    {% else %} 
-                        <a href="{% url 'setlist_view' setlist_pk %}" class="anchor-btn">Back to Setlists</a>
-                        <button type="submit" class="btn" id="setlist-submit-btn">Save Setlist</button>
-                        <a href="{% url 'setlist_delete' setlist_pk %}" class="anchor-btn">Delete</a>
-                    {% endif %}
-                </div>
-            </form>
-        </div>
+    <div class="with_buttons">
+        <form method="post">
+            {{ form | crispy }}
+            {% csrf_token %}
+            <div class="button-container">
+                {% if mode == 'add' %}
+                    <button type="submit" class="btn" id="setlist-submit-btn">Add Setlist</button>
+                    <a href="{% url 'setlist_list' %}" class="anchor-btn">Back to Setlists</a>
+                {% else %} 
+                    <a href="{% url 'setlist_view' setlist_pk %}" class="anchor-btn">Back to Setlists</a>
+                    <button type="submit" class="btn" id="setlist-submit-btn">Save Setlist</button>
+                    <a href="{% url 'setlist_delete' setlist_pk %}" class="anchor-btn">Delete</a>
+                {% endif %}
+            </div>
+        </form>
     </div>
 {% endblock content %}
 

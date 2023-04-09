@@ -6,19 +6,17 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="main-inner-container">
-        <div class="with_buttons">
-            <h2>Setlists</h2>
-            <ul>
-                {% for setlist in object_list %}
-                    <li>
-                        <a href="{% url 'setlist_view' setlist.pk %}">{{ setlist.setlist_name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            <div class="button-container">
-                <a href="{% url 'setlist_add' %}" class="anchor-btn">Add Setlist</a>
-            </div>
+    <div class="with_buttons">
+        <h2>Setlists</h2>
+        <ul>
+            {% for setlist in object_list %}
+                <li>
+                    <a href="{% url 'setlist_view' setlist.pk %}">{{ setlist.setlist_name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="button-container">
+            <a href="{% url 'setlist_add' %}" class="anchor-btn">Add Setlist</a>
         </div>
     </div>
 {% endblock content %}
