@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 
 
+# Songbook funcitonality section
 class SongbookList(generic.ListView):
     """
     Class based view to show the users
@@ -172,6 +173,7 @@ class SongDelete(LoginRequiredMixin, SuccessMessageMixin, generic.DeleteView):
         return super().get_queryset().filter(user=self.request.user)
 
 
+# Setlist funcitonality section
 class SetlistAdd(LoginRequiredMixin, SuccessMessageMixin,
                  generic.CreateView):
     """
