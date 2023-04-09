@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function validateUnique() {
             if ($('#id_title').val() != '') {
                 let songTitle = $('#id_title').val()
-                titleLabel = document.querySelector('label[for="id_title"]')
+                let titleLabel = document.querySelector('label[for="id_title"]')
                 $.ajax(
                 {
                     type:'GET',
@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-            $('#id_title').on('input', validateUnique);
-            $('#id_title').change(validateUnique);
+        $('#id_title').keyup('input', validateUnique);
+        $('#id_title').change(validateUnique);
     }
 
 });
