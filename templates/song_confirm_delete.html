@@ -12,7 +12,7 @@
             <p>Are you sure you want to delete "{{ object }}"?</p>
             {{ form }}
             <div class="button-container">
-                <button type="submit" class="btn">Delete Song</button>
+                <button type="submit" class="button">Delete Song</button>
                 {% if setlist_pk != None %}
                     <a href="{% url 'setlist_song_edit' pk setlist_pk %}" class="anchor-btn">No Thanks</a>
                 {% else %}

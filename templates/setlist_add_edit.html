@@ -13,11 +13,11 @@
             {% csrf_token %}
             <div class="button-container">
                 {% if mode == 'add' %}
-                    <button type="submit" class="btn" id="setlist-submit-btn">Add Setlist</button>
+                    <button type="submit" class="button" id="setlist-submit-btn">Save Setlist</button>
                     <a href="{% url 'setlist_list' %}" class="anchor-btn">Back to Setlists</a>
                 {% else %} 
                     <a href="{% url 'setlist_view' setlist_pk %}" class="anchor-btn">Back to Setlists</a>
-                    <button type="submit" class="btn" id="setlist-submit-btn">Save Setlist</button>
+                    <button type="submit" class="button" id="setlist-submit-btn">Save Setlist</button>
                     <a href="{% url 'setlist_delete' setlist_pk %}" class="anchor-btn">Delete</a>
                 {% endif %}
             </div>
