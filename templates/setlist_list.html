@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
 {% block content %}
     <div class="with_buttons">
         <h2>Setlists</h2>
@@ -12,7 +16,7 @@
             {% endfor %}
         </ul>
         <div class="button-container">
-            <a class="nav-link standard-link" href="{% url 'setlist_add' %}">Add Setlist</a>
+            <a href="{% url 'setlist_add' %}" class="anchor-btn">Add Setlist</a>
         </div>
     </div>
 {% endblock content %}

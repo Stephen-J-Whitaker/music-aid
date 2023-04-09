@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
 {% block content %}
     <div class="with_buttons">
         <form method="post">
@@ -9,7 +13,7 @@
             {{ form }}
             <div class="button-container">
                 <button type="submit" class="btn">Delete Setlist</button>
-                <a href="{% url 'setlist_edit' pk %}">No Thanks</a>
+                <a href="{% url 'setlist_edit' pk %}" class="anchor-btn">No Thanks</a>
             </div>
         </form>
     </div>

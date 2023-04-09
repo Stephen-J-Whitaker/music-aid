@@ -2,6 +2,10 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
 {% block content %}
     <div class="with_buttons">
         <form method="post">
@@ -22,5 +26,6 @@
 {% endblock content %}
 
 {% block javascript %}
+    <script src="{% static 'js/libraries/jquery_3_6_4.js' %}"></script>
     <script src="{% static 'js/songbook_js/songbook_setlist_add_edit.js' %}"></script>
 {% endblock javascript%}

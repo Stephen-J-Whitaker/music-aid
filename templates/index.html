@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
 {% block content %}
     <div class="with_buttons">
         {% if user.is_authenticated %}
@@ -12,15 +16,13 @@
                 {% endfor %}
             </ul>
             <div class="button-container scroll-controls">
-                <a href="{% url 'song_add' %}">Add Song</a>
+                <a href="{% url 'song_add' %}" class="anchor-btn">Add Song</a>
             </div>
-            <div class="button-container"></div>
         {% else %}
             <div class="home-login">
                 <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</button>
                 <a href="{% url 'account_signup' %}" class="home-register-link standard-link">Register</a>
             </div>
-            <div class="button-container"></div>
         {% endif %}
     </div>
 {% endblock content %}

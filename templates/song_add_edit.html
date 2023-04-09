@@ -2,6 +2,10 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
 {% block content %}
     <div class="with_buttons">
         <form method="post">
@@ -9,7 +13,7 @@
             {{ form | crispy }}
             <div class="button-container">
                 {% if mode == 'add' %}
-                    <button type="submit" id="song-submit-btn" class="btn">Add Song</button>
+                    <button type="submit" class="btn" id="song-submit-btn">Add Song</button>
                     <a href="{% url 'home' %}" class="anchor-btn">Back to Songbook</a>
                 {% else %}
                     <button type="submit" class="btn" id="song-submit-btn">Save Song</button>    
@@ -27,5 +31,6 @@
 {% endblock content %}
 
 {% block javascript %}
+    <script src="{% static 'js/libraries/jquery_3_6_4.js' %}"></script>
     <script src="{% static 'js/songbook_js/songbook_song_add_edit.js' %}"></script>
 {% endblock javascript%}
