@@ -22,7 +22,7 @@
             <!-- Navigation bar skeleton provided by bootstrap -->
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand logo-main box-link" href="{% url 'home' %}">
-                    <h1 class="logo-brand-header">Music Aid</h1>
+                    <h1 class="logo-brand logo-brand-header">Music Aid</h1>
                     <h2 class="logo-app-header">Songbook</h2>
                 </a>
                 <div class="navbar-container">
@@ -35,7 +35,7 @@
                             <!-- Authentication nav links dependent on authentication provided by Code Institute -->
                             {% if user.is_authenticated %}
                                 <li class="nav-item">
-                                    <a class="nav-link active standard-link" aria-current="page" href="{% url 'home' %}">Songbook</a>
+                                    <a class="nav-link standard-link" aria-current="page" href="{% url 'home' %}">Songbook</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link standard-link" href="{% url 'setlist_list' %}">Setlists</a>
@@ -82,7 +82,7 @@
             </div>
         </main>
         <footer class="footer">
-            <a class="navbar-brand logo standard-link" href="{% url 'home' %}">
+            <a class="navbar-brand logo box-link" href="{% url 'home' %}">
                 <div class="logo-brand logo-brand-footer">Music Aid</div>
                 <div class="logo-app-footer">Songbook</div>
             </a>

@@ -4,15 +4,19 @@
 /* Style sheet for songbook Django app */
 
 :root {
-    --logo-background: rgb(117, 163, 199); 
+    --logo-background: rgb(117, 163, 199);
+    --button-background: rgb(117, 163, 199);
     --interface-dark-blue: rgb(1, 63, 110);
     --interface-medium-blue: rgb(121, 180, 224);
     --interface-light-blue: rgb(196, 220, 238);
-    --dark-link-text-colour: rgb(1, 63, 110);
+    --dark-link-text-colour: rgb(0, 55, 97);
     --light-link-text-colour: rgb(255, 255, 255);
-    --header-height: 100px;
+    --header-height: 90px;
     --footer-height: 50px;
     --button-container-height: 50px;
+    --standard-border-color: rgba(0, 0 ,0 , 0.15);
+    --standard-border-style: solid;
+    --standard-border-width: 1px;
      /* Shrikhand and Lato fonts imported from Google Fonts : https://fonts.google.com/ */
     --brand-font-family: Shrikhand, Lato, Helvetica, sans-serif;
     --primary-font-family: Lato, Helvetica, sans-serif;
@@ -69,6 +73,7 @@ nav {
 }
 
 .navbar-toggler {
+    background-color: var(--button-background);
     margin-right: 10px;
 }
 
@@ -177,35 +182,35 @@ button {
 
 .logo-main {
     margin-left: 7px;
-    padding: 7px;
-    border: solid;
-    border-color: var(--interface-dark-blue);
-    border-radius: 25px;
-    background-color: var(--logo-background);
 }
 
 .logo-main,
 .logo {
+    color: var(--dark-link-text-colour);
+    letter-spacing: 1px;
     padding: 11px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    border-radius: 25px;
+    background-color: var(--logo-background);
+    border: var(--standard-border-width) var(--standard-border-style) var(--standard-border-color);
 }
 
 .logo {
     line-height: 1;
-    padding: 0;
+    padding: 5px 13px;
 }
 
 .logo-brand {
+    text-transform: uppercase;
+    font-family: var(--brand-font-family);
     margin-bottom: 0;
     font-weight: bold;
 }
 
 .logo-brand-header {
-    font-family: var(--brand-font-family);
-    margin-bottom: 0;
     font-size: x-large;
 }
 
@@ -215,7 +220,7 @@ button {
 }
 
 .logo-brand-footer {
-    font-family: var(--brand-font-family);
+
     font-size: large;
 }
 
@@ -231,7 +236,7 @@ button {
     font-size: large;
 }
 
-/* BUtton container styles */
+/* Button container styles */
 .button-container {
     /* position: fixed; */
     width: 100%;
