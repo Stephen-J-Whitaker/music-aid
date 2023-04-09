@@ -356,7 +356,8 @@ def song_title_validate(request):
         user = request.user
         song_title = request.GET['song_title']
         user = request.user
-        if Song.objects.filter(user=user).filter(title=song_title).exists():
+        if Song.objects.filter(user=user).filter(title__iexact=song_title
+                                                 ).exists():
             return HttpResponse("in_use")
         else:
             return HttpResponse("available")
@@ -371,7 +372,8 @@ def setlist_name_validate(request):
         setlist_name = request.GET['setlist_name']
         user = request.user
         if Setlist.objects.filter(user=user
-                                  ).filter(setlist_name=setlist_name).exists():
+                                  ).filter(setlist_name__iexact=setlist_name
+                                           ).exists():
             return HttpResponse("in_use")
         else:
             return HttpResponse("available")
