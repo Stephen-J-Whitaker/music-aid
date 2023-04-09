@@ -7,26 +7,28 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="with_buttons">
-        <form method="post">
-            {% csrf_token %}
-            {{ form | crispy }}
-            <div class="button-container">
-                {% if mode == 'add' %}
-                    <button type="submit" class="btn" id="song-submit-btn">Add Song</button>
-                    <a href="{% url 'home' %}" class="anchor-btn">Back to Songbook</a>
-                {% else %}
-                    <button type="submit" class="btn" id="song-submit-btn">Save Song</button>    
-                    {% if setlist_pk != None %}
-                        <a href="{% url 'setlist_song_view' pk setlist_pk %}" class="anchor-btn">Back to Song</a>
-                        <a href="{% url 'setlist_song_delete' pk setlist_pk %}" class="anchor-btn">Delete</a>
+    <div class="main-inner-container">
+        <div class="with_buttons">
+            <form method="post">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="button-container">
+                    {% if mode == 'add' %}
+                        <button type="submit" class="btn" id="song-submit-btn">Add Song</button>
+                        <a href="{% url 'home' %}" class="anchor-btn">Back to Songbook</a>
                     {% else %}
-                        <a href="{% url 'song_view' pk %}" class="anchor-btn">Back to Song</a>
-                        <a href="{% url 'song_delete' pk %}" class="anchor-btn">Delete</a>
-                    {% endif %}        
-                {% endif %}
-            </div>
-        </form>
+                        <button type="submit" class="btn" id="song-submit-btn">Save Song</button>    
+                        {% if setlist_pk != None %}
+                            <a href="{% url 'setlist_song_view' pk setlist_pk %}" class="anchor-btn">Back to Song</a>
+                            <a href="{% url 'setlist_song_delete' pk setlist_pk %}" class="anchor-btn">Delete</a>
+                        {% else %}
+                            <a href="{% url 'song_view' pk %}" class="anchor-btn">Back to Song</a>
+                            <a href="{% url 'song_delete' pk %}" class="anchor-btn">Delete</a>
+                        {% endif %}        
+                    {% endif %}
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock content %}
 

@@ -5,6 +5,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="main-inner-container">
     <div class="with_buttons">
         {% if user.is_authenticated %}
             <h2>Songs</h2>
@@ -25,4 +26,5 @@
             </div>
         {% endif %}
     </div>
+</div>
 {% endblock content %}
