@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const contentContainer = document.getElementById('content-container');
             const backButton = document.getElementById('back');
             const editButton = document.getElementById('edit');
+            const scrollStart = document.getElementById('scroll-start');
+            const scrollStop = document.getElementById('scroll-stop');
             let lyricBottom = parseInt(getComputedStyle(lyricContainer).bottom, 10);
             let lyricHeight = parseInt(getComputedStyle(lyricContainer).height, 10);
             let buttonContainerHeight = parseInt(getComputedStyle(buttonContainer).height, 10);
@@ -62,6 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 lyricContainer.style.top = '';
                 backButton.style.display = 'flex';
                 editButton.style.display = 'flex';
+                scrollStop.style.display = 'none';
+                scrollStart.style.display = 'flex';
             }
 
             function moveBox() {
@@ -75,14 +79,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // if (i < 10) {
                 if (lyricBottom <= buttonContainerHeight) {
                     console.log(i);
-                    document.getElementById('scroll-stop').addEventListener('click', stopMove);
+                    scrollStop.addEventListener('click', stopMove);
                     const moveTimeout = setTimeout(actionBoxMove, x);
                     function stopMove() {
                         /**
                          * Stop auto scrolling because stop has been pressed
                          */
                         clearTimeout(moveTimeout);
-                        document.getElementById('scroll-stop').removeEventListener('click', stopMove);
+                        scrollStop.removeEventListener('click', stopMove);
                         resetInterface();
                     };
                 } else {
@@ -102,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
             lyricContainer.style.position = 'fixed';
             lyricContainer.style.zIndex = 0;
             lyricContainer.style.top = 0;
+            scrollStop.style.display = 'flex';
+            scrollStart.style.display = 'none';
 
             setTimeout(moveBox, 3000);
         

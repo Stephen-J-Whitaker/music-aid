@@ -295,10 +295,9 @@ button:hover {
     background-color: var(--button-container-colour);
 }
 
-/* Auto scroll song view styling */
-/* .song-scroll {
-    height: 100vh;
-} */
+.scroll-stop {
+    display: none;
+}
 
 /* .title-status {
     font-size: large;
