@@ -321,3 +321,13 @@ button:hover {
 form {
     margin: 10px;
 }
+
+#div_id_remember {
+    display: flex;
+    justify-content: center;
+    margin: 11px;
+}
+
+.checkboxinput {
+    margin-right: 5px;
+}
