@@ -21,10 +21,10 @@
             <a id="back" href="{% url 'home' %}" class="anchor-btn">Songbook</a>
             <a id="edit" href="{% url 'song_edit' pk %}" class="anchor-btn">Edit</a>
         {% endif %}
-        <button id="scroll-start" class="button">Autoscroll</button>
+        <button id="scroll-start" class="button scroll-none">Autoscroll</button>
         <button id="scroll-stop" class="button scroll-stop">Stop</button>
-        <span>Scroll Speed</span>
-        <span id="scroll-speed">{{song_detail.scroll_speed}}</span>
+        <span id="scroll-speed-label" class="scroll-none">Scroll Speed</span>
+        <span id="scroll-speed" class="scroll-none">{{song_detail.scroll_speed}}</span>
     </div>
 {% endblock content %}
 

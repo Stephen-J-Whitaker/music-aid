@@ -313,3 +313,7 @@ button:hover {
     color: red;
     text-align: center;
 }
+
+.scroll-none {
+    display: none;
+}

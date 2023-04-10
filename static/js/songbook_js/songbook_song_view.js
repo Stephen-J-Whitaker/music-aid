@@ -7,6 +7,12 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
 
+    if (document.getElementById('scroll-speed').innerText !== '0' ) {
+        document.getElementById('scroll-start').style.display = 'inline';
+        document.getElementById('scroll-speed-label').style.display = 'inline';
+        document.getElementById('scroll-speed').style.display = 'inline';
+    }
+
     if (document.getElementById('lyric-container')) {
         console.log('there is a song container')
         document.getElementById('scroll-start').addEventListener('click', move);
