@@ -30,6 +30,8 @@ body {
     width: 100%;
     color: var(--dark-link-text-colour);
     font-family: var(--primary-font-family);
+    word-break: break-all;
+    box-sizing: border-box;
 }
 
 body {
@@ -93,26 +95,27 @@ main {
 
 /* Make room for button bar when buttons present */
 .with_buttons {
-    height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height));
+    /* height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height)); */
 }
 
 .main-inner-container {
-    margin: 11px;
+    /* margin: 11px; */
     display: flex;
     flex-direction: column;
+    height: calc(100% - var(--button-container-height));
     width: 100%;
     text-align: center;
 }
 
 /* Content container styles */
 .content-container {
-    flex: 1 0 auto;
+    /* flex: 1 0 auto; */
     width: 100%;
-    max-height: calc(100% - var(--footer-height));
+    /* height: calc(100% - var(--button-container-height) - var(--footer-height)); */
     background-color: var(--interface-light-blue);
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     text-align: center;
 }
 
@@ -160,7 +163,7 @@ footer {
 h2,
 h3 {
     background-color: var(--headers-background-colour);
-    padding: 5px;
+    /* padding: 5px; */
     margin: 0;
 }
 
@@ -252,7 +255,12 @@ button:hover {
 }
 
 .song-lyrics {
-    max-height: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    /* max-height: 100%; need back*/
+    width: 100%;
+    background-color: var(--interface-light-blue);
 }
 
 .song-lyrics p {

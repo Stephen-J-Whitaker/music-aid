@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
     {{ title }}
@@ -8,19 +9,25 @@
     <h2>{{ song_detail.title }}</h2>
     <h3>{{ song_detail.artist }}</h3>
     <div id="content-container" class="content-container song-scroll with_buttons">
-        <div class="song-lyrics">
+        <div  id="lyric-container" class="song-lyrics">
             {{ song_detail.lyrics | safe }}
         </div>
     </div>
-    <div class="button-container scroll-controls">
+    <div id="button-container" class="button-container scroll-controls">
         {% if setlist_pk != None %}
-            <a href="{% url 'setlist_view' setlist_pk %}" class="anchor-btn">Setlist</a>
-            <a href="{% url 'setlist_song_edit' pk setlist_pk %}" class="anchor-btn">Edit</a>
+            <a id="back" href="{% url 'setlist_view' setlist_pk %}" class="anchor-btn">Setlist</a>
+            <a id="edit" href="{% url 'setlist_song_edit' pk setlist_pk %}" class="anchor-btn">Edit</a>
         {% else %}
-            <a href="{% url 'home' %}" class="anchor-btn">Songbook</a>
-            <a href="{% url 'song_edit' pk %}" class="anchor-btn">Edit</a>
+            <a id="back" href="{% url 'home' %}" class="anchor-btn">Songbook</a>
+            <a id="edit" href="{% url 'song_edit' pk %}" class="anchor-btn">Edit</a>
         {% endif %}
-        <button id="scroll-start" class="button">Play</button>
+        <button id="scroll-start" class="button">Autoscroll</button>
         <button id="scroll-stop" class="button">Stop</button>
+        <span>Scroll Speed</span>
+        <span>1</span>
     </div>
 {% endblock content %}
+
+{% block javascript %}
+    <script src="{% static 'js/songbook_js/songbook_song_view.js' %}"></script>
+{% endblock javascript%}
