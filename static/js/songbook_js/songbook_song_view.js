@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let viewHeight = parseInt(getComputedStyle(contentContainer).height, 10);
             let moveDistance = lyricHeight - viewHeight + buttonContainerHeight;
             const speedLookup = {
-                '1': 20,
-                '2': 40,
+                '1': 100,
+                '2': 80,
                 '3': 60,
-                '4': 80,
-                '5': 100
+                '4': 40,
+                '5': 20
             }
             let x = speedLookup[scrollSpeed];
             console.log('move to me ', moveDistance);
