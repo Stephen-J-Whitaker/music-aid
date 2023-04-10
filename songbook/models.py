@@ -7,11 +7,19 @@ class Song(models.Model):
     """
     Model class to hold song and lyric details
     """
+    SCROLL_SPEED = [
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5')
+    ]
     title = models.CharField(max_length=150)
     artist = models.CharField(max_length=150, blank=True)
     lyrics = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE,
                              related_name="user_songs")
+    scroll_speed = models.IntegerField(choices=SCROLL_SPEED, default=1)
 
     class Meta:
         """
