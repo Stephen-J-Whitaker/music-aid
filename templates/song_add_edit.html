@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="with_buttons">
+    <div class="content-container with_buttons">
         <form method="post">
             {% csrf_token %}
             {{ form | crispy }}

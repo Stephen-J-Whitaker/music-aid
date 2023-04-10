@@ -5,16 +5,17 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="with_buttons">
         {% if user.is_authenticated %}
             <h2>Songs</h2>
-            <ul>
-                {% for song in object_list %}
-                    <li>
-                        <a href="{% url 'song_view' song.pk %}">{{ song.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <div class="content-container with_buttons">
+                <ul>
+                    {% for song in object_list %}
+                        <li>
+                            <a href="{% url 'song_view' song.pk %}">{{ song.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
             <div class="button-container scroll-controls">
                 <a href="{% url 'song_add' %}" class="anchor-btn">Add Song</a>
             </div>
@@ -24,5 +25,4 @@
                 <a href="{% url 'account_signup' %}" class="home-register-link standard-link">Register</a>
             </div>
         {% endif %}
-    </div>
 {% endblock content %}
