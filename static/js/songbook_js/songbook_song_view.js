@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let contentContainerPosition = getComputedStyle(contentContainer).position;
             let contentContainerTop = getComputedStyle(contentContainer).top;
             let contentContainerZIndex = getComputedStyle(contentContainer).zIndex;
-            let contentContainerHeight = getComputedStyle(contentContainer).height;
+            let contentContainerWidth = getComputedStyle(contentContainer).Width;
             let viewHeight = parseInt(getComputedStyle(contentContainer).height, 10);
             let moveDistance = lyricHeight - viewHeight + buttonContainerHeight;
             const speedLookup = {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 contentContainer.style.position = contentContainerPosition;
                 contentContainer.style.top = contentContainerTop;
                 contentContainer.style.zIndex = contentContainerZIndex;
-                // contentContainer.style.height = contentContainerHeight;
+                contentContainer.style.width = contentContainerWidth;
                 buttonContainer.style.zIndex = 0;
                 buttonContainer.style.position = 'absolute';
                 lyricContainer.style.position = 'static';
@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
             contentContainer.style.top = 0;
             contentContainer.style.zIndex = 1;
             contentContainer.style.height = '100%';
+            contentContainer.style.width = '100%';
             backButton.style.display = 'none';
             editButton.style.display = 'none';
             buttonContainer.style.zIndex = 2;
