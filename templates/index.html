@@ -7,7 +7,7 @@
 {% block content %}
         {% if user.is_authenticated %}
             <h2>Songs</h2>
-            <div class="content-container with_buttons">
+            <div class="content-container">
                 <ul>
                     {% for song in object_list %}
                         <li>

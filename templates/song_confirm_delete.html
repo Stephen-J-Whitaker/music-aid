@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="with_buttons">
+    <div>
         <form method="post">
             {% csrf_token %}
             <p>Are you sure you want to delete "{{ object }}"?</p>
