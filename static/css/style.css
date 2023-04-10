@@ -30,7 +30,7 @@ body {
     width: 100%;
     color: var(--dark-link-text-colour);
     font-family: var(--primary-font-family);
-    word-break: break-all;
+    word-break: break-word;
     box-sizing: border-box;
 }
 
@@ -38,6 +38,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
+    background-color: rgb(226, 243, 255);
 }
 
 /* Header styling */
@@ -91,11 +92,6 @@ main {
     background-color: var(--interface-light-blue);
     width: 100%;
     justify-content: center;
-}
-
-/* Make room for button bar when buttons present */
-.with_buttons {
-    /* height: calc(100% - var(--header-height) - var(--button-container-height) - var(--footer-height)); */
 }
 
 .main-inner-container {
@@ -299,13 +295,6 @@ button:hover {
     display: none;
 }
 
-/* .title-status {
-    font-size: large;
-    color: red;
-    text-align: center;
-    display: none;
-} */
-
 .setlist-name-status,
 .title-status::after {
     content: 'Sorry, this title is taken';
@@ -330,4 +319,43 @@ form {
 
 .checkboxinput {
     margin-right: 5px;
+}
+
+/* Add media query for medium width screens */
+@media screen and (min-width: 768px) {
+
+    .navbar-nav {
+        position: initial;
+    }
+
+}
+
+/* Add media query for wide screens */
+@media screen and (min-width: 1111px) {
+
+    header,
+    main,
+    footer {
+        width: 1112px;
+        /* right: calc((100% / 2) - (50% / 2)); */
+        right: calc(50% - (1112px / 2));
+    }
+
+    .main-inner-container {
+        align-items: center;
+    }
+
+    .content-container {
+        width: 70%;
+    }
+
+    .navbar-nav {
+        width: initial;
+    }
+
+    h2,
+    h3 {
+        width: 100%;
+    }
+
 }
