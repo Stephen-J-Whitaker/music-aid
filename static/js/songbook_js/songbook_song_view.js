@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
              * Autoscroll of song lyrics function
              */
             let i = 0;
-            let x = 10;
             const lyricContainer = document.getElementById('lyric-container');
             const buttonContainer = document.getElementById('button-container');
             const contentContainer = document.getElementById('content-container');
@@ -24,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const editButton = document.getElementById('edit');
             const scrollStart = document.getElementById('scroll-start');
             const scrollStop = document.getElementById('scroll-stop');
+            const scrollSpeed = document.getElementById('scroll-speed').innerText;
             let lyricBottom = parseInt(getComputedStyle(lyricContainer).bottom, 10);
             let lyricHeight = parseInt(getComputedStyle(lyricContainer).height, 10);
             let buttonContainerHeight = parseInt(getComputedStyle(buttonContainer).height, 10);
@@ -32,7 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
             let contentContainerZIndex = getComputedStyle(contentContainer).zIndex;
             let contentContainerHeight = getComputedStyle(contentContainer).height;
             let viewHeight = parseInt(getComputedStyle(contentContainer).height, 10);
-            let moveDistance = lyricHeight - viewHeight + buttonContainerHeight; 
+            let moveDistance = lyricHeight - viewHeight + buttonContainerHeight;
+            const speedLookup = {
+                '1': 20,
+                '2': 40,
+                '3': 60,
+                '4': 80,
+                '5': 100
+            }
+            let x = speedLookup[scrollSpeed];
             console.log('move to me ', moveDistance);
             console.log('lyric height ', lyricHeight);
             console.log('view height ', viewHeight);
@@ -56,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 contentContainer.style.position = contentContainerPosition;
                 contentContainer.style.top = contentContainerTop;
                 contentContainer.style.zIndex = contentContainerZIndex;
-                contentContainer.style.height = contentContainerHeight;
+                // contentContainer.style.height = contentContainerHeight;
                 buttonContainer.style.zIndex = 0;
                 buttonContainer.style.position = 'absolute';
                 lyricContainer.style.position = 'static';
@@ -90,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         resetInterface();
                     };
                 } else {
-                    setTimeout(resetInterface, 5000);
+                    setTimeout(resetInterface, 3000);
                 };
         
             };
