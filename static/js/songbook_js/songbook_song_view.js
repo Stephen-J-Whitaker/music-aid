@@ -47,6 +47,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 moveBox();
             };
 
+            function resetInterface() {
+                /**
+                 * Set the interface back to its default values
+                 */
+                contentContainer.style.position = contentContainerPosition;
+                contentContainer.style.top = contentContainerTop;
+                contentContainer.style.zIndex = contentContainerZIndex;
+                contentContainer.style.height = contentContainerHeight;
+                buttonContainer.style.zIndex = 0;
+                buttonContainer.style.position = 'absolute';
+                lyricContainer.style.position = 'static';
+                lyricContainer.style.zIndex = 0;
+                lyricContainer.style.top = '';
+                backButton.style.display = 'flex';
+                editButton.style.display = 'flex';
+            }
+
             function moveBox() {
                 /**
                  * Call actionBoxMove at appropriate time interval
@@ -61,21 +78,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('scroll-stop').addEventListener('click', stopMove);
                     const moveTimeout = setTimeout(actionBoxMove, x);
                     function stopMove() {
+                        /**
+                         * Stop auto scrolling because stop has been pressed
+                         */
                         clearTimeout(moveTimeout);
                         document.getElementById('scroll-stop').removeEventListener('click', stopMove);
-
-                        contentContainer.style.position = contentContainerPosition;
-                        contentContainer.style.top = contentContainerTop;
-                        contentContainer.style.zIndex = contentContainerZIndex;
-                        contentContainer.style.height = contentContainerHeight;
-                        buttonContainer.style.zIndex = 0;
-                        buttonContainer.style.position = 'absolute';
-                        lyricContainer.style.position = 'static';
-                        lyricContainer.style.zIndex = 0;
-                        lyricContainer.style.top = '';
-                        backButton.style.display = 'flex';
-                        editButton.style.display = 'flex';
+                        resetInterface();
                     };
+                } else {
+                    setTimeout(resetInterface, 5000);
                 };
         
             };
@@ -92,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lyricContainer.style.zIndex = 0;
             lyricContainer.style.top = 0;
 
-            setTimeout(moveBox, 1500);
+            setTimeout(moveBox, 3000);
         
         }
 
