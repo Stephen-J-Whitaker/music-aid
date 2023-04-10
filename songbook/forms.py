@@ -9,7 +9,7 @@ class SongAddForm(forms.ModelForm):
     """
     class Meta:
         model = Song
-        fields = ('title', 'artist', 'lyrics',)
+        fields = ('title', 'artist', 'lyrics', 'scroll_speed')
         widgets = {
             'lyrics': SummernoteWidget(),
         }
