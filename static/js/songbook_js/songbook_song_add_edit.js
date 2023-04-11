@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 songTitle = $('#id_title').val();
                 trimmedTitle = songTitle.trimStart();
                 $('#id_title').val(trimmedTitle);
-                songTitle = trimmedTitle;
+                songTitle = trimmedTitle.trimEnd();
                 let titleLabel = document.querySelector('label[for="id_title"]')
                 $.ajax(
                 {
