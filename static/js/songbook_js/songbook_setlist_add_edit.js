@@ -12,12 +12,21 @@ document.addEventListener('DOMContentLoaded', function() {
         /**
          * Use ajax to check if input entry is unique for the user
          */
-        let originalSetlistName = setlistName = $('#id_setlist_name').val()
+        let originalSetlistName = $('#id_setlist_name').val()
+        console.log('original setlist name', originalSetlistName)
+    
+        let setlistName = $('#id_setlist_name').val();
+        let trimmedSetlistName = setlistName.trim();
+        $('#id_setlist_name').val(trimmedSetlistName);
+        console.log('trimmed setlist name', $('#id_setlist_name').val());
 
         function validateUnique() {
             if ($('#id_setlist_name').val() != '') {
                 console.log(" inNER function ")
-                let setlistName = $('#id_setlist_name').val()
+                setlistName = $('#id_setlist_name').val()
+                trimmedSetlistName = setlistName.trimStart();
+                $('#id_setlist_name').val(trimmedSetlistName);
+                setlistName = trimmedSetlistName.trimEnd();
                 let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
                 $.ajax(
                 {
@@ -46,9 +55,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
             }
         }
+
+        /**
+         * Switch off submit event listener and submit form
+         */
+        function submitForm() {
+            if ($('#setlist-submit-btn').is(':visible')) {
+                $('form').off('submit');
+                $('form').submit();
+            };
+        }
         
+        validateUnique();
         $('#id_setlist_name').keyup('input', validateUnique);
         $('#id_setlist_name').change(validateUnique);
+    
+        /**
+         * Trim any trailing white spaces before revalidation
+         * and submit form only if save button has not been removed by
+         * validation
+         */
+        $('form').submit(function(thisEvent) {
+
+            console.log('in submit js')
+            thisEvent.preventDefault();
+            setlistName = $('#id_setlist_name').val();
+            trimmedSetlistName = setlistName.trimEnd();
+            $('#id_setlist_name').val(trimmedSetlistName);
+            validateUnique();
+
+            setTimeout(submitForm, 1000);
+        })
+
     }
 
 });

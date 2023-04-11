@@ -8,14 +8,6 @@
  */
 document.addEventListener('DOMContentLoaded', function() {
 
-    let originalTitle = $('#id_title').val()
-    console.log('original title', originalTitle)
-
-    let songTitle = $('#id_title').val();
-    let trimmedTitle = songTitle.trim();
-    $('#id_title').val(trimmedTitle);
-    console.log('trimmed title', $('#id_title').val());
-
     /**
      * Function to intercept paste events into summernote 
      * and remove all formatting and html.
@@ -37,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
         /**
          * Use ajax to check if input entry is unique for the user
          */
+
+        let originalTitle = $('#id_title').val()
+        console.log('original title', originalTitle)
+    
+        let songTitle = $('#id_title').val();
+        let trimmedTitle = songTitle.trim();
+        $('#id_title').val(trimmedTitle);
+        console.log('trimmed title', $('#id_title').val());
 
         function validateUnique() {
             console.log('in validate unique')
