@@ -325,13 +325,14 @@ form {
 @media screen and (min-width: 768px) {
 
     .navbar-nav {
+        width: fit-content;
         position: initial;
     }
 
 }
 
 /* Add media query for wide screens */
-@media screen and (min-width: 1111px) {
+@media screen and (min-width: 1112px) {
 
     header,
     main,
