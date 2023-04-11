@@ -30,11 +30,21 @@ document.addEventListener('DOMContentLoaded', function() {
          * Use ajax to check if input entry is unique for the user
          */
 
-        let originalTitle = songTitle = $('#id_title').val()
+        let originalTitle = $('#id_title').val()
+        console.log('original title', originalTitle)
+
+        let songTitle = $('#id_title').val();
+        trimmedTitle = songTitle.trim();
+        $('#id_title').val(trimmedTitle);
+        console.log('trimmed title', $('#id_title').val());
 
         function validateUnique() {
+            console.log('in validate unique')
             if ($('#id_title').val() != '') {
-                let songTitle = $('#id_title').val()
+                let songTitle = $('#id_title').val();
+                trimmedTitle = songTitle.trim();
+                $('#id_title').val(trimmedTitle);
+                songTitle = trimmedTitle;
                 let titleLabel = document.querySelector('label[for="id_title"]')
                 $.ajax(
                 {
@@ -44,26 +54,34 @@ document.addEventListener('DOMContentLoaded', function() {
                         song_title: songTitle
                     },
                     success: function(data) {
+                        console.log('data', data);
                         if (data === 'in_use') {
                             if ($('#id_title').val() === originalTitle) {
                                 $('#id_title').css('background-color', 'white');
                                 titleLabel.classList.remove('title-status');
                                 $('#song-submit-btn').show();
+                                console.log('in validate unique oriinal title')
+                                return true;
                             } else {
                                 $('#id_title').css('background-color', 'rgb(255, 137, 137)');
                                 titleLabel.classList.add('title-status');
                                 $('#song-submit-btn').hide();
+                                console.log('in validate unique in use')
+                                return false;
                             }
                         } else {
                             $('#id_title').css('background-color', 'white');
                             titleLabel.classList.remove('title-status');
                             $('#song-submit-btn').show();
+                            console.log('in validate unique available')
+                            return true;
                         }
                     }
                 })
             }
         }
         
+        validateUnique();
         $('#id_title').keyup('input', validateUnique);
         $('#id_title').change(validateUnique);
     }

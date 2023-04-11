@@ -298,8 +298,10 @@ button:hover {
 .setlist-name-status,
 .title-status::after {
     content: 'Sorry, this title is taken';
-    font-size: large;
-    color: red;
+    font-family: var(--primary-font-family);
+    font-weight: bolder;
+    font-size: 0.875em;
+    color: #dc3545;
     text-align: center;
 }
 
