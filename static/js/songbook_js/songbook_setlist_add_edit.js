@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
             trimmedSetlistName = trimmedSetlistName.replace(/  +/g, ' ');
             $('#id_setlist_name').val(trimmedSetlistName);
-            validateUnique();
+            setTimeout(validateUnique, 100);
 
-            setTimeout(submitForm, 1000);
+            setTimeout(submitForm, 500);
         })
 
     }

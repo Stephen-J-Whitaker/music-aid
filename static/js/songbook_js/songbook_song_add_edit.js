@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
             trimmedTitle = trimmedTitle.replace(/  +/g, ' ');
             console.log('trim middle ', trimmedTitle);
             $('#id_title').val(trimmedTitle);
-            validateUnique();
+            setTimeout(validateUnique, 100);
 
-            setTimeout(submitForm, 1000);
+            setTimeout(submitForm, 500);
         })
 
     }
