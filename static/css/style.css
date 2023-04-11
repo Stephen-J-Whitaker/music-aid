@@ -323,6 +323,10 @@ form {
     margin-right: 5px;
 }
 
+.text-404 {
+    font-size: xx-large;
+}
+
 /* Add media query for medium width screens */
 @media screen and (min-width: 768px) {
 
