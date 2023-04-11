@@ -327,12 +327,24 @@ form {
     font-size: xx-large;
 }
 
+.messages {
+    position: absolute;
+    z-index: 3;
+    transition: ease-in;
+    width: 100vw;
+    /* left: calc(100vw / 2) */
+}
+
 /* Add media query for medium width screens */
 @media screen and (min-width: 768px) {
 
     .navbar-nav {
         width: fit-content;
         position: initial;
+    }
+
+    .messages {
+        width: 50%
     }
 
 }
