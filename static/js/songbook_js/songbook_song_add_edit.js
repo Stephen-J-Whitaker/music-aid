@@ -42,7 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('in validate unique')
             if ($('#id_title').val() != '') {
                 songTitle = $('#id_title').val();
-                trimmedTitle = songTitle.trimStart();
+                // Replace regex for multi white space removal sourced at:
+                // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
+                trimmedTitle = songTitle.trimStart().replace(/  +/g, ' ');
                 $('#id_title').val(trimmedTitle);
                 songTitle = trimmedTitle.trimEnd();
                 let titleLabel = document.querySelector('label[for="id_title"]')
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     success: function(data) {
                         console.log('data', data);
                         if (data === 'in_use') {
-                            if ($('#id_title').val() === originalTitle) {
+                            if ($('#id_title').val().trimEnd() === originalTitle) {
                                 $('#id_title').css('background-color', 'white');
                                 titleLabel.classList.remove('title-status');
                                 $('#song-submit-btn').show();
@@ -103,6 +105,11 @@ document.addEventListener('DOMContentLoaded', function() {
             thisEvent.preventDefault();
             songTitle = $('#id_title').val();
             trimmedTitle = songTitle.trimEnd();
+            console.log('trim end ', trimmedTitle);
+            // Replace regex for multi white space removal sourced at:
+            // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
+            trimmedTitle = trimmedTitle.replace(/  +/g, ' ');
+            console.log('trim middle ', trimmedTitle);
             $('#id_title').val(trimmedTitle);
             validateUnique();
 

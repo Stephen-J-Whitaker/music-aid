@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if ($('#id_setlist_name').val() != '') {
                 console.log(" inNER function ")
                 setlistName = $('#id_setlist_name').val()
-                trimmedSetlistName = setlistName.trimStart();
+                // Replace regex for multi white space removal sourced at:
+                // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
+                trimmedSetlistName = setlistName.trimStart().replace(/  +/g, ' ');
                 $('#id_setlist_name').val(trimmedSetlistName);
                 setlistName = trimmedSetlistName.trimEnd();
                 let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
@@ -37,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     },
                     success: function(data) {
                         if (data === 'in_use') {
-                            if ($('#id_setlist_name').val() === originalSetlistName) {
+                            if ($('#id_setlist_name').val().trimEnd() === originalSetlistName) {
                                 $('#id_setlist_name').css('background-color', 'white');
                                 setlistNameLabel.classList.remove('setlist-name-status');
                                 $('#setlist-submit-btn').show();
@@ -81,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
             thisEvent.preventDefault();
             setlistName = $('#id_setlist_name').val();
             trimmedSetlistName = setlistName.trimEnd();
+            // Replace regex for multi white space removal sourced at:
+            // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
+            trimmedSetlistName = trimmedSetlistName.replace(/  +/g, ' ');
             $('#id_setlist_name').val(trimmedSetlistName);
             validateUnique();
 
