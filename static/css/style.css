@@ -440,6 +440,11 @@ ul {
     font-size: 3rem;
 }
 
+.anchor-style {
+    text-decoration: underline;
+    font-style: italic;
+}
+
 /* Add media query for medium width screens */
 @media screen and (min-width: 768px) {
 
