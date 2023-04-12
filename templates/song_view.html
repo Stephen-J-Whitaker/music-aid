@@ -6,8 +6,12 @@
 {% endblock title %}
 
 {% block content %}
-    <h2>{{ song_detail.title }}</h2>
-    <h3 class="artist">{{ song_detail.artist }}</h3>
+    {% if song_detail.artist != '' %}
+        <h2>{{ song_detail.title }}</h2>
+        <h3 class="song-detail-container">{{ song_detail.artist }}</h3>
+    {% else %}
+        <h2 class="song-detail-container">{{ song_detail.title }}</h2>
+    {% endif %}
     <div id="content-container" class="content-container song-scroll">
         <div  id="lyric-container" class="song-lyrics">
             {{ song_detail.lyrics | safe }}
