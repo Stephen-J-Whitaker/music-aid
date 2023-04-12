@@ -375,8 +375,13 @@ form {
     margin-right: 5px;
 }
 
-.text-404 {
+.text-404,
+.messge-404 {
     font-size: xx-large;
+}
+
+.main-text-404 {
+    font-size: 7rem;
 }
 
 .messages {
