@@ -12,7 +12,8 @@
     --light-link-text-colour: rgb(255, 255, 255);
     --button-container-height: 50px;
     --button-container-colour: rgb(170, 205, 231);
-    --button-colour: rgb(117, 163, 199);
+    --button-colour: rgb(137, 170, 196);
+    --button-hover-colour: rgb(141, 177, 207);
     --headers-background-colour: rgb(170, 205, 231);
     --header-height: 90px;
     --footer-height: 45px;
@@ -81,6 +82,16 @@ nav {
 .navbar-toggler {
     background-color: var(--button-colour);
     margin-right: 10px;
+}
+
+.navbar-toggler:hover {
+    background-color: var(--button-hover-colour);
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    /* background-color: var(--button-hover-colour); */
+    box-shadow: none;
 }
 
 /* Main styling */
@@ -209,9 +220,9 @@ button {
 }
 
 .btn:hover,
-.anchor-btn:hover,
-button:hover {
-    background-color: var(--button-colour);
+/* button:hover, */
+.anchor-btn:hover {
+    background-color: var(--button-hover-colour);
     box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
 }
 
@@ -231,6 +242,11 @@ button:hover {
     border-radius: 25px;
     background-color: var(--logo-background);
     border: var(--standard-border-width) var(--standard-border-style) var(--standard-border-color);
+}
+
+.logo-main:hover,
+.logo:hover {
+    background-color: rgb(140, 172, 197);
 }
 
 .logo {
