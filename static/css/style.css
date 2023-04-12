@@ -31,7 +31,7 @@ body {
     width: 100%;
     color: var(--dark-link-text-colour);
     font-family: var(--primary-font-family);
-    word-break: break-word;
+    overflow-wrap: anywhere;
     box-sizing: border-box;
 }
 
@@ -189,7 +189,7 @@ h3 {
 
 .song-header,
 .setlist-header,
-.artist {
+.song-detail-container {
     border-bottom: 1px solid rgba(0, 0 ,0 , 0.15);
 }
 
