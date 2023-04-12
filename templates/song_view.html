@@ -7,7 +7,7 @@
 
 {% block content %}
     <h2>{{ song_detail.title }}</h2>
-    <h3>{{ song_detail.artist }}</h3>
+    <h3 class="artist">{{ song_detail.artist }}</h3>
     <div id="content-container" class="content-container song-scroll">
         <div  id="lyric-container" class="song-lyrics">
             {{ song_detail.lyrics | safe }}
