@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let titleLabel = document.querySelector('label[for="id_title"]')
 
-        titleLabel.innerHTML += '<div>Note: leading, trailing and multiple spaces in a row are removed</div>';
+        titleLabel.innerHTML += '<div class="note">Note: leading, trailing and multiple spaces in a row are removed</div>';
 
         function validateUnique() {
             console.log('in validate unique')

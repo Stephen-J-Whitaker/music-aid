@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
 
-        setlistNameLabel.innerHTML += '<div>Note: leading, trailing and multiple spaces in a row are removed</div>';
+        setlistNameLabel.innerHTML += '<div class="note">Note: leading, trailing and multiple spaces in a row are removed</div>';
 
         function validateUnique() {
             if ($('#id_setlist_name').val() != '') {
