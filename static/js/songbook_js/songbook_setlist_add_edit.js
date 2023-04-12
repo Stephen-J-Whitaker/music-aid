@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#id_setlist_name').val(trimmedSetlistName);
         console.log('trimmed setlist name', $('#id_setlist_name').val());
 
+        let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
+
+        setlistNameLabel.innerHTML += '<div>Note: leading, trailing and multiple spaces in a row are removed</div>';
+
         function validateUnique() {
             if ($('#id_setlist_name').val() != '') {
                 console.log(" inNER function ")
@@ -27,9 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Replace regex for multi white space removal sourced at:
                 // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
                 trimmedSetlistName = setlistName.trimStart().replace(/  +/g, ' ');
-                $('#id_setlist_name').val(trimmedSetlistName);
+                // $('#id_setlist_name').val(trimmedSetlistName);
                 setlistName = trimmedSetlistName.trimEnd();
-                let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
                 $.ajax(
                 {
                     type:'GET',
@@ -89,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             $('#id_setlist_name').val(trimmedSetlistName);
             setTimeout(validateUnique, 100);
 
-            setTimeout(submitForm, 500);
+            setTimeout(submitForm, 300);
         })
 
     }
