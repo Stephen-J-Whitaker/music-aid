@@ -6,12 +6,12 @@
 {% endblock title %}
 
 {% block content %}
-    <h2>Setlists</h2>
+    <h2 class="setlist-header">Setlists</h2>
     <div class="content-container">
-        <ul>
+        <ul class="setlist-list-ul">
             {% for setlist in object_list %}
-                <li>
-                    <a href="{% url 'setlist_view' setlist.pk %}">{{ setlist.setlist_name }}</a>
+                <li class="setlist-list-li">
+                    <a href="{% url 'setlist_view' setlist.pk %}" class="setlist-anchor">{{ setlist.setlist_name }}</a>
                 </li>
             {% endfor %}
         </ul>
