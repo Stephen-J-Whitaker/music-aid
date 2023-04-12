@@ -9,7 +9,7 @@
     <div>
         <form method="post">
             {% csrf_token %}
-            <p>Are you sure you want to delete "{{ object }}"?</p>
+            <p class="confirm-delete"><br><br>Are you sure you want to delete "{{ object }}"?</p>
             {{ form }}
             <div class="button-container">
                 <button type="submit" class="button">Delete Setlist</button>

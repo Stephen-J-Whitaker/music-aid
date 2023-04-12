@@ -435,6 +435,11 @@ ul {
     box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
 }
 
+.confirm-sign-out,
+.confirm-delete {
+    font-size: 3rem;
+}
+
 /* Add media query for medium width screens */
 @media screen and (min-width: 768px) {
 
