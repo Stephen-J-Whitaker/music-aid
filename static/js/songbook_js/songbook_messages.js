@@ -11,10 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.getElementById('msg')) {
         setTimeout(function () {
             let messages = document.getElementById('msg');
+            /* globals bootstrap */
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }, 3000);
-    };
+    }
     // End of set timeout for messages code provided by Code Institute
 
 });
