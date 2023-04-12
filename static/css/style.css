@@ -445,6 +445,10 @@ ul {
     font-style: italic;
 }
 
+.sign-up-button {
+    margin-top: 11px;
+}
+
 /* Add media query for medium width screens */
 @media screen and (min-width: 768px) {
 
