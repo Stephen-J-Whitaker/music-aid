@@ -7,28 +7,6 @@
  * Add functions for page manipulation on page load completion
  */
 document.addEventListener('DOMContentLoaded', function() {
-
-    /**
-     * Function to intercept paste events into summernote 
-     * and remove all formatting and html.
-     * Plain text is returned to the summernote window.
-     * Code inspired by the following post:
-     * https://stackoverflow.com/questions/71334716
-     */
-    window[0].addEventListener('paste', function(event) {
-        let inputText = (event.clipboardData || window.clipboardData).getData('text/plain');
-        event.preventDefault();
-        let summernoteIframe = document.getElementById('id_lyrics_iframe');
-        let innerDoc = summernoteIframe.contentDocument || summernoteIframe.contentWindow.document;
-        let frameContent = innerDoc.getElementsByClassName('note-editable');
-        let frameHTML =  frameContent[0].innerHTML;
-        let frameText = frameContent[0].innerText;
-        frameHTML += inputText;
-        frameText += inputText;
-        frameContent[0].innerHTML = frameHTML;
-        frameContent[0].innerText = frameText;
-    });
-
     /**
      * Use ajax to check if input entry is unique for the user
      */
@@ -112,5 +90,26 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(validateUnique, 100);
 
         setTimeout(submitForm, 300);
+    });
+
+    /**
+     * Function to intercept paste events into summernote 
+     * and remove all formatting and html.
+     * Plain text is returned to the summernote window.
+     * Code inspired by the following post:
+     * https://stackoverflow.com/questions/71334716
+     */
+    window[0].addEventListener('paste', function(event) {
+        let inputText = (event.clipboardData || window.clipboardData).getData('text/plain');
+        event.preventDefault();
+        let summernoteIframe = document.getElementById('id_lyrics_iframe');
+        let innerDoc = summernoteIframe.contentDocument || summernoteIframe.contentWindow.document;
+        let frameContent = innerDoc.getElementsByClassName('note-editable');
+        let frameHTML =  frameContent[0].innerHTML;
+        let frameText = frameContent[0].innerText;
+        frameHTML += inputText;
+        frameText += inputText;
+        frameContent[0].innerHTML = frameHTML;
+        frameContent[0].innerText = frameText;
     });
 });
