@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         window[0].addEventListener('paste', function(event) {
             let inputText = (event.clipboardData || window.clipboardData).getData('text/plain');
             event.preventDefault();
-            let summernoteIframe = document.getElementById('id_lyrics_iframe')
+            let summernoteIframe = document.getElementById('id_lyrics_iframe');
             let innerDoc = summernoteIframe.contentDocument || summernoteIframe.contentWindow.document;
-            let frameContent = innerDoc.getElementsByClassName('note-editable')
-            frameContent[0].innerHTML = inputText
-            frameContent[0].innerText = inputText
+            let frameContent = innerDoc.getElementsByClassName('note-editable');
+            frameContent[0].innerHTML = inputText;
+            frameContent[0].innerText = inputText;
         });
-    };
+    }
 
 });
