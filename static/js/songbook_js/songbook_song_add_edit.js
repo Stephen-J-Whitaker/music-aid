@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
      * Function to intercept paste events into summernote 
      * and remove all formatting and html.
      * Plain text is returned to the summernote window.
+     * Code inspired by the following post:
+     * https://stackoverflow.com/questions/71334716
      */
     if (window[0]) {
         window[0].addEventListener('paste', function(event) {
@@ -19,9 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault();
             let summernoteIframe = document.getElementById('id_lyrics_iframe')
             let innerDoc = summernoteIframe.contentDocument || summernoteIframe.contentWindow.document;
-            let frameContent = innerDoc.getElementsByClassName('note-editable')
-            frameContent[0].innerHTML = inputText
-            frameContent[0].innerText = inputText
+            let frameContent = innerDoc.getElementsByClassName('note-editable');
+            let frameHTML =  frameContent[0].innerHTML;
+            let frameText = frameContent[0].innerText;
+            frameHTML += inputText;
+            frameText += inputText;
+            frameContent[0].innerHTML = frameHTML;
+            frameContent[0].innerText = frameText;
         });
     };
 
