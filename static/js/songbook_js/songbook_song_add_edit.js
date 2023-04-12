@@ -38,6 +38,10 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#id_title').val(trimmedTitle);
         console.log('trimmed title', $('#id_title').val());
 
+        let titleLabel = document.querySelector('label[for="id_title"]')
+
+        titleLabel.innerHTML += '<div>Note: leading, trailing and multiple spaces in a row are removed</div>';
+
         function validateUnique() {
             console.log('in validate unique')
             if ($('#id_title').val() != '') {
@@ -45,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Replace regex for multi white space removal sourced at:
                 // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
                 trimmedTitle = songTitle.trimStart().replace(/  +/g, ' ');
-                $('#id_title').val(trimmedTitle);
+                // $('#id_title').val(trimmedTitle);
                 songTitle = trimmedTitle.trimEnd();
-                let titleLabel = document.querySelector('label[for="id_title"]')
+                
                 $.ajax(
                 {
                     type:'GET',
@@ -58,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     success: function(data) {
                         console.log('data', data);
                         if (data === 'in_use') {
-                            if ($('#id_title').val().trimEnd() === originalTitle) {
+                            if ($('#id_title').val().trimStart().trimEnd().replace(/  +/g, ' ') === originalTitle) {
                                 $('#id_title').css('background-color', 'white');
                                 titleLabel.classList.remove('title-status');
                                 $('#song-submit-btn').show();
@@ -113,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
             $('#id_title').val(trimmedTitle);
             setTimeout(validateUnique, 100);
 
-            setTimeout(submitForm, 500);
+            setTimeout(submitForm, 300);
         })
 
     }
