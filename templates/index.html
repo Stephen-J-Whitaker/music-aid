@@ -8,10 +8,10 @@
         {% if user.is_authenticated %}
             <h2>Songs</h2>
             <div class="content-container">
-                <ul>
+                <ul class="song-list-ul">
                     {% for song in object_list %}
-                        <li>
-                            <a href="{% url 'song_view' song.pk %}">{{ song.title }}</a>
+                        <li class="song-list-li">
+                            <a href="{% url 'song_view' song.pk %}" class="song-anchor">{{ song.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>

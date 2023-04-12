@@ -156,11 +156,17 @@ footer {
     background-color: var(--interface-medium-blue);
 }
 
+h2 {
+    font-size: 1.5em;
+}
+
 h2,
 h3 {
+    text-align: center;
     background-color: var(--headers-background-colour);
     /* padding: 5px; */
     margin: 0;
+    font-family: var(--brand-font-family);
 }
 
 h3 {
@@ -252,6 +258,7 @@ button:hover {
 
 .song-lyrics {
     display: flex;
+    flex-direction: column;
     position: relative;
     justify-content: center;
     /* max-height: 100%; need back*/
@@ -295,7 +302,7 @@ button:hover {
     display: none;
 }
 
-.setlist-name-status,
+.setlist-name-status::after,
 .title-status::after {
     content: 'Sorry, this title is taken';
     font-family: var(--primary-font-family);
@@ -333,6 +340,36 @@ form {
     transition: ease-in;
     width: 100vw;
     /* left: calc(100vw / 2) */
+}
+
+/* Song and setlist list styling */
+ul {
+    list-style-type: none;
+}
+
+.song-list-ul {
+    padding: 0;
+}
+
+.song-list-li {
+    border: 1px solid var(--interface-dark-blue);
+    margin: 3px 11px;
+    border-radius: 11px;
+    background-color: rgba(1, 63, 110, 0.15);
+    padding: 5px 0;
+}
+
+.song-anchor {
+    display: block;
+    width: 100%;
+}
+
+.song-list-li:hover {
+    box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
+}
+
+.box-link:hover {
+    box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
 }
 
 /* Add media query for medium width screens */
