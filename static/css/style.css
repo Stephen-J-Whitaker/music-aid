@@ -412,7 +412,7 @@ ul {
 
 .song-anchor:hover,
 .setlist-anchor:hover {
-    height: 75px;
+    height: 55px;
 }
 
 .song-list-li:hover {
@@ -438,6 +438,11 @@ ul {
 
     .messages {
         width: 50%
+    }
+
+    .song-list-li,
+    .setlist-list-li {
+        margin: 3px 13px;
     }
 
 }

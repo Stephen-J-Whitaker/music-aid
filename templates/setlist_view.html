@@ -7,10 +7,10 @@
 {% block content %}
     <h2>{{ setlist_name }}</h2>
     <div class="content-container">
-        <ul>
+        <ul class="song-list-ul">
             {% for setlist_song in object_list %}
-                <li>
-                    <a href="{% url 'setlist_song_view' setlist_song.pk pk %}" class="standard-link">{{ setlist_song.title }}</a>
+                <li class="song-list-li">
+                    <a href="{% url 'setlist_song_view' setlist_song.pk pk %}" class="song-anchor">{{ setlist_song.title }}</a>
                 </li>
             {% endfor %}
         </ul>
