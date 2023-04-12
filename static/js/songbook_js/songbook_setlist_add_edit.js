@@ -7,27 +7,23 @@
  * Add functions for page manipulation on page load completion
  */
 document.addEventListener('DOMContentLoaded', function() {
-
-    if (document.getElementById('id_setlist_name')) {
         /**
          * Use ajax to check if input entry is unique for the user
          */
-        let originalSetlistName = $('#id_setlist_name').val()
-        console.log('original setlist name', originalSetlistName)
+        let originalSetlistName = $('#id_setlist_name').val();
     
         let setlistName = $('#id_setlist_name').val();
         let trimmedSetlistName = setlistName.trim();
         $('#id_setlist_name').val(trimmedSetlistName);
-        console.log('trimmed setlist name', $('#id_setlist_name').val());
 
-        let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]')
+        let setlistNameLabel = document.querySelector('label[for="id_setlist_name"]');
 
         setlistNameLabel.innerHTML += '<div class="note">Note: leading, trailing and multiple spaces in a row are removed</div>';
 
         function validateUnique() {
             if ($('#id_setlist_name').val() != '') {
-                console.log(" inNER function ")
-                setlistName = $('#id_setlist_name').val()
+                /* globals $ */
+                setlistName = $('#id_setlist_name').val();
                 // Replace regex for multi white space removal sourced at:
                 // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
                 trimmedSetlistName = setlistName.trimStart().replace(/  +/g, ' ');
@@ -57,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             $('#setlist-submit-btn').show();
                         }
                     }
-                })
+                });
             }
         }
 
@@ -68,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if ($('#setlist-submit-btn').is(':visible')) {
                 $('form').off('submit');
                 $('form').submit();
-            };
+            }
         }
         
         validateUnique();
@@ -82,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
          */
         $('form').submit(function(thisEvent) {
 
-            console.log('in submit js')
             thisEvent.preventDefault();
             setlistName = $('#id_setlist_name').val();
             trimmedSetlistName = setlistName.trimEnd();
@@ -93,8 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(validateUnique, 100);
 
             setTimeout(submitForm, 300);
-        })
+        });
 
-    }
-
-});
+    });
