@@ -29,8 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Replace regex for multi white space removal sourced at:
             // https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php
             trimmedSetlistName = setlistName.trimStart().replace(/  +/g, ' ');
-            // $('#id_setlist_name').val(trimmedSetlistName);
             setlistName = trimmedSetlistName.trimEnd();
+
+            // Ajax code adapted from code found at this site:
+            // https://www.geeksforgeeks.org/handling-ajax-request-in-django/
             $.ajax(
             {
                 type:'GET',
@@ -56,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
+            // End of ajax code
         }
     }
 
