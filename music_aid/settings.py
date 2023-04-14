@@ -170,8 +170,6 @@ SUMMERNOTE_CONFIG = {
     'summernote': {
         'width': '100%',
         'height': '275',
-        'toolbar': [
-            ['font', ['bold', 'underline', 'italic']]
-        ]
+        'toolbar': 'false'
     }
 }

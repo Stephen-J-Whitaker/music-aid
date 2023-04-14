@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let titleLabel = document.querySelector('label[for="id_title"]');
     titleLabel.innerHTML += '<div class="note">Note: leading, trailing and multiple spaces in a row are removed</div>';
+
+    let titleLyrics = document.querySelector('label[for="id_lyrics"]');
+    titleLyrics.innerHTML += '<div class="note">Note: Formatting is removed from pasted text</div>';
     // End of actions to be taken on completion of form page load
 
     function validateUnique() {
@@ -100,17 +103,21 @@ document.addEventListener('DOMContentLoaded', function() {
      * Code inspired by the following post:
      * https://stackoverflow.com/questions/71334716
      */
-    window[0].addEventListener('paste', function(event) {
-        let inputText = (event.clipboardData || window.clipboardData).getData('text/plain');
-        event.preventDefault();
+    window[0].addEventListener('paste', function() {
+        // let inputText = (event.clipboardData || window.clipboardData).getData('text/plain');
+        // event.preventDefault();
         let summernoteIframe = document.getElementById('id_lyrics_iframe');
         let innerDoc = summernoteIframe.contentDocument || summernoteIframe.contentWindow.document;
         let frameContent = innerDoc.getElementsByClassName('note-editable');
-        let frameHTML =  frameContent[0].innerHTML;
+        setTimeout(function() {
+        // let frameHTML =  frameContent[0].innerHTML;
         let frameText = frameContent[0].innerText;
-        frameHTML += inputText;
-        frameText += inputText;
-        frameContent[0].innerHTML = frameHTML;
+        // console.log('html', frameHTML);
+        console.log('frame text', frameText);
+        // frameHTML += inputText;
+        // frameText += frameText.replace(/\r?\n/g, '<br>');
+        // frameContent[0].innerHTML = frameText;
         frameContent[0].innerText = frameText;
+    }, 300)
     });
 });
