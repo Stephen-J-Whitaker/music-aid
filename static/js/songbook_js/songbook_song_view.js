@@ -81,7 +81,6 @@ function move() {
         /* globals AbortController */
         const abortSignal = new AbortController();
         lyricBottom = parseInt(getComputedStyle(lyricContainer).bottom, 10);
-        // if (i < 10) {
         if (lyricBottom <= buttonContainerHeight) {
             
             /**
@@ -117,5 +116,4 @@ function move() {
     scrollStart.style.display = 'none';
 
     setTimeout(moveBox, 3000);
-
 }
