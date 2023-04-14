@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-            // End of ajax code
+            // End of ajax code from https://www.geeksforgeeks.org/handling-ajax-request-in-django/
         }
     }
 
@@ -104,19 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
      * https://stackoverflow.com/questions/71334716
      */
     window[0].addEventListener('paste', function() {
-        // let inputText = (event.clipboardData || window.clipboardData).getData('text/plain');
-        // event.preventDefault();
         let summernoteIframe = document.getElementById('id_lyrics_iframe');
         let innerDoc = summernoteIframe.contentDocument || summernoteIframe.contentWindow.document;
         let frameContent = innerDoc.getElementsByClassName('note-editable');
         setTimeout(function() {
-        // let frameHTML =  frameContent[0].innerHTML;
         let frameText = frameContent[0].innerText;
-        // console.log('html', frameHTML);
         console.log('frame text', frameText);
-        // frameHTML += inputText;
-        // frameText += frameText.replace(/\r?\n/g, '<br>');
-        // frameContent[0].innerHTML = frameText;
         frameContent[0].innerText = frameText;
     }, 300)
     });

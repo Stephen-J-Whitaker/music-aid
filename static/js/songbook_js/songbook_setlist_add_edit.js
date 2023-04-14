@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             });
-            // End of ajax code
+            // End of ajax code from https://www.geeksforgeeks.org/handling-ajax-request-in-django/
         }
     }
 
