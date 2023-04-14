@@ -5,24 +5,24 @@
 {% endblock title %}
 
 {% block content %}
-        {% if user.is_authenticated %}
-            <h2 class="song-header">Songs</h2>
-            <div class="content-container">
-                <ul class="song-list-ul">
-                    {% for song in object_list %}
-                        <li class="song-list-li">
-                            <a href="{% url 'song_view' song.pk %}" class="song-anchor">{{ song.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="button-container scroll-controls">
-                <a href="{% url 'song_add' %}" class="anchor-btn">Add Song</a>
-            </div>
-        {% else %}
-            <div class="home-login">
-                <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</a>
-                <a href="{% url 'account_signup' %}" class="home-register-link standard-link">Register</a>
-            </div>
-        {% endif %}
+    {% if user.is_authenticated %}
+        <h2 class="song-header">Songs</h2>
+        <div class="content-container">
+            <ul class="song-list-ul">
+                {% for song in object_list %}
+                    <li class="song-list-li">
+                        <a href="{% url 'song_view' song.pk %}" class="song-anchor">{{ song.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="button-container scroll-controls">
+            <a href="{% url 'song_add' %}" class="anchor-btn">Add Song</a>
+        </div>
+    {% else %}
+        <div class="home-login">
+            <a href="{% url 'account_login' %}" class="home-login-link box-link">Login</a>
+            <a href="{% url 'account_signup' %}" class="home-register-link standard-link">Register</a>
+        </div>
+    {% endif %}
 {% endblock content %}
