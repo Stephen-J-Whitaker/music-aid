@@ -356,16 +356,10 @@ def song_title_validate(request):
         user = request.user
         song_title = request.GET['song_title']
         user = request.user
-        print('user ', user)
-        print('song-title', song_title)
         if Song.objects.filter(user=user).filter(title__iexact=song_title
                                                  ).exists():
-            print(Song.objects.filter(user=user
-                                      ).filter(title__iexact=song_title
-                                               ).exists())
             return HttpResponse("in_use")
         else:
-            print('available')
             return HttpResponse("available")
 
 
