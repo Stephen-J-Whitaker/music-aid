@@ -69,8 +69,7 @@ nav {
 
 }
 
-.navbar-nav {
-    padding: 10px;
+.navbar-collapse {
     position: absolute;
     z-index: 1;
     background-color: var(--interface-medium-blue);
@@ -84,14 +83,14 @@ nav {
     margin-right: 10px;
 }
 
-.navbar-toggler:hover {
-    background-color: var(--button-hover-colour);
-}
-
 .navbar-toggler:focus,
 .navbar-toggler:active {
-    /* background-color: var(--button-hover-colour); */
+    background-color: var(--button-hover-colour);
     box-shadow: none;
+}
+
+.navbar-nav {
+padding: 10px;
 }
 
 /* Main styling */
@@ -107,7 +106,6 @@ main {
 }
 
 .main-inner-container {
-    /* margin: 11px; */
     display: flex;
     flex-direction: column;
     height: calc(100% - var(--button-container-height));
@@ -117,13 +115,10 @@ main {
 
 /* Content container styles */
 .content-container {
-    /* flex: 1 0 auto; */
     width: 100%;
-    /* height: calc(100% - var(--button-container-height) - var(--footer-height)); */
     background-color: var(--interface-light-blue);
     overflow-y: scroll;
     overflow-x: hidden;
-    /* margin-bottom: 30px; */
     text-align: center;
 }
 
@@ -177,7 +172,6 @@ h2,
 h3 {
     text-align: center;
     background-color: var(--headers-background-colour);
-    /* padding: 5px; */
     margin: 0;
     font-family: var(--brand-font-family);
 }
@@ -202,8 +196,6 @@ a {
 .standard-link:hover {
     text-shadow: 0px 0px 20px rgb(1, 63, 110);
 }
-
-/* End of common anchor and link styles */
 
 /* Button styles */
 .btn,
@@ -285,7 +277,6 @@ button {
     flex-direction: column;
     position: relative;
     justify-content: center;
-    /* max-height: 100%; need back*/
     width: 100%;
     background-color: var(--interface-light-blue);
 }
@@ -389,7 +380,6 @@ form {
     z-index: 3;
     transition: ease-in;
     width: 100vw;
-    /* left: calc(100vw / 2) */
 }
 
 /* Song and setlist list styling */
@@ -428,12 +418,9 @@ ul {
 }
 
 .song-list-li:hover {
-    /* box-shadow: none; */
     background-color: rgba(1, 63, 110, 0.05);
     position: relative;
-    /* height: 75px; */
-    /* background-color: var(--button-colour); */
-   background-image: linear-gradient(var(--button-colour), var(--interface-light-blue), var(--button-colour));
+    background-image: linear-gradient(var(--button-colour), var(--interface-light-blue), var(--button-colour));
 }
 
 .box-link:hover {
@@ -457,9 +444,15 @@ ul {
 /* Add media query for medium width screens */
 @media screen and (min-width: 768px) {
 
+    .navbar-collapse {
+        width: fit-content;
+        position: static;
+    }
+
     .navbar-nav {
         width: fit-content;
         position: initial;
+        padding: 0;
     }
 
     .messages {
@@ -481,7 +474,6 @@ ul {
     main,
     footer {
         width: 1112px;
-        /* right: calc((100% / 2) - (50% / 2)); */
         right: calc(50% - (1112px / 2));
     }
 
@@ -491,10 +483,6 @@ ul {
 
     .content-container {
         width: 70%;
-    }
-
-    .navbar-nav {
-        width: initial;
     }
 
     h2,
