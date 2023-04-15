@@ -300,6 +300,10 @@ select:hover {
     box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
 }
 
+.summernote-div:hover {
+box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
+}
+
 .form-check-input:hover {
     background-color: var(--button-colour);
     border-color: var(--standard-border-color);
