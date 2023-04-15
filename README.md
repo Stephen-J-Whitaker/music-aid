@@ -117,3 +117,21 @@ The system also includes an auto scroll feature so that a musician can play alon
         -   Site Text
 
             Google font Lato was selected as the primary font for all text on the site that isn’t the brand name or a header. A simple font, it helps to contribute to the minimalistic, coherent feel of the site. It resizes  well and is easy to read at all sizes required for the site.
+
+    -   ### Colour Schemes
+
+        The colour scheme of the interface was chosen to be calming shades of blue.
+
+        - Interface
+
+            Light in colour, the shades of blue of the interface contrast well with the text on the site ensuring good accessibility.
+
+        - Text
+
+            For coherence and aesthetics, the colour of the text is a deep shade of blue. The depth of the shade was in part determined by the necessity for contrast between the text and the backgrounds for accessibility.
+
+        -   Shading
+
+            All colours on the site are ‘flat’ except for any drop shadows used. Drop shadows are used on hovering over link text and buttons. In the case of the song list and setlist list drop shadows are present all of the time, (not just on hover), and are used to add interest and depth to the site. 
+
+
