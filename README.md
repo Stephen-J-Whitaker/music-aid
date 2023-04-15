@@ -144,5 +144,55 @@ The system also includes an auto scroll feature so that a musician can play alon
 
             The site favicon is a cursive S that stands for songbook. It is white on a blue background to ensure readability when small and helps to build brand identity.
 
+    -   ### Interface styling and User Feedback:
 
+        Features style and user feedback is consistent across the site. In all cases a successful click action is indicated by the requested action taking place.
+
+        -   Logos
+        
+            The logos on the site are all the same colour and have curved corners. On hovering over the logos they turn a lighter shade of the same colour and are styled with a drop shadow to indicate to the user that the logos are interactive features and are clickable.
+
+        -   Navigation
+
+            -   Navigation on larger screens
+
+                The links of the navigation bar are in a row on larger screens. The are styled with a drop shadow on hovering over them to indicate to the user that they are interactive and are clickable.
+
+            -   Navigation on mobile devices
+
+                The navigation becomes a drop down that is displayed when a toggle button is clicked. The styles of the links in the drop down are the same as when the navigation is viewed on larger screens and they obtain a drop shadow on hovering over them.
+
+                The toggle button is styled like all other buttons on the site, having rounded corners and being the same colour as the other buttons. The menu toggle goes a lighter shade of the same colour and acquires a drop shadow on hovering over it.
+
+        -   Buttons
+
+            Buttons have curved corners and are the same colour as the menu toggle. On hovering over the buttons they go a lighter shade of the same colour and acquire a drop shadow.
+        
+        -   Forms
+
+            All forms on the site are styled with Django Python package Crispy Forms. 
+
+            The form fields obtain a drop shadow on hovering over them, To indicate that they are interactive elements.
+
+        -   Content
+
+            The content consists of lists and song entities.
+
+            -   Lists
+
+                Items in content lists are styled as individual containers as each is a unique entity. 
+                
+                The containers are styled with a drop shadow at all times to differentiate them from the site interface. This gives then the appearance of being outwardly curved, standing out from the page which is both aesthetically pleasing and gives the site depth. 
+                
+                On non touch sensitive devices, hovering over any of the list items results in the item container expands signifying it it’s interactive. 
+                
+                In the in the case of a touch sensitive mobile device, touching the list item will result in the list item expanding indicating a successful click.
+            
+            -   Songs
+
+                The title and artist of the song are displayed with the same font as the brand name, (signifying that the information is important), and are in a container that’s a slightly deeper tone of blue than the lyric container below. 
+
+                The lighter background colour of the containers aids accessibility which is important given it’s the data on the page that needs to be most accessible especially when reading the lyrics during a performance. 
+
+                All the text in the lyrics container is the same size and colour so that nothing could be distracting when reading the lyrics as it’s auto scrolling.
 
