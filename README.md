@@ -196,3 +196,82 @@ The system also includes an auto scroll feature so that a musician can play alon
 
                 All the text in the lyrics container is the same size and colour so that nothing could be distracting when reading the lyrics as it’s auto scrolling.
 
+-   ### Software Structure
+
+    The Music Aid : Songbook internet application is implemented using the Python Django framework.
+
+    Within the standard Django framework, this project is called ‘music aid’ and the application is called ‘songbook’.
+
+    -   Django framework:
+
+        Many files are installed when Django is installed. Some of these files require customisation in order that the code will run correctly for the application being developed. 
+
+        A number of the application features are implemented with the aid of 3rd party Django packages.
+
+        -   Django Packages:
+
+            A number of 3rd part Django packages were dependencies of project features.
+
+            Installed Django packages: 
+            
+            |Package|Function|
+            |-------|--------|
+            |gunicorn|The webserver for Django|
+            |dj database url|Allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application|
+            |psycogpg2|A PostgreSQL database adapter for the Python programming language|
+            |dj3 cloudinary storage|Facilitates connection to a cloud based storage repository for static files|
+            |Django allauth|Integrated set of Django applications addressing authentication, registration, account management|
+            |Django summernote| A WYSIWYG (What You See Is What You Get) editor be used for lyric form field data entry|
+            |Django crispy forms|Automatic formatting of forms for aesthetics and consistency of style|
+
+        -   Music Aid project folder:
+
+            The Music Aid project folder contains project wide code and configurations. Only some of the files within this folder require customisation and which ones depends on the specific project and its applications.
+
+        -   Below are the files that were customised.
+      
+            |File|Function|
+            |-------|--------|
+            |Settings.py|Settings.py contains configurations such as debug mode, installed apps, widget, database and cloud storage configuration. The majority of setting.py is created automatically when a new Django project is created|
+            |Urls.py|Urls.py required customisation to make use of the project songbook apps url paths. Urls.py also required customisation to the use the paths made available by the allauth and summernote 3rd party packages|
+
+        -   Songbook Application Folder
+
+            The songbook application folder contains all python files that are specific to the features provided by the songbook application. The songbook application provides create, read, update and delete (CRUD) functionality for songs and setlists on a per registered user basis (registration is implemented using the 3rd party allauth package). The following required creation and/or customisation:
+
+            |File|Function|
+            |-------|-------|
+            |admin.py|Registration of custom models and customisation of the view of these models in the Django admin panel|
+            |forms.py|Custom form classes used by the applications views to create forms within rendered templates|
+            |models.py|Custom model classes that describe the database tables required, the fields within those tables and these tables and fields relationships with other tables and fields within the database as a whole. The data in these classes is used by Django to build the complete database schema required for the application|
+            |urls.py|Contains definitions for all the url paths require by the application|
+            |views.py|Custom classes that perform functions as required, render templates with the required data and return an http response in response to a url being requested by a site user or the system|
+
+        -   Static Folder
+
+            The static folder is hosted on cloud storage after deployment. It holds any static files for the application. In the songbook application the static folder contains the following folders and files:
+
+            |Folder/File|Contents|
+            |-------|-------|
+            |Css folder|Css styles sheets used by the site|
+            |Js|Javascript files and libraries used by the site|
+            |favicon.ico|The sites favicon|
+
+        -   Templates folder
+
+            The templates folder contains custom templates used to implement the application and templates that can be customised.
+
+        -   Procfile
+
+            Contains a command to run the gunicorn webserver to serve the application. The command is run when the application is started.
+
+        -   Requirements.txt
+
+            A list of dependencies that require installation for the project to run correctly.
+
+        -   Env.py
+
+            Env.py contains all the environment variables for the software. It contains the data that must never be exposed in the public domain and so is never committed to a code repository.
+            
+            The Django ‘secret key’, the application database URL and the Cloudinary cloud storage URL are in the env.py file for use during the development phase of the project prior to deployment. At deployment, these environment variables are set within the environment on which they are deployed and are still kept out of the public domain after deployment.
+
