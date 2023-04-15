@@ -1,7 +1,7 @@
 # **Music Aid : Songbook**
-[‘Music Aid : Songbook’]( https://music-aid.herokuapp.com/) is a website for musicians and songwriters who want a more efficient way to manage their songs than the traditional method of using  a folder overflowing with printouts. 
+[‘Music Aid : Songbook’]( https://music-aid.herokuapp.com/) is a website The website, (hosted on [Heroku](https://www.heroku.com/) and implemented with the aid of the Python Django framework), for musicians and songwriters who want a more efficient way to manage their songs than the traditional method of using a folder overflowing with printouts.
 
-The website is hosted on [Heroku](https://www.heroku.com/) and is implemented with the aid of the Python Django framework.
+Over time songbooks become full and unwieldy. Gathering songs together for a particular gig can be time consuming and accessing a desired song at a performance, especially quickly can be a challenge. This is where Music Aid : Songbook comes in. Music Aid : Songbook is a digital repository for all the songs belonging to a musician or songwriter.
 
 Any person who would like a digital songbook is able to register on the site and then enter their songs into the system. Their songs remain private to them and, with the exception of the system administrators, no one else who does not have their user credentials can access them. This protects their copywrite and that of others work on the system.
 
@@ -208,7 +208,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         A number of the application features are implemented with the aid of 3rd party Django packages.
 
-        -   Django Packages:
+        -   Django Packages / Software dependencies:
 
             A number of 3rd part Django packages were dependencies of project features.
 
@@ -233,7 +233,7 @@ The system also includes an auto scroll feature so that a musician can play alon
             |File|Function|
             |-------|--------|
             |Settings.py|Settings.py contains configurations such as debug mode, installed apps, widget, database and cloud storage configuration. The majority of setting.py is created automatically when a new Django project is created|
-            |Urls.py|Urls.py required customisation to make use of the project songbook apps url paths. Urls.py also required customisation to the use the paths made available by the allauth and summernote 3rd party packages|
+            |urls.py|urls.py required customisation to make use of the project songbook apps url paths. Urls.py also required customisation to the use the paths made available by the allauth and summernote 3rd party packages|
 
         -   Songbook Application Folder
 
@@ -253,8 +253,8 @@ The system also includes an auto scroll feature so that a musician can play alon
 
             |Folder/File|Contents|
             |-------|-------|
-            |Css folder|Css styles sheets used by the site|
-            |Js|Javascript files and libraries used by the site|
+            |css folder|Css styles sheets used by the site|
+            |js|Javascript files and libraries used by the site|
             |favicon.ico|The sites favicon|
 
         -   Templates folder
@@ -274,4 +274,36 @@ The system also includes an auto scroll feature so that a musician can play alon
             Env.py contains all the environment variables for the software. It contains the data that must never be exposed in the public domain and so is never committed to a code repository.
             
             The Django ‘secret key’, the application database URL and the Cloudinary cloud storage URL are in the env.py file for use during the development phase of the project prior to deployment. At deployment, these environment variables are set within the environment on which they are deployed and are still kept out of the public domain after deployment.
+
+    -   Database
+
+        The database for the product is implemented using the PostgresSQL relational database management system (RDBMS).
+
+        -   Database Data Models
+
+            Some tables in the database are created as standard for all Django installations and some in response to the installation of some 3rd part packages. With the exception of the User table, (included with the definitions below due to its fields exposure on the front end in order to implement an authentication system), these tables are excluded from the ERD because they are implemented as standard as a result of the Django or a package installation and are not designed or modified by the Music Aid :songbook developer. 
+
+            In response to the migration of custom models Django automatically creates various helper tables  to facilitate the relationships between the models. These helper link tables for the many to many relationships are also not included in the entity relationship diagram for the database as they were not designed or modified by the Music Aid : songbook developer. 
+
+            The entire product database  schema can be recreated from the documented custom models and installation of Django and the documented 3rd party packages when the manage.py makemigrations and migrate commands are run.
+
+            -   User model (A standard Django model)
+
+                This is the default Django ‘user’ model. The fields shown below are fields installed automatically with Django and their use is handled automatically by the allauth package when the site is used by a user and Django admin should an administrator be using the admin panel for user administration.
+
+                The user table is documented here due to some of it fields being exposed for direct data input in forms on the front end during user authentication.
+            
+            -   Song Model
+
+                The song model holds data relating to any given users songs. 
+
+                A song has a one to one foreign key relationship with the user who created it in the system. If that user is deleted, the users songs are deleted.
+
+            -   Setlist model
+
+                The setlist model holds data relating to any given users setlists. 
+
+                A setlist has a one to one foreign key relationship with the user who created it in the system. If that user is deleted, the users songs are deleted.
+
+                A users setlist has a many to many relationship with the users songs. Many songs can be linked to many setlists.
 
