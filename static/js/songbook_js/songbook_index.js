@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
      * Set styles for when mouse is over menu toggler to override bootstrap active and focus styles
      */
     document.getElementById('navbar-toggler').addEventListener('mouseover', function() {
-        console.log('mouse enter')
         this.style.backgroundColor = 'rgb(141, 177, 207)';
         this.style.boxShadow = '0px 0px 20px 1px rgb(1, 63, 110)';
     })
@@ -36,7 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
      * Set styles for when mouse leaves menu toggler to override bootstrap active and focus styles
      */
     document.getElementById('navbar-toggler').addEventListener('mouseleave', function() {
-        console.log('mouse leave')
         this.style.backgroundColor = 'rgb(137, 170, 196)';
         this.style.boxShadow = 'none';
     })
