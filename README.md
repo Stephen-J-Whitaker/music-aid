@@ -126,6 +126,8 @@ The system also includes an auto scroll feature so that a musician can play alon
 
             Light in colour, the shades of blue of the interface contrast well with the text on the site ensuring good accessibility.
 
+            The only exception to the colour scheme of the site is the favicon which is white text on a blue background. 
+
         - Text
 
             For coherence and aesthetics, the colour of the text is a deep shade of blue. The depth of the shade was in part determined by the necessity for contrast between the text and the backgrounds for accessibility.
@@ -133,5 +135,14 @@ The system also includes an auto scroll feature so that a musician can play alon
         -   Shading
 
             All colours on the site are ‘flat’ except for any drop shadows used. Drop shadows are used on hovering over link text and buttons. In the case of the song list and setlist list drop shadows are present all of the time, (not just on hover), and are used to add interest and depth to the site. 
+
+    -   ### Images and Graphics
+
+        With the exception of the favicon, there are no images on the site which results in the site being as fast and responsive as possible ensuring maximum usability for the user whilst performing. Images are not a requirement to satisfy any of the user stories. 
+
+        -   Favicon
+
+            The site favicon is a cursive S that stands for songbook. It is white on a blue background to ensure readability when small and helps to build brand identity.
+
 
 
