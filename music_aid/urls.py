@@ -19,6 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('songbook.urls'), name='songbook_urls'),
+    # Configuration supplied by Code Institute
     path('accounts/', include('allauth.urls')),
     path('summernote/', include('django_summernote.urls')),
+    # End of configuration supplied by Code Institute
 ]
