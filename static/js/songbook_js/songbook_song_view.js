@@ -81,6 +81,7 @@ function move() {
         /* globals AbortController */
         const abortSignal = new AbortController();
         lyricBottom = parseInt(getComputedStyle(lyricContainer).bottom, 10);
+        scrollStop.removeEventListener('click', exitAutoScroll)
         if (lyricBottom <= buttonContainerHeight) {
             
             /**
@@ -112,8 +113,13 @@ function move() {
     lyricContainer.style.position = 'fixed';
     lyricContainer.style.zIndex = 0;
     lyricContainer.style.top = 0;
-    scrollStop.style.display = 'flex';
     scrollStart.style.display = 'none';
+    scrollStop.style.display = 'flex';
+    const autoScrollTimeout = setTimeout(moveBox, 3000);
 
-    setTimeout(moveBox, 3000);
+    scrollStop.addEventListener('click', exitAutoScroll);
+    function exitAutoScroll() {
+        clearTimeout(autoScrollTimeout);
+        resetInterface();
+    };
 }
