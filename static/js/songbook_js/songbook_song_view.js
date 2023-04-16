@@ -83,7 +83,7 @@ function move() {
         lyricBottom = parseInt(getComputedStyle(lyricContainer).bottom, 10);
 
         if (lyricBottom <= buttonContainerHeight) {
-            scrollStop.removeEventListener('click', exitAutoScroll)
+            scrollStop.removeEventListener('click', exitAutoScroll);
             /**
              * Stop auto scrolling because stop has been pressed
              */       
@@ -116,8 +116,11 @@ function move() {
     const autoScrollTimeout = setTimeout(moveBox, 3000);
 
     scrollStop.addEventListener('click', exitAutoScroll);
+    /**
+     * Exit autoscroll mode if exit button is clicked
+     */
     function exitAutoScroll() {
         clearTimeout(autoScrollTimeout);
         resetInterface();
-    };
+    }
 }
