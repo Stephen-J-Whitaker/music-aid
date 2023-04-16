@@ -22,6 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let titleLyrics = document.querySelector('label[for="id_lyrics"]');
     titleLyrics.innerHTML += '<div class="note">Note: Formatting is removed from pasted text</div>';
+
+    let titleScrollSpeed = document.querySelector('label[for="id_scroll_speed"]');
+    titleScrollSpeed.innerHTML += '<div class="note">Note: A speed of 0 means you don\'t want autoscroll for this song</div>';
+
     // End of actions to be taken on completion of form page load
 
     function validateUnique() {
