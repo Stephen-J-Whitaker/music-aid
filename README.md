@@ -663,6 +663,81 @@ During the planning and refinement phase, some features were combined with other
 
 ## **8. Deployment**
 
+The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch of the [Music Aid : Songbook Repository](https://github.com/Stephen-J-Whitaker/music-aid)
+
+  **The deployment procedure is as follows:**
+  
+  <details><summary>1. Log in or create a new account (click to expand)</summary>
+ 
+  ![Deployment step 1](static/docs/images/readme-deployment-1.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>2. From the dashboard, select ‘Create new app’ (click to expand)</summary>
+ 
+  ![Deployment step 2](static/docs/images/readme-deployment-2.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>3. Name the app, each apps on the Heroku platform require a unique name, then select a region and click create app (click to expand)</summary>
+ 
+  ![Deployment step 3](static/docs/images/readme-deployment-3.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>4. Click on ‘Settings’ in the top menu bar (click to expand)</summary>
+ 
+  ![Deployment step 4](static/docs/images/readme-deployment-4.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>5. Click on ‘Reveal Config Vars’ to reveal the config var section then enter the config var details as shown in the image. When a field is complete, click the ‘ADD’ button next to the fields. New empty fields will appear below the previously entered field. When complete, click ADD. The config vars entered will be unique to the cloudinary account and database set up for your instance of the product. Your Django secret key will also be unique to your instance. (click to expand)</summary>
+ 
+  ![Deployment step 5](static/docs/images/readme-deployment-5.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>6. Click on ‘Deploy’ on the main menu ribbon at the top of the page and then click ‘GitHub’ (click to expand)</summary>
+ 
+  ![Deployment step 6](static/docs/images/readme-deployment-6.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>7. If necessary, confirm that you want to connect to GitHub by clicking ‘Connect to GitHub’ (click to expand)</summary>
+ 
+  ![Deployment step 7](static/docs/images/readme-deployment-7.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>8. Search for the GitHub repository name (click to expand)</summary>
+ 
+  ![Deployment step 8](static/docs/images/readme-deployment-8.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>9. Click either ‘Enable Automatic Deploys’ which will automatically redeploy the app each time the Git repository is updated, or ‘Deploy Branch’ to deploy the app manually as requried (click to expand)</summary>
+ 
+  ![Deployment step 9](static/docs/images/readme-deployment-9.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>10. If ‘Deploy Branch’ was selected the screen will look like the following image when deployment is complete. Click 'View' to open the app (click to expand)</summary>
+ 
+  ![Deployment step 10](static/docs/images/readme-deployment-10.jpg)
+  </details>
+
+  <br>
+
+
 ## **9. Technologies Used**
 
 - [Python](https://www.python.org/)
@@ -674,6 +749,10 @@ During the planning and refinement phase, some features were combined with other
 -   CSS
 
 -   JavaScript
+
+-   ElephantSQL : Hosts a postgres database for the project
+
+-   Cloudinary : Cloud storage for static files
 
 -   Bootstrap : Used to implement the responsive navigation bar and a dependency of some Django packages
 
@@ -731,7 +810,7 @@ During the planning and refinement phase, some features were combined with other
 
 -   Code Institute Tutor Support helped me identify a class name in views.py that was the same name as and in conflict with a class in forms.py by introducing me to the Django generic create view. The code can be found in [views.py]( https://github.com/Stephen-J-Whitaker/music-aid/blob/main/songbook/views.py) for the songbook app.
 
--   Code to show success messages on successful deletion was obtained from stack exchange at the following link : questions/24822509/success-message-in-deleteview-not-shown. The code can be found in [views.py]( https://github.com/Stephen-J-Whitaker/music-aid/blob/main/songbook/views.py) for the songbook app.
+-   Code to show success messages on successful deletion was obtained from stack exchange at the following link : https://stackoverflow.com/questions/24822509/success-message-in-deleteview-not-shown. The code can be found in [views.py]( https://github.com/Stephen-J-Whitaker/music-aid/blob/main/songbook/views.py) for the songbook app.
 
 -   The configuration for messages and the JavaScript timeout function for clearing message automatically was provided by Code Institute. The code can be found in [songbook_index.js]( https://github.com/Stephen-J-Whitaker/music-aid/blob/main/static/js/songbook_js/songbook_index.js) and [Settings.py]( https://github.com/Stephen-J-Whitaker/music-aid/blob/main/music_aid/settings.py) for the music_aid project.
 
