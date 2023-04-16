@@ -81,9 +81,9 @@ function move() {
         /* globals AbortController */
         const abortSignal = new AbortController();
         lyricBottom = parseInt(getComputedStyle(lyricContainer).bottom, 10);
-        scrollStop.removeEventListener('click', exitAutoScroll)
+
         if (lyricBottom <= buttonContainerHeight) {
-            
+            scrollStop.removeEventListener('click', exitAutoScroll)
             /**
              * Stop auto scrolling because stop has been pressed
              */       
@@ -95,8 +95,6 @@ function move() {
 
             const moveTimeout = setTimeout(actionBoxMove, x);
             
-        } else {
-            setTimeout(resetInterface, 3000);
         }
 
     }
