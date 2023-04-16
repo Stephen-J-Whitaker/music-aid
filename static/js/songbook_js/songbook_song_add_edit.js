@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let frameContent = innerDoc.getElementsByClassName('note-editable');
         setTimeout(function() {
         let frameText = frameContent[0].innerText;
-        console.log('frame text', frameText);
         frameContent[0].innerText = frameText;
     }, 300)
     });
