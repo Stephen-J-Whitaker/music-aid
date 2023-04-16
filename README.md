@@ -17,7 +17,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
 1 [Project Initiation](#1-project-initiation)
 
-2 [Music Aid : Songbook development](#2-music-aid-songbook-development)
+2 [Music Aid : Songbook development](#2-music-aid--songbook-development)
 
 3 [Instructions](#3-instructions)
 
@@ -309,11 +309,11 @@ The system also includes an auto scroll feature so that a musician can play alon
 
                 A users setlist has a many to many relationship with the users songs. Many songs can be linked to many setlists.
 
--   ## **3. Features**
+## **3. Features**
 
     Multiple user stories are dependent on many of the features. Details of the user stories dependent on each feature are given along with links to both the user stories and the features and their respective acceptance criteria. 
 
-    User story IDs are the format: Epic ID.User Story ID
+    Use story IDs are the format: Epic ID.User Story ID
 
     During the planning and refinement phase, some features were combined with others and the feature ids of the features no longer required were removed from use, hence there are gaps in the feature id numbering system. No feature that is a requirement of the system has been omitted from the documentation.
 
@@ -641,12 +641,81 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         A setlist can be added, edited or deleted from the admin page. Additionally, the user of a setlist can be changed should it become necessary. All necessary validation as defined in the database model classes are carried out by the Django backend or with the due to attributes in the admin page form HTML that were inserted by Django when rendering the page.
 
--   ## **Potential future features**
+    -   ### **Potential future features**
 
-    -   Being able to share setlists with other users who are performing at the same event.
-    -   A playlist function where the order in which songs are listed in a setlist is user defined and the setlist can be automatically cued up and then autoscrolled in this order at a performance.
-    -   The ability to add tags to songs such as genre that can be filtered by
-    -   A search function on song and setlist lists to find songs and setlists easily when the list grows very large
-    -   Being able to upload backing tracks that can be played in synch with autoscroll for performances
-    -   Integration with Musixmatch so songs can be searched and imported into the user’s repository automatically.
+        -   Being able to share setlists with other users who are performing at the same event.
+        -   A playlist function where the order in which songs are listed in a setlist is user defined and the setlist can be automatically cued up and then autoscrolled in this order at a performance.
+        -   The ability to add tags to songs such as genre that can be filtered by
+        -   A search function on song and setlist lists to find songs and setlists easily when the list grows very large
+        -   Being able to upload backing tracks that can be played in synch with autoscroll for performances
+        -   Integration with Musixmatch so songs can be searched and imported into the user’s repository automatically.
 
+## **5. Testing**
+
+## **6. Project Sign Off**
+
+## **7. Releases**
+
+## **8. Deployment**
+
+## **9. Technologies Used**
+
+- [Python](https://www.python.org/)
+
+-   Django
+
+-   HTML
+
+-   CSS
+
+-   JavaScript
+
+-   Bootstrap : Used to implement the responsive navigation bar and a dependency of some Django packages
+
+-   Google Fonts : Used for fonts 'Shrikhand' and 'Lato'
+
+-   Code institute student template for GitPod: Used to install the necessary IDE tools and set up GitPod as required
+
+-   The W3C Markup Validation Service : Used to validate the website HTML
+
+-   The W3C CSS Validation Service - Jigsaw : Used to validate the website CSS
+
+-   JSHint, a JavaScript Code Quality Tool (linter): Used to validate and check the styling of the website JavaScript
+
+-   Favicon.io : Used to create the favicon for the site
+
+-   JSQuery : Used for its implemention of Ajax
+
+-   Ajax : Used to validate data entered by the user
+
+-   pgAdmin : Used to access the postgres database and verify create, read, update and delete was happening as required
+
+-   [Corel Draw](https://www.coreldraw.com/en/) : Used for developing the mockups for the app
+
+-   [Microsoft Excel](https://www.microsoft.com/en-ie/microsoft-365/excel) : Used for documenting features and recording test results
+
+-   [Microsoft Visio](https://www.microsoft.com/en-ie/microsoft-365/visio/flowchart-software) : Used for producing Epics and User Stories
+
+-   [Chrome](https://www.google.com/intl/en_ie/chrome/) : Used for research, development and testing (including DevTools and Lighthouse test suite)
+
+-   [Safari](https://www.apple.com/safari/) : Used for testing
+
+-   [Opera](https://www.opera.com/) : Used for testing
+
+-   [Edge](https://www.microsoft.com/en-us/edge) : Used for testing
+
+-   [Firefox](https://www.mozilla.org/en-US/firefox/new/) : Used for testing
+
+-   [Notepad++](https://notepad-plus-plus.org/downloads/) : Used for text file editing
+
+-   [GitPod](https://www.gitpod.io/) : Used for product development and testing
+
+-   [GitHub](https://github.com/) : Used for accessing committed code repositories and hosting the completed product online
+
+-   [Git](https://git-scm.com/): Used for code version control
+
+-   [Code Institute Python Linter](https://pep8ci.herokuapp.com/#): Used to validate and check the styling of the Python code
+
+- Windows 10 snipping tool for creating screen grabbed jpeg files for the readme
+
+## **10. Credits**
