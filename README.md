@@ -343,7 +343,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
                 -   ### **The ‘Songbook List’** (ID8) Feature is a dependency user stories 2.1, 2.2, 2.3, 2.4, 2.5, 2.7 
 
-                    When logged in, the landing page displays a header to inform the user that the list below is of their songs and below this, the list of the songs belonging to the logged in user. 
+                    When logged in, the landing page displays a header to inform the user that the list below is of their songs and below this, the alphabetically ordered list of the songs belonging to the logged in user. 
 
                     When clicked, each song in the list will take the user to the ‘song view’ page for that song. 
 
@@ -640,4 +640,13 @@ The system also includes an auto scroll feature so that a musician can play alon
         The Django Admin pages are configured to be able to administer database setlist entries by a user with administrator privileges.
 
         A setlist can be added, edited or deleted from the admin page. Additionally, the user of a setlist can be changed should it become necessary. All necessary validation as defined in the database model classes are carried out by the Django backend or with the due to attributes in the admin page form HTML that were inserted by Django when rendering the page.
+
+-   ## **Potential future features**
+
+    -   Being able to share setlists with other users who are performing at the same event.
+    -   A playlist function where the order in which songs are listed in a setlist is user defined and the setlist can be automatically cued up and then autoscrolled in this order at a performance.
+    -   The ability to add tags to songs such as genre that can be filtered by
+    -   A search function on song and setlist lists to find songs and setlists easily when the list grows very large
+    -   Being able to upload backing tracks that can be played in synch with autoscroll for performances
+    -   Integration with Musixmatch so songs can be searched and imported into the user’s repository automatically.
 
