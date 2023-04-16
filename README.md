@@ -1,5 +1,5 @@
 # **Music Aid : Songbook**
-[‘Music Aid : Songbook’]( https://music-aid.herokuapp.com/) is a website The website, (hosted on [Heroku](https://www.heroku.com/) and implemented with the aid of the Python Django framework), for musicians and songwriters who want a more efficient way to manage their songs than the traditional method of using a folder overflowing with printouts.
+[‘Music Aid : Songbook’]( https://music-aid.herokuapp.com/) is a website based application, (hosted on [Heroku](https://www.heroku.com/) and implemented with the aid of the Python Django framework), for musicians and songwriters who want a more efficient way to manage their songs than the traditional method of using a folder overflowing with printouts.
 
 Over time songbooks become full and unwieldy. Gathering songs together for a particular gig can be time consuming and accessing a desired song at a performance, especially quickly can be a challenge. This is where Music Aid : Songbook comes in. Music Aid : Songbook is a digital repository for all the songs belonging to a musician or songwriter.
 
@@ -44,6 +44,8 @@ The system also includes an auto scroll feature so that a musician can play alon
         An agile approach was taken to the planning and implementation of the project. Epics were identified for the project from the basic requirement for an internet based, digital songbook. The epics were then refined into user stories, their associated tasks and the acceptance criteria for the features developed to satisfy the user stories.
 
         As the project was planned, it was ensured that there was no functionality duplicated across features and that code could be reused wherever possible.
+
+        Note: During the planning and refinement phase, some features were combined with others and the feature ids of the features no longer required were removed from use, hence there are gaps in the feature id numbering system. No feature that is a requirement of the system has been omitted from the documentation.
 
     - ### MoSCow
 
@@ -104,7 +106,7 @@ The system also includes an auto scroll feature so that a musician can play alon
             
             On larger devices the interface populates the centre section of the screen so as not to become too large to be easily read.
 
-            The site is responsive and elements resize as necessary to fit on the screen in use and retain usability.
+            The site is responsive and elements resize as necessary to fit on the screen in use and retain usability. Words that do not fit on a single line are broken and wrap to the next line. 
 
     -	### Typography
 
@@ -306,4 +308,340 @@ The system also includes an auto scroll feature so that a musician can play alon
                 A setlist has a one to one foreign key relationship with the user who created it in the system. If that user is deleted, the users songs are deleted.
 
                 A users setlist has a many to many relationship with the users songs. Many songs can be linked to many setlists.
+
+-   ### Features
+
+    
+
+
+Multiple user stories are dependent on many of the features. Details of the user stories dependent on each feature are given along with links to both the user stories and the features and their respective acceptance criteria. 
+
+Note: User story IDs are the format: Epic ID.User Story ID
+
+Note: During the planning and refinement phase, some features were combined with others and the feature ids of the features no longer required were removed from use, hence there are gaps in the feature id numbering system. No feature that is a requirement of the system has been omitted from the documentation.
+
+Landing Page [Feature ‘Landing Page’ (ID1)]
+
+The ‘Landing Page’ (ID1) Feature is a dependency of all user stories
+
+The landing page is simple and easy to navigate and is recognisable as a conventionally designed website. 
+
+The landing page is responsive and will resize to fit the screen on which it is being viewed. On small screens the page content fills the entire screen and on larger screens the page width is constrained and occupies the centre section of the screen ensuring that it remains easily readable on any screen size.
+
+All features to be found in the landing page are detailed below. 
+
+Header, Logo and Footer
+
+The Header and footer are both fixed, the header to the top of the page and footer to the bottom. The header and the footer are shown on all pages of the site with the exception of the song view page when in autoscroll mode and the Django admin pages.
+
+The header contains the Logo for the application which is a clickable link that returns the user to the home landing page. The header also contains the navigation menu items or menu toggle, should the screen be less than 768px wide. The navigation menu is implemented with bootstrap.
+
+Main content
+
+Prior to login
+
+When the user is new to the system or has not yet logged in, the landing page displays a login button, to take them to the signing in page and a ‘Register’ link that would take the user to the site registration page.
+
+Post login: Songbook List [Feature ‘Songbook List’ (ID8)]
+
+The ‘Songbook List’ (ID8) Feature is a dependency user stories 2.1, 2.2, 2.3, 2.4, 2.5, 2.7 
+
+When logged in, the landing page displays a header to inform the user that the list below is of their songs and below this, the list of the songs belonging to the logged in user. 
+
+When clicked, each song in the list will take the user to the ‘song view’ page for that song. 
+
+Should the list of songs be too long to fit on the screen the list becomes scrollable. The song containers expand to indicate that they are being hovered over aiding click with a mouse and on a mobile device they expand on click indicating that the click has been detected.
+At the bottom of the main content container and positioned immediately above the footer is the ‘button bar’. The buttons are positioned centrally in the middle of the bar for aesthetics. 
+
+On the landing page at the bottom of the song list there is a single button that takes the user to the add song page when clicked.
+
+Navigation [Feature ‘Navigation’ (ID20)]
+
+The ‘Navigation’ (ID20) Feature is a dependency of all user stories
+
+On small screens (below 768px), the navigation links are hidden. They drop down from the header on click of the menu toggle. 
+
+On larger screen the navigation links are in a row next to the logo.
+
+When logged out, the navigation section contains the links ‘Register’, that takes the user to the site registration page and ‘Login’ that navigates to the site login page.
+
+When logged in, the navigation bar contains links to the users ‘Songbook’ (landing page), the users ‘Setlist’ page and the sites ‘Logout’ page. When logged in as an administrator, there is an additional ‘Admin’ link to the Django admin panel. 
+
+Register [Feature ‘Register’ (ID3)]
+
+The ‘Register’ (ID3) Feature is a dependency of all user stories
+
+The ‘Register’ page can be reached by clicking the ‘Register’ link in the navigation menu when a user is not logged in.
+
+The ‘Register’ page has a header to inform the user what section of the site they are in and immediately below this is a message asking if they already have an account and providing a ‘sing in’ link to the ‘Login’ page. This ensures that the user is able to navigate easily to sign in should they have arrived at the sign up page accidentally.
+
+The sign in form is styled using crispy forms and will be easily recognisable as a form to be filled in by the user.
+
+Fields obtain a drop shadow on hovering over them with a mouse to indicate they’re clickable and when clicked, the clicked field gains a box shadow. 
+
+Validation is handled by Django based on the model defined for the user table. Entries are presence checked, range checked and type checked as appropriate for the field and its contents.
+
+After entering details into the fields, the user clicks the ‘sign up’ button immediately below the input fields to submit the sign in form. 
+
+The registration page is responsive and resizes for the screen on which it is being viewed.
+
+Login [Feature ‘Sign In’ (ID2)]
+
+The ‘Sign In’ (ID2) Feature is a dependency of all user stories
+
+The ‘Login’ page can be reached by clicking the ‘Login’ link in the navigation menu. There is also a ‘Sign In’ link to the ‘Login’ page on the ‘Register’ page.
+
+The ‘Login’ page has a header to inform the user of the function of the page. 
+
+Below the header is a message requesting that they ‘sign up’ if they have not yet created an account. The words ‘sign up’ are a link to the ‘Register’ page.
+
+Below the message and link to the ‘Register’ page, the user can enter their login credentials to gain access to the system.  
+
+Validation is handled by Django based on the model defined for the user table. Entries are presence checked, range checked and type checked as appropriate for the field and its contents.
+
+Once details are entered the user can click the ‘sign in’ button to submit the form.
+
+If incorrect details have been entered the password field is cleared and the user can reattempt logging in.
+
+Under the ‘Username’ and ‘Password’ fields there is a remember me check box that can be clicked to ‘check’ or ‘uncheck’ it. When unchecked the session for the user is not kept active by Django allauth when the user leaves the site and if checked the session for the user is kept active after leaving the site.
+
+On entering valid login credentials and clicking the ‘sign in’ button, the user is redirected to the ‘Songs’ list (index) page.
+
+The ‘Login’ page is responsive and resizes for the screen on which it is being viewed.
+
+Logout [Feature ‘Sign Out’ (ID6)]
+
+The ‘Sign Out’ (ID6) Feature is a dependency of all user stories
+
+The ‘Logout’ page can be accessed by clicking the ‘Logout’ link in the navigation menu. 
+
+The page has a header to inform the user of their location within the site.
+
+There is a large an easy to read message asking the user to confirm if they really want to sign out and immediately below this message is a button with the words ‘Sing out’ that will action the sign out procedure if clicked.
+
+Below the ‘Sign Out’ button there is a ‘Return Home’ link that returns the user to their ‘Songbook List’ page if clicked because they have reconsidered signing out.
+
+The ‘Logout’ page is responsive and resizes for the screen on which it is being viewed.
+
+Delete a User (Admin) [Feature ‘Delete User’ (ID5)]
+
+The ‘Delete User’ (ID5) Feature is a dependency of all user stories
+
+Deletion of a user can only be accessed by a user with administrator credentials. The procedure is carried out from within the Django administration page. Should a user have administrator privileges, there is a link to the ‘Admin’ page in the navigation menu.
+
+Within the administration section of the site, the administrator can navigate to the ‘User’ section of the site, locate the user to be deleted and check the box next to their name and then select that they wish for the user to be deleted.
+
+On requesting a user deletion, the administrator is asked to confirm if they would like to action the deletion and they are informed of the data within the database that will be affected by the deletion should they wish to proceed.
+
+Add a Song [Feature ‘Add Song’ (ID7)]
+
+The ‘Add Song’ (ID7) Feature is a dependency of user stories 2.1, 2.3, 2.4, 2.5, 2.7, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6
+
+The ‘add song’ page has a header to indicate that the page is for the purpose of submitting song details.
+
+Below the header is a song detail entry form. 
+
+Except for the ‘Title’ field, validation is handled exclusively by the web browser in response to attributes inserted into the HTML by Django or on the back end by Django on form submission based on the model defined for the Song table. 
+
+Entries are presence checked, range checked and type checked as appropriate for the field and its contents.
+
+In addition to the methods described above, the title field on the form is also validated as unique within the current users songs. This validation is carried out using JavaScript and jquery ajax. On entering each keystroke, all leading and trailing white spaces are removed from the title and the title entered by the user is sent to a Django view. The Django view runs a database query to confirm whether or not the user has already used this title and returns the result to the webpage in the browser. 
+
+Should the title already be used by the user, the title field turns red, a message is displayed stating ‘Sorry, this title is taken’ and the ‘Save Song’ button is removed.
+
+If the title is available, submission of the title is allowed (subject to other Django controlled validation checks passing). 
+
+On clicking ‘Save Song’ leading and trailing white spaces are removed and any multiple white spaces in the data from the title field are reduced to a single space before form submission. 
+
+The purpose of the white space removal is to ensure that a title submitted is not the same as another title if the white spaces were to be ignored. Titles successfully submitted with multiple white spaces could be confusing to the user when looking at their song list and could result in duplicate data entry which would not be a good user experience as they will have spent time entering the details twice unnecessarily.
+
+Fields obtain a drop shadow on hovering over them with a mouse to indicate they’re clickable and when clicked, the clicked field gains a box shadow. The exception to this is that the lyrics textbox, which is a Summernote widget implemented using an iframe. Because it’s an iframe click events are handled by the iframe and event listeners in JavaScript and focus pseudo selectors cannot be added for the iframes contents to set the box shadow style when contents of the iframe are in focus.
+
+The lyrics field allows for the typing or pasting of text. On pasting into the lyric field JavaScript is used to remove any HTML tags from the pasted data ensuring only plain text is submitted to the database. The text entered into the lyrics field will retain line breaks so that they are displayed on the ‘Song View’ page in the way that the user has entered it on the ‘Add Song’ page.
+
+Scroll speed enables the user to select an integer speed of auto scroll from 0 to 5 inclusive. Selecting 0 indicates no auto scrolling function is desired for the song in question.
+
+Artist is the only optional field on the form and this is signified by the fact it has no asterisk next to the fields label.
+
+At the bottom of the content section of the page a button bar is present with two buttons. There is a ‘Save  Song’ button to save the song and return to the ‘song list’ page and a ‘Back to Songbook’ button that returns the user to the ‘song list’ page without saving the song. 
+
+The ’add song’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+
+View a Song [Feature ‘Song View’ (ID9)]
+
+The ‘Song View’ (ID9) Feature is a dependency of user stories 2.3, 2.4, 2.5, 2.7
+
+The ‘Song View’ page has a header that displays the title of the song to the user. Immediately below this header a second header, with slightly smaller text, displays the artist details should they have been entered by the user on the ‘Add Song’ or ‘Edit Song’ pages. 
+
+Below the headers is the centrally justified lyric text. In the event that the lyric text overflows the bottom of its container, it can be accessed by scrolling.
+
+At the bottom of the lyrics container is a button bar. In the button bar there is a ‘Songbook’ button that will return the user to their ‘Song List’ (index) page if clicked and an ‘Edit’ button that navigates to the ‘Song Edit’ page for the song currently being viewed. 
+
+If an auto scroll speed of 0 is set for the song then there are no more buttons in the button bar. However, if any other speed is selected, then the button bar contains an ‘Autoscroll’ button, which initiates the auto autoscroll function if clicked and a label displaying the scroll speed set for the song being viewed.
+
+The ‘View a Song’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+Edit a Song [Feature ‘Edit Song’ (ID10)]
+
+The ‘Edit Song’ (ID10) Feature is a dependency of user stories 2.4, 2.5
+
+The ‘Edit a Song’ page has a header to indicate that the page is for the purpose of submitting song details.
+
+The remainder of the ‘Edit a Song’ page is the same as describe in the ‘Add a Song’ section except that the song detail entry form is prepopulated with any details that were previously entered by the user for the selected song. All of these details can be edited.
+
+The buttons on the page are another difference between the ‘Add a Song’ page and the ‘Edit a Song’ page.
+
+At the bottom of the content section of the page the button bar contains three buttons. There is a ‘Save  Song’ button to save the modified details and return to the ‘song view’ page and a ‘Back to Song’ button that returns the user to the ‘song view’ page without saving the song. There is also a ‘Delete’ button that the user can click if they want to delete their song completely. 
+
+The ’add song’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+Confirm Song Deletion [Feature ‘Delete Song’ (ID11)]
+
+The ‘Delete Song’ (ID11) Feature is a dependency of user story 2.5
+
+The ‘Confirm Song Deletion’ page has a header to indicate the purpose of the page to the user.
+
+Below the header is a large message detailing the name of the song in question and asking the user to confirm if they’d really like to action the requested deletion.
+
+There is a button bar at the bottom of the main content with two buttons. Clicking or touching ‘Delete Song’ will action the deletion and clicking ‘No Thanks’ will return the user to the ‘Song Edit’ page for the song. 
+
+Autoscroll a Song [Feature ‘Autoscroll’ (ID13)]
+
+The ‘Autoscroll’ (ID13) Feature is a dependency of user story 2.7
+
+The autoscroll function is initiated on clicking the ‘Autoscroll’ button on the song view page. Note that this button is only available if the scroll speed for the song in question is not 0.
+
+On clicking ‘Autoscroll’, the lyric container on the screen expands to fill the screen and 3 seconds later, if the lyrics overflow the bottom of the container, the lyrics start scrolling. The 3 second delay is to give the musician time to pick up their instrument should they be using one.
+
+There are 5 speed options for autoscroll set in the ‘Add a Song’ or ‘Edit a Song’ pages. 1 is the slowest speed of scroll and 5 the fastest.
+
+At the bottom of the autoscroll window there is a button bar. The button bar contains an ‘Exit’ button and a label displaying the selected scroll speed. 
+
+Clicking ‘Exit’ will exit the autoscroll feature and reset the interface. The autoscroll feature waits for the user to click ‘Exit’ before resetting the interface to ensure the user has had the time they need to finish the song.
+
+The autoscroll feature is responsive and resizes as appropriate for the screen on which it is being used.
+
+Administer a Song (Admin) [Feature ‘Admin Page’ (ID4)]
+
+The ‘Admin Page’ (ID4) Feature is a dependency of user story 2.6
+
+This section shows the sections of the Django admin page that enables song Administration.
+
+The Django Admin pages are configured to be able to administer database song entries by  a user with administrator privileges.
+
+A Song can be added, edited or deleted from the admin page. Additionally, the user of a song can be changed should it become necessary.
+
+Setlist list [Feature ‘Setlist List’ (ID14)]
+
+The ‘Setlist List’ (ID14) Feature is a dependency of user stories 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7
+
+The ‘Setlist List’ page can be accessed from the navigation menu by clicking the ‘Setlists’ link. 
+
+There is a header indicating that the user is viewing setlists.
+
+Below is a list of the users setlists. They are styled in the same way as songs on ‘Songbook List’ page as described in the ‘Songbook List’ section above.
+
+When a set in the list is clicked, the user is taken to the ‘View a Set of Songs’ page for that set.
+
+At the bottom of the ‘Setlist List’ page is a button bar that contains an ‘Add Setlist’ button that navigates to the ‘Add a Setlist’ page when clicked.
+
+
+Add a Setlist [Feature ‘Add Set’ (ID16)]
+
+The ‘Add Set’ (ID16) Feature is a dependency of user stories 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.8
+
+The ‘Add a Setlist’ page has a heading to indicated to the user that the page is for setlist detail entry.
+
+Below the heading is a form with a field for entering a setlist name.
+
+Except for the ‘setlist name’ field, validation is handled exclusively by the web browser in response to attributes inserted into the HTML by Django or on the back end by Django on form submission based on the model class defined for the Setlist table. Entries are presence checked, range checked and type checked as appropriate for the field and its contents.
+
+In addition to the methods described above, the setlist name field on the form is also validated as unique within the current users set of setlists. This validation is carried out using JavaScript and jquery ajax. On entering each keystroke, all leading and trailing white spaces are removed from the setlist name and the setlist name entered by the user is sent to a Django view. The Django view runs a database query to confirm whether or not the user has already used this setlist name and returns the result to the webpage in the browser. 
+
+Should the setlist name already be used by the user, the setlist name field turns red, a message is displayed stating ‘Sorry, this setlist name is taken’ and the ‘Save Setlist’ button is removed.
+
+If the setlist name is available, submission of the setlist name is allowed (subject to other Django controlled validation checks passing). On clicking ‘Save Song’ leading and trailing white spaces are removed and any multiple white spaces in the data from the setlist name field are reduced to a single space before form submission. 
+
+The purpose of the white space removal is to ensure that a setlist name submitted is not the same as another setlist name if the white spaces were to be ignored. Setlist names successfully submitted with multiple white spaces could be confusing to the user when looking at their setlist list and could result in duplicate data entry which would not be a good user experience as they will have spent time entering the details twice unnecessarily.
+
+Below the ‘setlist name’ field is a list of checkbox items. There is one checkbox for each of the user’s song. The user can ‘check’ them should they wish that song to be a member of the set being created. The user can have many sets and many of the user’s songs can belong to many of their sets. At least one song must be selected for the setlist.
+
+The setlist name field and the check boxes obtain a drop shadow on hovering over them with a mouse to indicate they’re clickable and when clicked, the setlist name field gains a box shadow and the check boxes become checked. 
+
+The form container is scrollable and can be scrolled to reach the bottom of the song list should the list be too long to fit in the form container visible on screen. 
+
+At the bottom of the ‘Add a Setlist’ page, there is a button bar with a ‘Save Setlist’ button that saves the entered data if valid and a ‘Back to Setlists’ button that returns the user to the ‘Setlist list’ page if clicked or touched on  a touch sensitive device.
+
+
+The ‘Add a Setlist’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+View a Set of Songs [Feature ‘Setlist Song List’ (ID15)]
+
+The ‘Setlist Song List’ (ID15) Feature is a dependency of user stories 3.3, 3.4, 3.5, 3.6, 3.8
+
+The heading on the ‘View a Set of Songs’ page is the setlist name.
+
+Below the heading is a list of the songs belonging to the selected set. The list of songs is styled like the list of songs on the ‘Songbook List’ (landing) page. This list is scrollable should it overflow its container.
+
+On clicking a song on the list, the user is taken to the ‘View a Song From a Set’ page.
+
+At the bottom of the content container is a button bar two buttons. The ‘Setlists’ button returns the user to the ‘Setlist List’ page dislpaying their setlists. The ‘Edit’ button takes the user to the ‘Edit a Set’ page.
+
+The ‘View a Set of Songs’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+View a Song From a Set [Feature ‘Setlist Song View’ (ID21)]
+
+The ‘Setlist Song View’ (ID21) Feature is a dependency of user stories 3.4, 3.8
+
+The ‘View a Song From a Set’ page has a heading that displays the title of the song being viewed.
+
+Below the title header is a lyric container displaying the selected songs lyrics. It is scrollable if the lyrics overflow their container.
+
+The button bar at the bottom of the lyric container has three buttons. There is a ‘Setlist’ button that returns the user to the setlist that bought them to the song being viewed. There is an ‘Edit’ button that takes the user to the ‘Edit a Song’ page and lastly, an ‘Autoscroll’ button is present that activates the autoscroll function for the song.  
+
+Also in the button bar is a label with the scroll speed for the selected song displayed.
+
+The ‘Setlist Song View’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+Edit a Set [Feature ‘Edit Set’ (ID17)]
+
+The ‘Edit Set’ (ID17) Feature is a dependency of user stories 3.5, 3.6
+
+The ‘Edit a Set’ page is identical to the ‘Add a Setlist’ page with a couple of exceptions: 
+
+Fields are prepopulated with the current setlist name and the songs that are currently part of the set are checked.
+
+
+The button bar has three buttons. A ‘Back to Setlist’ button that takes the user to the ‘View a Set of Songs’ page for the setlist being edited.  There is a ‘Save Setlist’ button that saves any changes made to the setlist details and contents and there is a ‘Delete’ button that the user can click if they want to delete the setlist being edited. The delete button takes the user to the ‘Delete a Song’ page where they confirm that they’d like to action the deletion.
+
+The ‘Edit a Set’ page is responsive and resizes as appropriate for the screen on which it is being used.
+
+Delete a Set [Feature ‘Delete Set’ (ID18)]
+
+The ‘Delete Set (ID18) Feature is a dependency of user story 3.6
+
+The ‘Confirm Set Deletion’ page has a header to indicate the purpose of the page to the user.
+
+Below the header is a large message detailing the name of the setlist in question and asking the user to confirm if they’d really like to action the requested deletion.
+
+There is a button bar at the bottom of the main content with two buttons. Clicking or touching ‘Delete Setlist’ will action the deletion and clicking ‘No Thanks’ will return the user to the ‘Edit a Set’ page for the setlist. 
+
+The ‘Confirm Set Deletion’ Page is responsive and resizes as appropriate for the screen on which it is being used.
+
+Autoscroll a Setlist Song [Feature ‘Setlist Song Autoscroll’ (ID22)]
+
+The ‘Landing Page’ (ID1) Feature is a dependency of user story 3.8
+
+The ‘Autoscroll a Setlist Song’ feature works exactly like the ‘Autoscroll a Song’ feature, described above.
+
+Administer a Setlist (Admin) [Feature ‘Admin Page’ (ID4)]
+
+The ‘Landing Page’ (ID4) Feature is a dependency of user stories 3.7
+
+This section shows the sections of the Django admin page that enables setlist Administration.
+
+The Django Admin pages are configured to be able to administer database setlist entries by a user with administrator privileges.
+
+A setlist can be added, edited or deleted from the admin page. Additionally, the user of a setlist can be changed should it become necessary. All necessary validation as defined in the database model classes are carried out by the Django backend or with the due to attributes in the admin page form HTML that were inserted by Django when rendering the page.
 
