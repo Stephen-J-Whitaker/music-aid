@@ -111,6 +111,7 @@ main {
     height: calc(100% - var(--button-container-height));
     width: 100%;
     text-align: center;
+    align-items: center;
 }
 
 /* Content container styles */
@@ -174,6 +175,7 @@ h3 {
     background-color: var(--headers-background-colour);
     margin: 0;
     font-family: var(--brand-font-family);
+    width: 100%;
 }
 
 h3 {
@@ -183,7 +185,9 @@ h3 {
 
 .song-header,
 .setlist-header,
+.general-header,
 .song-detail-container {
+    letter-spacing: 1px;
     border-bottom: 1px solid rgba(0, 0 ,0 , 0.15);
 }
 
@@ -480,18 +484,18 @@ ul {
         width: 1112px;
         right: calc(50% - (1112px / 2));
     }
-
+/* 
     .main-inner-container {
         align-items: center;
-    }
+    } */
 
     .content-container {
         width: 70%;
     }
 
-    h2,
+    /* h2,
     h3 {
         width: 100%;
-    }
+    } */
 
 }
