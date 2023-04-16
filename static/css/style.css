@@ -304,6 +304,14 @@ select:hover {
     box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
 }
 
+input:focus,
+.form-control:focus {
+    border-color: var(--standard-border-color);
+    box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
+    outline: none;
+}
+
+
 .summernote-div:hover {
 box-shadow: 0px 0px 20px 1px rgb(1, 63, 110);
 }
