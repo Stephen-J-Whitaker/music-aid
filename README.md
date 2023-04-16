@@ -663,9 +663,102 @@ During the planning and refinement phase, some features were combined with other
 
 ## **8. Deployment**
 
-The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch of the [Music Aid : Songbook Repository](https://github.com/Stephen-J-Whitaker/music-aid)
+The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch of the [Music Aid : Songbook Repository](https://github.com/Stephen-J-Whitaker/music-aid).
 
-  **The deployment procedure is as follows:**
+The wesbite is dependent on cloud storage provided by Cloudinary.
+
+The website is dependent on a postgres database made available by ElephantSQL.
+
+  **Setting up a new cloud store on Cloudinary is as follows**
+
+  <details><summary>1. Create a new account for the deployment(click to expand)</summary>
+ 
+  ![Cloudinary step 1](static/docs/images/readme-cloudinary-1.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>2. Verify your email address(click to expand)</summary>
+ 
+  ![Cloudinary step 2](static/docs/images/readme-cloudinary-2.jpg)
+  </details>
+
+  <br>
+  
+  <details><summary>3. Choose the product you need to user(click to expand)</summary>
+ 
+  ![Cloudinary step 3](static/docs/images/readme-cloudinary-3.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>4. [OPTIONAL] Give the product environment cloud a name of your choosing(click to expand)</summary>
+ 
+  ![Cloudinary step 4](static/docs/images/readme-cloudinary-4.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>5. Obtain your API environment variable. The text 'CLOUDINARY_URL=' must be removed from the front of the key before it is entered into the Heroku config vars for the deployment. This key must be kept secret.(click to expand)</summary>
+ 
+  ![Cloudinary step 5](static/docs/images/readme-cloudinary-5.jpg)
+  </details>
+
+  <br>
+
+  **Setting up a new postgres database on ElephantSQL is as follows**
+
+  <details><summary>1. Sign up for an account if neceassary(click to expand)</summary>
+ 
+  ![ElephantSQL step 1](static/docs/images/readme-elephantsql-1.jpg)
+  </details>
+
+  <br>  
+
+  <details><summary>2. Click 'Create New Instance' (click to expand)</summary>
+ 
+  ![ElephantSQL step 2](static/docs/images/readme-elephantsql-2.jpg)
+  </details>
+
+  <br>  
+
+  <details><summary>3. Select a plan and a name for the database instance (click to expand)</summary>
+ 
+  ![ElephantSQL step 3](static/docs/images/readme-elephantsql-3.jpg)
+  </details>
+
+  <br> 
+
+  <details><summary>4. Select a region and data center (click to expand)</summary>
+ 
+  ![ElephantSQL step 4](static/docs/images/readme-elephantsql-4.jpg)
+  </details>
+
+  <br> 
+
+  <details><summary>5. Confirm the details to create a new instance (click to expand)</summary>
+ 
+  ![ElephantSQL step 5](static/docs/images/readme-elephantsql-5.jpg)
+  </details>
+
+  <br> 
+
+
+  <details><summary>6. Successful creation of the instance is indicated(click to expand)</summary>
+ 
+  ![ElephantSQL step 6](static/docs/images/readme-elephantsql-6.jpg)
+  </details>
+
+  <br> 
+
+  <details><summary>7. Retrieve the URL to access the database for entry as a 'config var' during Heroku deployment. This key must be kept secret.(click to expand)</summary>
+ 
+  ![ElephantSQL step 7](static/docs/images/readme-elephantsql-7.jpg)
+  </details>
+
+  <br> 
+
+  **The Heroku deployment procedure is as follows:**
   
   <details><summary>1. Log in or create a new account (click to expand)</summary>
  
@@ -695,7 +788,7 @@ The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch
 
   <br>
 
-  <details><summary>5. Click on ‘Reveal Config Vars’ to reveal the config var section then enter the config var details as shown in the image. When a field is complete, click the ‘ADD’ button next to the fields. New empty fields will appear below the previously entered field. When complete, click ADD. The config vars entered will be unique to the cloudinary account and database set up for your instance of the product. Your Django secret key will also be unique to your instance. (click to expand)</summary>
+  <details><summary>5. Click on ‘Reveal Config Vars’ to reveal the config var section then enter the config var details as shown in the image. When a field is complete, click the ‘ADD’ button next to the fields. New empty fields will appear below the previously entered field. When complete, click ADD. The config vars entered will be unique to the cloudinary account and database set up for your instance of the product. You must create a Django secret key that is unique. Cloud, databse and Django secret Keys must be in the format shown and must be kept secret.(click to expand)</summary>
  
   ![Deployment step 5](static/docs/images/readme-deployment-5.jpg)
   </details>
@@ -730,13 +823,45 @@ The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch
 
   <br>
 
-  <details><summary>10. If ‘Deploy Branch’ was selected the screen will look like the following image when deployment is complete. Click 'View' to open the app (click to expand)</summary>
+  <details><summary>10. If ‘Deploy Branch’ was selected the screen will look like the following image when deployment is complete (click to expand)</summary>
  
   ![Deployment step 10](static/docs/images/readme-deployment-10.jpg)
   </details>
 
   <br>
 
+  <details><summary>11. Open a console for the Heroku app (click to expand)</summary>
+ 
+  ![Deployment step 11](static/docs/images/readme-deployment-11.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>12. Run the migrate command to migrate the database schema defined by the migrations files to the new empty ElephantSQL database (click to expand)</summary>
+ 
+  ![Deployment step 12](static/docs/images/readme-deployment-12.jpg)
+  </details>
+
+  <br>
+
+  <details><summary>13. Open the app by clicking 'Open app' (click to expand)</summary>
+ 
+  ![Deployment step 13](static/docs/images/readme-deployment-13.jpg)
+  </details>
+
+  <br>  
+
+## Forking the Repository
+
+1.  Navigate to github and sign up or sign in
+2.  Navigate to the the repository at the following link: https://github.com/Stephen-J-Whitaker/music-aid
+3.  Locate the fork button at the top of the page and click it
+
+    ![Fork the repository step 3](static/docs/images/readme-fork-repo.jpg)
+
+4. A copy of the repository will be made in your gitHub account
+
+## Clone
 
 ## **9. Technologies Used**
 
