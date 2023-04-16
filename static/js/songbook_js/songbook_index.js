@@ -45,7 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
             let messages = document.getElementById('msg');
             /* globals bootstrap */
             let alert = new bootstrap.Alert(messages);
-            alert.close();
+            if (document.getElementById('msg')) {
+                alert.close();
+            }
         }, 3000);
     }
     // End of set timeout for messages code provided by Code Institute
