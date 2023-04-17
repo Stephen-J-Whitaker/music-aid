@@ -297,12 +297,16 @@ The system also includes an auto scroll feature so that a musician can play alon
                 This is the default Django ‘user’ model. The fields shown below are fields installed automatically with Django and their use is handled automatically by the allauth package when the site is used by a user and Django admin should an administrator be using the admin panel for user administration.
 
                 The user table is documented here due to some of it fields being exposed for direct data input in forms on the front end during user authentication.
+
+                [User Model](static/docs/pdfs/readme-user-model.pdf)
             
             -   Song Model
 
                 The song model holds data relating to any given users songs. 
 
                 A song has a one to one foreign key relationship with the user who created it in the system. If that user is deleted, the users songs are deleted.
+
+                [Song Model](static/docs/pdfs/readme-song-model.pdf)
 
             -   Setlist model
 
@@ -311,6 +315,8 @@ The system also includes an auto scroll feature so that a musician can play alon
                 A setlist has a one to one foreign key relationship with the user who created it in the system. If that user is deleted, the users songs are deleted.
 
                 A users setlist has a many to many relationship with the users songs. Many songs can be linked to many setlists.
+
+                [Setlist Model](static/docs/pdfs/readme-setlist-model.pdf)
 
 ## **3. Features**
 
