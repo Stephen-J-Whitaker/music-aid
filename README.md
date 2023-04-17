@@ -31,7 +31,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
 8 [Deployment](#8-deployment)
 
-9 [Technologies Use](#9-technologies-used)
+9 [Technologies Used](#9-technologies-used)
 
 10 [Credits](#10-credits)
 
@@ -492,9 +492,9 @@ During the planning and refinement phase, some features were combined with other
 
     The ’add song’ page is responsive and resizes as appropriate for the screen on which it is being used.
 
-    Confirm Song Deletion [Feature ‘Delete Song’ (ID11)]
+-   ### **Confirm Song Deletion** [Feature ‘Delete Song’ (ID11)]
 
-    The ‘Delete Song’ (ID11) Feature is a dependency of user story 2.5
+    -   The ‘Delete Song’ (ID11) Feature is a dependency of user story 2.5
 
     The ‘Confirm Song Deletion’ page has a header to indicate the purpose of the page to the user.
 
@@ -855,13 +855,29 @@ The website is dependent on a postgres database made available by ElephantSQL.
 
 1.  Navigate to github and sign up or sign in
 2.  Navigate to the the repository at the following link: https://github.com/Stephen-J-Whitaker/music-aid
-3.  Locate the fork button at the top of the page and click it
+3.  Locate the fork button at the top of the page and click it:
 
     ![Fork the repository step 3](static/docs/images/readme-fork-repo.jpg)
 
 4. A copy of the repository will be made in your gitHub account
 
-## Clone
+## Clone the Repository
+
+1. Navigate to github and sign up or sign in
+2. Navigate to the the repository at the following link: https://github.com/Stephen-J-Whitaker/music-aid
+3. Locate the code button and click it:
+
+    ![Clone the Repository step 3](static/docs/images/readme-clone-repo-1.jpg)
+
+4. Select HTTPS from the options and then click the copy button to copy the link.
+
+    ![Copy the HTTPS link setp 4](static/docs/images/readme-clone-repo-2.jpg)
+
+5. Open Git Bash
+6. Change the current working directory to the location where you want the directory cloned to.
+7. Type 'git clone' and then paste in the HTTPS URL link that was copied in step 4.
+8. Pressing enter result in the clone being created. 
+
 
 ## **9. Technologies Used**
 
