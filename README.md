@@ -45,14 +45,21 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         As the project was planned, it was ensured that there was no functionality duplicated across features and that code could be reused wherever possible.
 
+        User stories were developed and new acceptance criteria were added to features as required for the user story to be satisfied. User stories were analysed in order of priority with later functionality of later user stories building on the functionality of previous ones. This in turn meant that the features functions that were worked on for later developed  user stories were dependent on the earlier ones being completed. A stack of user stories in a kanban board was used to manage the order in which user stories were worked and ensure they were worked on in the correct order considering their interdependencies.  
+        
+        All feature acceptance criteria from all user stories were consolidated onto a single list from which a test plan could be produced.
+
         Note: During the planning and refinement phase, some features were combined with others and the feature ids of the features no longer required were removed from use, hence there are gaps in the feature id numbering system. No feature that is a requirement of the system has been omitted from the documentation.
 
         -   [Epics and User Stories](static/docs/pdfs/readme-epics.pdf)
         -   [Epic specifications](static/docs/pdfs/readme-epic-specifications.pdf)
+        -   [Consolidated Feature Acceptance Criteria](static/docs/pdfs/readme-consolidated-acceptance-criteria.pdf)
 
-    - ### MoSCow
+    - ### MoSCoW
 
         Once the design planning had taken place, the number of story points to be allocated to each user story was estimated based on its tasks complexity and size. Potential users of the site were consulted to help ascertain each of the user stories relative importance and, using the MoSCoW technique, were given a priority of 'must have', 'should have' or 'could have'. There were no ‘won't have’ user stories.
+
+        -   [Iteration 1 MoSCoW Analysis](static/docs/pdfs/readme-moscow-analysis.pdf)
 
     - ### Agile tools
 
