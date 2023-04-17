@@ -675,9 +675,34 @@ During the planning and refinement phase, some features were combined with other
 ## **5. Testing**
 -   **Code Validation**
 
-    -   
+    -   [CSS validation](docs/pdfs/readme-css-validation.pdf)
+    -   [HTML validation](docs/pdfs/readme-html-validation.pdf)
+    -   [JavaScript validation](docs/pdfs/readme-javascript-validation.pdf)
+    -   [Python validaation](docs/pdfs/readme-python-validation.pdf)
+
+-   **Functionality Test Results**
+    
+    Tests were carried out on the music-aid site deployed to Heroku
+
+    -   [User Story Test Results](docs/pdfs/readme-user-story-test-results.pdf)
+    -   [Feature test results](docs/pdfs/readme-feature-test-results.pdf)
+
+    **Other Testing**
+    The software was made available to third parties to test including a musician to test its useability.
+
+    The software has not currently been tested on a Linux operating system.
+
+    Responsiveness was tested using chrome devtools and was tested on both mobile and desktop devices.
+
+
 
 ## **6. Project Sign Off**
+
+Once all of the user stories and their feature dependencies have passed their respective acceptance tests then the user story as a whole is deemed ready for release.
+
+The overall user story acceptance test results along with the acceptance test result summaries of their feature dependencies are detailed in the following sign off sheet.
+
+-   [Product sign off](docs/pdfs/readme-product-sign-off.pdf)
 
 ## **7. Releases**
 
