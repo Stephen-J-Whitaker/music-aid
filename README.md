@@ -337,7 +337,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
 ## **3. Features**
 
-Multiple user stories are dependent on many of the features. Details of the user stories dependent on each feature are given along with links to both the user stories and the features and their respective acceptance criteria. 
+Multiple user stories are dependent on many of the features. Details of the user stories dependent on each feature are given.
 
 Use story IDs are the format: Epic ID.User Story ID
 
