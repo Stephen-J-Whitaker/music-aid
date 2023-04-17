@@ -73,11 +73,19 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         During the Iteration, the user stories were managed in a GitHub project on a kanban board. In a logical order, the user stories were moved from the 'ToDo' to 'In Progress' and, once complete, to 'Done. 
 
+        Portion of Kanban
+
+        ![Kanban](docs/images/readme-kanban.jpg)
+
     - ### User Story / Task Prioritisation
 
         The order that the user stories were worked on was dependent on the dependencies of each of the user stories. 
 
         The features and functionality of user stories moved into the ‘in progress’ column were often dependent on the completion of user stories worked on before them. These dependencies were ascertained during the project initiation/planning stage and the additional acceptance criteria required for each feature for the user story in question were appended to those defined for the user stories developed beforehand. By appending all new requirements to the bottom of the list of previous feature acceptance criteria, a full set of feature acceptance criteria was developed. 
+
+        Example User Story
+
+        ![User Story](docs/images/readme-user-story.jpg)
 
     - ### Acceptance Tests
 
