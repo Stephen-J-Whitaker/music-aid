@@ -53,7 +53,8 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         -   [Epics and User Stories](static/docs/pdfs/readme-epics.pdf)
         -   [Epic specifications](static/docs/pdfs/readme-epic-specifications.pdf)
-        -   [Consolidated Feature Acceptance Criteria](static/docs/pdfs/readme-consolidated-acceptance-criteria.pdf)
+        -   [Epic / User Story Acceptance Criteria](static/docs/pdfs/readme-epic-acceptance-criteria.pdf)
+        -   [Consolidated Feature Acceptance Criteria](static/docs/pdfs/readme-feature-acceptance-criteria.pdf)
 
     - ### MoSCoW
 
