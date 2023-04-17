@@ -765,6 +765,8 @@ The overall user story acceptance test results along with the acceptance test re
 
 ## **6. Releases**
 
+Version 1.0 First release : Date 17/04/2023
+
 ## **7. Deployment**
 
 The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch of the [Music Aid : Songbook Repository](https://github.com/Stephen-J-Whitaker/music-aid).
