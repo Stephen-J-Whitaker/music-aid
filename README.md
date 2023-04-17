@@ -91,7 +91,7 @@ The system also includes an auto scroll feature so that a musician can play alon
         
         The interface was developed to incorporate all of the features necessary to satisfy the user stories into an easy to navigate, intuitive and aesthetically pleasing design.
 	
-        - [Interface Mockups](docs/pdfs/readme-interface-mockups.pdf)
+    -   [Interface Mockups](docs/pdfs/readme-interface-mockups.pdf)
 	
 - ### **Music Aid : Songbook Style Development**
 	
@@ -673,6 +673,9 @@ During the planning and refinement phase, some features were combined with other
     -   Integration with Musixmatch so songs can be searched and imported into the user’s repository automatically.
 
 ## **5. Testing**
+-   **Code Validation**
+
+    -   
 
 ## **6. Project Sign Off**
 
