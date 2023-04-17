@@ -694,7 +694,13 @@ During the planning and refinement phase, some features were combined with other
 
     Responsiveness was tested using chrome devtools and was tested on both mobile and desktop devices.
 
+-   **Bugs Found and Resolved or Current**
 
+    |Bug|Resolution|
+    |---|----------|
+    |A form I had created was not rendering with the required fields from the database|After extensive investigation into syntax and use of form classes and views I sought help. Tutor support at Code Institute introduced me to generic views which worked where my form hadn't. In the process of configuring the generic view I discovered I had named a form class and a class based view the same name and they were in conflict. Changing the names resolved the issue and adopting a naming convention helped to ensure that it would not happen again |
+    |Setlist titles were not being updated when submitting a setlist add form|I had omitted the code to save to form prior to using save m2m to save the many to many setlist to song name relationships. Adding the save command resolved the issue|
+    |Holding a key down on the keyboard when entering a song title or setlist name would result in the connection to the Elephant SQL database being lost|The JavaScript was modified to look for a keyup event which resolved the issue|
 
 ## **6. Project Sign Off**
 
