@@ -356,6 +356,8 @@ During the planning and refinement phase, some features were combined with other
 
             When the user is new to the system or has not yet logged in, the landing page displays a login button, to take them to the signing in page and a ‘Register’ link that would take the user to the site registration page.
 
+            ![Landing Page Before Login](docs/images/readme-landing-pre-login.jpg)
+
         -   Post login: Songbook List [Feature ‘Songbook List’ (ID8)]
 
             -   ### **The ‘Songbook List’** (ID8) Feature is a dependency user stories 2.1, 2.2, 2.3, 2.4, 2.5, 2.7 
@@ -369,13 +371,19 @@ During the planning and refinement phase, some features were combined with other
 
                 On the landing page at the bottom of the song list there is a single button that takes the user to the add song page when clicked.
 
+                ![Landing Page After Login](docs/images/readme-landing-post-login.jpg)
+
 -   ### **Navigation** [Feature ‘Navigation’ (ID20)]
 
     -   The ‘Navigation’ (ID20) Feature is a dependency of all user stories
 
     On small screens (below 768px), the navigation links are hidden. They drop down from the header on click of the menu toggle. 
 
+    ![Mobile Navigation](docs/images/readme-navigation-mobile.jpg)
+
     On larger screen the navigation links are in a row next to the logo.
+
+    ![LArge Screen Navigation](docs/images/readme-navigation-large-screen.jpg)
 
     When logged out, the navigation section contains the links ‘Register’, that takes the user to the site registration page and ‘Login’ that navigates to the site login page.
 
@@ -384,6 +392,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Register** [Feature ‘Register’ (ID3)]
 
     -   The ‘Register’ (ID3) Feature is a dependency of all user stories
+
+    ![Registration Page](docs/images/readme-register.jpg)
 
     The ‘Register’ page can be reached by clicking the ‘Register’ link in the navigation menu when a user is not logged in.
 
@@ -402,6 +412,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Login** [Feature ‘Sign In’ (ID2)]
 
     -   The ‘Sign In’ (ID2) Feature is a dependency of all user stories
+
+    ![Sign In](docs/images/readme-sign-in.jpg)
 
     The ‘Login’ page can be reached by clicking the ‘Login’ link in the navigation menu. There is also a ‘Sign In’ link to the ‘Login’ page on the ‘Register’ page.
 
@@ -427,6 +439,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Sign Out’ (ID6) Feature is a dependency of all user stories
 
+    ![Sign Out](docs/images/readme-sign-out.jpg)
+
     The ‘Logout’ page can be accessed by clicking the ‘Logout’ link in the navigation menu. 
 
     The page has a header to inform the user of their location within the site.
@@ -441,6 +455,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Delete User’ (ID4) Feature is a dependency of user story 1.4
 
+    ![User Admin](docs/images/readme-user-admin.jpg)
+
     Deletion of a user can only be accessed by a user with administrator credentials. The procedure is carried out from within the Django administration page. Should a user have administrator privileges, there is a link to the ‘Admin’ page in the navigation menu.
 
     Within the administration section of the site, the administrator can navigate to the ‘User’ section of the site, locate the user to be deleted and check the box next to their name and then select that they wish for the user to be deleted.
@@ -450,6 +466,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Add a Song** [Feature ‘Add Song’ (ID7)]
 
     -   The ‘Add Song’ (ID7) Feature is a dependency of user stories 2.1, 2.3, 2.4, 2.5, 2.7, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6
+
+    ![Add Song](docs/images/readme-add-song.jpg)
 
     The ‘add song’ page has a header to indicate that the page is for the purpose of submitting song details.
 
@@ -485,6 +503,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Song View’ (ID9) Feature is a dependency of user stories 2.3, 2.4, 2.5, 2.7
 
+    ![Song View](docs/images/readme-song-view.jpg)
+
     The ‘Song View’ page has a header that displays the title of the song to the user. Immediately below this header a second header, with slightly smaller text, displays the artist details should they have been entered by the user on the ‘Add Song’ or ‘Edit Song’ pages. 
 
     Below the headers is the centrally justified lyric text. In the event that the lyric text overflows the bottom of its container, it can be accessed by scrolling.
@@ -498,6 +518,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Edit a Song** [Feature ‘Edit Song’ (ID10)]
 
     -   The ‘Edit Song’ (ID10) Feature is a dependency of user stories 2.4, 2.5
+
+    ![Song Edit](docs/images/readme-song-edit.jpg)
 
     The ‘Edit a Song’ page has a header to indicate that the page is for the purpose of submitting song details.
 
@@ -513,6 +535,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Delete Song’ (ID11) Feature is a dependency of user story 2.5
 
+    ![Confirm Song Delete](docs/images/readme-confirm-delete.jpg)
+
     The ‘Confirm Song Deletion’ page has a header to indicate the purpose of the page to the user.
 
     Below the header is a large message detailing the name of the song in question and asking the user to confirm if they’d really like to action the requested deletion.
@@ -522,6 +546,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Autoscroll a Song** [Feature ‘Autoscroll’ (ID13)]
 
     -   The ‘Autoscroll’ (ID13) Feature is a dependency of user story 2.7
+
+    ![Song Autoscroll](docs/images/readme-song-autoscroll.jpg)
 
     The autoscroll function is initiated on clicking the ‘Autoscroll’ button on the song view page. Note that this button is only available if the scroll speed for the song in question is not 0.
 
@@ -539,6 +565,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Admin Page’ (ID4) Feature is a dependency of user story 2.6
 
+    ![Song Admin](docs/images/readme-song-admin.jpg)
+
     This section shows the sections of the Django admin page that enables song Administration.
 
     The Django Admin pages are configured to be able to administer database song entries by  a user with administrator privileges.
@@ -548,6 +576,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Setlist List** [Feature ‘Setlist List’ (ID14)]
 
     -   The ‘Setlist List’ (ID14) Feature is a dependency of user stories 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7
+
+    ![Setlist List](docs/images/readme-setlist-list.jpg)
 
     The ‘Setlist List’ page can be accessed from the navigation menu by clicking the ‘Setlists’ link. 
 
@@ -563,6 +593,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **Add a Setlist** [Feature ‘Add Set’ (ID16)]
 
     -   The ‘Add Set’ (ID16) Feature is a dependency of user stories 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.8
+
+    ![Add Setlist](docs/images/readme-add-setlist.jpg)
 
     The ‘Add a Setlist’ page has a heading to indicated to the user that the page is for setlist detail entry.
 
@@ -593,6 +625,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Setlist Song List’ (ID15) Feature is a dependency of user stories 3.3, 3.4, 3.5, 3.6, 3.8
 
+    ![View a Set](docs/images/readme-view-set.jpg)
+
     The heading on the ‘View a Set of Songs’ page is the setlist name.
 
     Below the heading is a list of the songs belonging to the selected set. The list of songs is styled like the list of songs on the ‘Songbook List’ (landing) page. This list is scrollable should it overflow its container.
@@ -606,6 +640,8 @@ During the planning and refinement phase, some features were combined with other
 -   ### **View a Song From a Set** [Feature ‘Setlist Song View’ (ID21)]
 
     -   The ‘Setlist Song View’ (ID21) Feature is a dependency of user stories 3.4, 3.8
+
+    ![Setlist song view](docs/images/readme-set-song-view.jpg)
 
     The ‘View a Song From a Set’ page has a heading that displays the title of the song being viewed.
 
@@ -621,6 +657,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Edit Set’ (ID17) Feature is a dependency of user stories 3.5, 3.6
 
+    ![Edit Set](docs/images/readme-set-edit.jpg)
+
     The ‘Edit a Set’ page is identical to the ‘Add a Setlist’ page with a couple of exceptions: 
 
     Fields are prepopulated with the current setlist name and the songs that are currently part of the set are checked.
@@ -634,6 +672,8 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Delete Set (ID18) Feature is a dependency of user story 3.6
 
+    ![Confirm Set Delete](docs/images/readme-confirm-set-delete.jpg)
+
     The ‘Confirm Set Deletion’ page has a header to indicate the purpose of the page to the user.
 
     Below the header is a large message detailing the name of the setlist in question and asking the user to confirm if they’d really like to action the requested deletion.
@@ -646,11 +686,15 @@ During the planning and refinement phase, some features were combined with other
 
     -   The ‘Landing Page’ (ID1) Feature is a dependency of user story 3.8
 
+    ![Autoscroll Set Song](docs/images/readme-autoscroll-set-song.jpg)
+
     The ‘Autoscroll a Setlist Song’ feature works exactly like the ‘Autoscroll a Song’ feature, described above.
 
 -   ### **Administer a Setlist (Admin)** [Feature ‘Admin Page’ (ID4)]
 
     -   The ‘Admin Page’ (ID4) Feature is a dependency of user stories 3.7
+
+    ![Setlist Admin](docs/images/readme-setlist-admin.jpg)
 
     This section shows the sections of the Django admin page that enables setlist Administration.
 
