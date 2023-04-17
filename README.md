@@ -33,6 +33,9 @@ The system also includes an auto scroll feature so that a musician can play alon
 
 9 [Credits](#9-credits)
 
+10 [Acknowledgements](#10-acknowledgements)
+
+
 ## **1. Project Initiation**
 
  - ## Agile
@@ -714,7 +717,7 @@ During the planning and refinement phase, some features were combined with other
 
     -   Integration with Musixmatch so songs can be searched and imported into the user’s repository automatically.
 
-## **5. Testing**
+## **4. Testing**
 -   **Code Validation**
 
     -   [CSS validation](docs/pdfs/readme-css-validation.pdf)
@@ -744,7 +747,7 @@ During the planning and refinement phase, some features were combined with other
     |Setlist titles were not being updated when submitting a setlist add form|I had omitted the code to save to form prior to using save m2m to save the many to many setlist to song name relationships. Adding the save command resolved the issue|
     |Holding a key down on the keyboard when entering a song title or setlist name would result in the connection to the Elephant SQL database being lost|The JavaScript was modified to look for a keyup event which resolved the issue|
 
-## **6. Project Sign Off**
+## **5. Project Sign Off**
 
 Once all of the user stories and their feature dependencies have passed their respective acceptance tests then the user story as a whole is deemed ready for release.
 
@@ -752,9 +755,9 @@ The overall user story acceptance test results along with the acceptance test re
 
 -   [Product sign off](docs/pdfs/readme-product-sign-off.pdf)
 
-## **7. Releases**
+## **6. Releases**
 
-## **8. Deployment**
+## **7. Deployment**
 
 The website is hosted on [Heroku]( https://www.heroku.com/) from the main branch of the [Music Aid : Songbook Repository](https://github.com/Stephen-J-Whitaker/music-aid).
 
@@ -972,7 +975,7 @@ The website is dependent on a postgres database made available by ElephantSQL.
 8. Pressing enter result in the clone being created. 
 
 
-## **9. Technologies Used**
+## **8. Technologies Used**
 
 - [Python](https://www.python.org/)
 
@@ -1036,7 +1039,7 @@ The website is dependent on a postgres database made available by ElephantSQL.
 
 - Windows 10 snipping tool for creating screen grabbed jpeg files for the readme
 
-## **10. Credits**
+## **9. Credits**
 
 -   All code was written by the author, Stephen Whitaker, unless explicitly stated within the code.
 
@@ -1062,7 +1065,7 @@ The website is dependent on a postgres database made available by ElephantSQL.
 
 -   Code used to reduce multiple white spaces in a string to single spaces was taken from the following site: https://www.tutorialrepublic.com/faq/how-to-replace-multiple-spaces-with-single-space-in-javascript.php. The code can be found in [songbook_song_add_edit.js](https://github.com/Stephen-J-Whitaker/music-aid/blob/main/static/js/songbook_js/songbook_song_add_edit.js) and [songbook_setlist_add_edit.js](https://github.com/Stephen-J-Whitaker/music-aid/blob/main/static/js/songbook_js/songbook_setlist_add_edit.js)
 
-## **11. Acknowledgements**
+## **10. Acknowledgements**
 
 -   A special thank you to my mentor Maranatha Ilesanmi
 
