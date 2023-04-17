@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
             let frameText = frameContent[0].innerText;
             frameContent[0].innerText = frameText;
-        }, 300)
+        }, 300);
         });
     }
 

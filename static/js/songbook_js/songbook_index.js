@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 navbarToggler.removeAttribute('style');
             }, 100);
-        }, 350)
-    })
+        }, 350);
+    });
 
     /**
      * Set styles for when mouse is over menu toggler to override bootstrap active and focus styles
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('navbar-toggler').addEventListener('mouseover', function() {
         this.style.backgroundColor = 'rgb(141, 177, 207)';
         this.style.boxShadow = '0px 0px 20px 1px rgb(1, 63, 110)';
-    })
+    });
 
     /**
      * Set styles for when mouse leaves menu toggler to override bootstrap active and focus styles
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('navbar-toggler').addEventListener('mouseleave', function() {
         this.style.backgroundColor = 'rgb(137, 170, 196)';
         this.style.boxShadow = 'none';
-    })
+    });
 
     // Set timeout for messages code provided by Code Institute
     if (document.getElementById('msg')) {
