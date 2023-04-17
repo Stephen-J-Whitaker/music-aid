@@ -11,7 +11,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
 -	[Link to live ‘Music Aid : songbook website]( https://music-aid.herokuapp.com/)
 
-![Responsive mockup]( static/docs/images/readme-responsive-mockup.jpg)
+![Responsive mockup]( docs/images/readme-responsive-mockup.jpg)
 
 ## **Contents**
 
@@ -51,16 +51,16 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         Note: During the planning and refinement phase, some features were combined with others and the feature ids of the features no longer required were removed from use, hence there are gaps in the feature id numbering system. No feature that is a requirement of the system has been omitted from the documentation.
 
-        -   [Epics and User Stories](static/docs/pdfs/readme-epics.pdf)
-        -   [Epic specifications](static/docs/pdfs/readme-epic-specifications.pdf)
-        -   [Epic / User Story Acceptance Criteria](static/docs/pdfs/readme-epic-acceptance-criteria.pdf)
-        -   [Consolidated Feature Acceptance Criteria](static/docs/pdfs/readme-feature-acceptance-criteria.pdf)
+        -   [Epics and User Stories](docs/pdfs/readme-epics.pdf)
+        -   [Epic specifications](docs/pdfs/readme-epic-specifications.pdf)
+        -   [Epic / User Story Acceptance Criteria](docs/pdfs/readme-epic-acceptance-criteria.pdf)
+        -   [Consolidated Feature Acceptance Criteria](docs/pdfs/readme-feature-acceptance-criteria.pdf)
 
     - ### MoSCoW
 
         Once the design planning had taken place, the number of story points to be allocated to each user story was estimated based on its tasks complexity and size. Potential users of the site were consulted to help ascertain each of the user stories relative importance and, using the MoSCoW technique, were given a priority of 'must have', 'should have' or 'could have'. There were no ‘won't have’ user stories.
 
-        -   [Iteration 1 MoSCoW Analysis](static/docs/pdfs/readme-moscow-analysis.pdf)
+        -   [Iteration 1 MoSCoW Analysis](docs/pdfs/readme-moscow-analysis.pdf)
 
     - ### Agile tools
 
@@ -306,7 +306,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
                 The user table is documented here due to some of it fields being exposed for direct data input in forms on the front end during user authentication.
 
-                [User Model](static/docs/pdfs/readme-user-model.pdf)
+                [User Model](docs/pdfs/readme-user-model.pdf)
             
             -   Song Model
 
@@ -314,7 +314,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
                 A song has a one to one foreign key relationship with the user who created it in the system. If that user is deleted, the users songs are deleted.
 
-                [Song Model](static/docs/pdfs/readme-song-model.pdf)
+                [Song Model](docs/pdfs/readme-song-model.pdf)
 
             -   Setlist model
 
@@ -324,7 +324,7 @@ The system also includes an auto scroll feature so that a musician can play alon
 
                 A users setlist has a many to many relationship with the users songs. Many songs can be linked to many setlists.
 
-                [Setlist Model](static/docs/pdfs/readme-setlist-model.pdf)
+                [Setlist Model](docs/pdfs/readme-setlist-model.pdf)
 
 ## **3. Features**
 
@@ -437,9 +437,9 @@ During the planning and refinement phase, some features were combined with other
 
     The ‘Logout’ page is responsive and resizes for the screen on which it is being viewed.
 
--   ### **Delete a User (Admin)** [Feature ‘Delete User’ (ID5)]
+-   ### **Delete a User (Admin)** [Feature ‘Delete User’ (ID4)]
 
-    -   The ‘Delete User’ (ID5) Feature is a dependency of all user stories
+    -   The ‘Delete User’ (ID4) Feature is a dependency of user story 1.4
 
     Deletion of a user can only be accessed by a user with administrator credentials. The procedure is carried out from within the Django administration page. Should a user have administrator privileges, there is a link to the ‘Admin’ page in the navigation menu.
 
@@ -690,35 +690,35 @@ The website is dependent on a postgres database made available by ElephantSQL.
 
   <details><summary>1. Create a new account for the deployment(click to expand)</summary>
  
-  ![Cloudinary step 1](static/docs/images/readme-cloudinary-1.jpg)
+  ![Cloudinary step 1](docs/images/readme-cloudinary-1.jpg)
   </details>
 
   <br>
 
   <details><summary>2. Verify your email address(click to expand)</summary>
  
-  ![Cloudinary step 2](static/docs/images/readme-cloudinary-2.jpg)
+  ![Cloudinary step 2](docs/images/readme-cloudinary-2.jpg)
   </details>
 
   <br>
   
   <details><summary>3. Choose the product you need to user(click to expand)</summary>
  
-  ![Cloudinary step 3](static/docs/images/readme-cloudinary-3.jpg)
+  ![Cloudinary step 3](docs/images/readme-cloudinary-3.jpg)
   </details>
 
   <br>
 
   <details><summary>4. [OPTIONAL] Give the product environment cloud a name of your choosing(click to expand)</summary>
  
-  ![Cloudinary step 4](static/docs/images/readme-cloudinary-4.jpg)
+  ![Cloudinary step 4](docs/images/readme-cloudinary-4.jpg)
   </details>
 
   <br>
 
   <details><summary>5. Obtain your API environment variable. The text 'CLOUDINARY_URL=' must be removed from the front of the key before it is entered into the Heroku config vars for the deployment. This key must be kept secret.(click to expand)</summary>
  
-  ![Cloudinary step 5](static/docs/images/readme-cloudinary-5.jpg)
+  ![Cloudinary step 5](docs/images/readme-cloudinary-5.jpg)
   </details>
 
   <br>
@@ -727,35 +727,35 @@ The website is dependent on a postgres database made available by ElephantSQL.
 
   <details><summary>1. Sign up for an account if neceassary(click to expand)</summary>
  
-  ![ElephantSQL step 1](static/docs/images/readme-elephantsql-1.jpg)
+  ![ElephantSQL step 1](docs/images/readme-elephantsql-1.jpg)
   </details>
 
   <br>  
 
   <details><summary>2. Click 'Create New Instance' (click to expand)</summary>
  
-  ![ElephantSQL step 2](static/docs/images/readme-elephantsql-2.jpg)
+  ![ElephantSQL step 2](docs/images/readme-elephantsql-2.jpg)
   </details>
 
   <br>  
 
   <details><summary>3. Select a plan and a name for the database instance (click to expand)</summary>
  
-  ![ElephantSQL step 3](static/docs/images/readme-elephantsql-3.jpg)
+  ![ElephantSQL step 3](docs/images/readme-elephantsql-3.jpg)
   </details>
 
   <br> 
 
   <details><summary>4. Select a region and data center (click to expand)</summary>
  
-  ![ElephantSQL step 4](static/docs/images/readme-elephantsql-4.jpg)
+  ![ElephantSQL step 4](docs/images/readme-elephantsql-4.jpg)
   </details>
 
   <br> 
 
   <details><summary>5. Confirm the details to create a new instance (click to expand)</summary>
  
-  ![ElephantSQL step 5](static/docs/images/readme-elephantsql-5.jpg)
+  ![ElephantSQL step 5](docs/images/readme-elephantsql-5.jpg)
   </details>
 
   <br> 
@@ -763,14 +763,14 @@ The website is dependent on a postgres database made available by ElephantSQL.
 
   <details><summary>6. Successful creation of the instance is indicated(click to expand)</summary>
  
-  ![ElephantSQL step 6](static/docs/images/readme-elephantsql-6.jpg)
+  ![ElephantSQL step 6](docs/images/readme-elephantsql-6.jpg)
   </details>
 
   <br> 
 
   <details><summary>7. Retrieve the URL to access the database for entry as a 'config var' during Heroku deployment. This key must be kept secret.(click to expand)</summary>
  
-  ![ElephantSQL step 7](static/docs/images/readme-elephantsql-7.jpg)
+  ![ElephantSQL step 7](docs/images/readme-elephantsql-7.jpg)
   </details>
 
   <br> 
@@ -779,91 +779,91 @@ The website is dependent on a postgres database made available by ElephantSQL.
   
   <details><summary>1. Log in or create a new account (click to expand)</summary>
  
-  ![Deployment step 1](static/docs/images/readme-deployment-1.jpg)
+  ![Deployment step 1](docs/images/readme-deployment-1.jpg)
   </details>
 
   <br>
 
   <details><summary>2. From the dashboard, select ‘Create new app’ (click to expand)</summary>
  
-  ![Deployment step 2](static/docs/images/readme-deployment-2.jpg)
+  ![Deployment step 2](docs/images/readme-deployment-2.jpg)
   </details>
 
   <br>
 
   <details><summary>3. Name the app, each apps on the Heroku platform require a unique name, then select a region and click create app (click to expand)</summary>
  
-  ![Deployment step 3](static/docs/images/readme-deployment-3.jpg)
+  ![Deployment step 3](docs/images/readme-deployment-3.jpg)
   </details>
 
   <br>
 
   <details><summary>4. Click on ‘Settings’ in the top menu bar (click to expand)</summary>
  
-  ![Deployment step 4](static/docs/images/readme-deployment-4.jpg)
+  ![Deployment step 4](docs/images/readme-deployment-4.jpg)
   </details>
 
   <br>
 
   <details><summary>5. Click on ‘Reveal Config Vars’ to reveal the config var section then enter the config var details as shown in the image. When a field is complete, click the ‘ADD’ button next to the fields. New empty fields will appear below the previously entered field. When complete, click ADD. The config vars entered will be unique to the cloudinary account and database set up for your instance of the product. You must create a Django secret key that is unique. Cloud, databse and Django secret Keys must be in the format shown and must be kept secret.(click to expand)</summary>
  
-  ![Deployment step 5](static/docs/images/readme-deployment-5.jpg)
+  ![Deployment step 5](docs/images/readme-deployment-5.jpg)
   </details>
 
   <br>
 
   <details><summary>6. Click on ‘Deploy’ on the main menu ribbon at the top of the page and then click ‘GitHub’ (click to expand)</summary>
  
-  ![Deployment step 6](static/docs/images/readme-deployment-6.jpg)
+  ![Deployment step 6](docs/images/readme-deployment-6.jpg)
   </details>
 
   <br>
 
   <details><summary>7. If necessary, confirm that you want to connect to GitHub by clicking ‘Connect to GitHub’ (click to expand)</summary>
  
-  ![Deployment step 7](static/docs/images/readme-deployment-7.jpg)
+  ![Deployment step 7](docs/images/readme-deployment-7.jpg)
   </details>
 
   <br>
 
   <details><summary>8. Search for the GitHub repository name (click to expand)</summary>
  
-  ![Deployment step 8](static/docs/images/readme-deployment-8.jpg)
+  ![Deployment step 8](docs/images/readme-deployment-8.jpg)
   </details>
 
   <br>
 
   <details><summary>9. Click either ‘Enable Automatic Deploys’ which will automatically redeploy the app each time the Git repository is updated, or ‘Deploy Branch’ to deploy the app manually as requried (click to expand)</summary>
  
-  ![Deployment step 9](static/docs/images/readme-deployment-9.jpg)
+  ![Deployment step 9](docs/images/readme-deployment-9.jpg)
   </details>
 
   <br>
 
   <details><summary>10. If ‘Deploy Branch’ was selected the screen will look like the following image when deployment is complete (click to expand)</summary>
  
-  ![Deployment step 10](static/docs/images/readme-deployment-10.jpg)
+  ![Deployment step 10](docs/images/readme-deployment-10.jpg)
   </details>
 
   <br>
 
   <details><summary>11. Open a console for the Heroku app (click to expand)</summary>
  
-  ![Deployment step 11](static/docs/images/readme-deployment-11.jpg)
+  ![Deployment step 11](docs/images/readme-deployment-11.jpg)
   </details>
 
   <br>
 
   <details><summary>12. Run the migrate command to migrate the database schema defined by the migrations files to the new empty ElephantSQL database (click to expand)</summary>
  
-  ![Deployment step 12](static/docs/images/readme-deployment-12.jpg)
+  ![Deployment step 12](docs/images/readme-deployment-12.jpg)
   </details>
 
   <br>
 
   <details><summary>13. Open the app by clicking 'Open app' (click to expand)</summary>
  
-  ![Deployment step 13](static/docs/images/readme-deployment-13.jpg)
+  ![Deployment step 13](docs/images/readme-deployment-13.jpg)
   </details>
 
   <br>  
@@ -874,7 +874,7 @@ The website is dependent on a postgres database made available by ElephantSQL.
 2.  Navigate to the the repository at the following link: https://github.com/Stephen-J-Whitaker/music-aid
 3.  Locate the fork button at the top of the page and click it:
 
-    ![Fork the repository step 3](static/docs/images/readme-fork-repo.jpg)
+    ![Fork the repository step 3](docs/images/readme-fork-repo.jpg)
 
 4. A copy of the repository will be made in your gitHub account
 
@@ -884,11 +884,11 @@ The website is dependent on a postgres database made available by ElephantSQL.
 2. Navigate to the the repository at the following link: https://github.com/Stephen-J-Whitaker/music-aid
 3. Locate the code button and click it:
 
-    ![Clone the Repository step 3](static/docs/images/readme-clone-repo-1.jpg)
+    ![Clone the Repository step 3](docs/images/readme-clone-repo-1.jpg)
 
 4. Select HTTPS from the options and then click the copy button to copy the link.
 
-    ![Copy the HTTPS link setp 4](static/docs/images/readme-clone-repo-2.jpg)
+    ![Copy the HTTPS link setp 4](docs/images/readme-clone-repo-2.jpg)
 
 5. Open Git Bash
 6. Change the current working directory to the location where you want the directory cloned to.
