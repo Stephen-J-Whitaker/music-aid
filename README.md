@@ -19,21 +19,19 @@ The system also includes an auto scroll feature so that a musician can play alon
 
 2 [Music Aid : Songbook development](#2-music-aid--songbook-development)
 
-3 [Instructions](#3-instructions)
+3 [Features](#3-features)
 
-4 [Features](#4-features)
+4 [Testing](#4-testing)
 
-5 [Testing](#5-testing)
+5 [Project Sign Off](#5-project-sign-off)
 
-6 [Project Sign Off](#6-project-sign-off)
+6 [Releases](#6-releases)
 
-7 [Releases](#7-releases)
+7 [Deployment](#7-deployment)
 
-8 [Deployment](#8-deployment)
+8 [Technologies Used](#8-technologies-used)
 
-9 [Technologies Used](#9-technologies-used)
-
-10 [Credits](#10-credits)
+9 [Credits](#9-credits)
 
 ## **1. Project Initiation**
 
