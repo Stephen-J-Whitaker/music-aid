@@ -47,6 +47,9 @@ The system also includes an auto scroll feature so that a musician can play alon
 
         Note: During the planning and refinement phase, some features were combined with others and the feature ids of the features no longer required were removed from use, hence there are gaps in the feature id numbering system. No feature that is a requirement of the system has been omitted from the documentation.
 
+        -   [Epics and User Stories](static/docs/pdfs/readme-epics.pdf)
+        -   [Epic specifications](static/docs/pdfs/readme-epic-specifications.pdf)
+
     - ### MoSCow
 
         Once the design planning had taken place, the number of story points to be allocated to each user story was estimated based on its tasks complexity and size. Potential users of the site were consulted to help ascertain each of the user stories relative importance and, using the MoSCoW technique, were given a priority of 'must have', 'should have' or 'could have'. There were no ‘won't have’ user stories.
